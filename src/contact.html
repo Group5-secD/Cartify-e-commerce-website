@@ -3,23 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <title>Cartify contact</title>
+        <link rel="icon" type="image/jpg" href="img/cartify2.jpg">
         <style></style>
     </head>
     <body>
-        <header>
-            <nav>
-                <a href="index.html">Home</a>  |
-                <a href="products.html">products</a>  |
-                <a href="cart.html">Cart</a>  |
-                <a href="feedback.html">feedback</a>  |
+        <header style="justify-content: right;">
+            <fieldset style=" background-color:rgb(150, 239, 184);  ">
+                <nav style="justify-content: right; ">
+                <a href="index.html">Home</a>   |
+                <a href="products.html">products</a>   |
+                <a href="cart.html">Cart</a>   |
+                <a href="feedback.html">feedback</a>   |
                 <a href="contact.html">Contact</a>
             </nav>
+            </fieldset>
         </header>
         <br><br>
 
         <h2><b>Contact Us</b></h2>
         <fieldset style="width: 60%; background-color: rgb(187, 249, 208);" length="30" >
-            
+           <legend>Personal Information: </legend> 
             <form action="" method="post">
                     <label for="name"> First name:</label><br>
                     <input type="text" id="name" name="name" required><br><br>
@@ -30,10 +33,10 @@
                     <label for="email">Email Address:</label><br>
                     <input type="email" id="email" name="email" required><br><br>
 
+                    <lable for="Query Type">Query Type: </lable>
                     <select name="Query Type" id="Query Type">
-                        
-                        <option value="">support Request</option>
-                        <option value="">General Enquiry</option>
+                        <option value="support Request">support Request</option>
+                        <option value="General Enquiry">General Enquiry</option>
                     </select>
 
                     <br><br>
