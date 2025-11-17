@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <style>
+        .signup-container{
+            background-color: lightgray;
+            width: 90%;
+            max-width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap:10px ;
+            text-align: center;
+        }
+
+        .signup-container form{
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap:10px ;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+
+        <form action="#" method="post">
+
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="User-name" required placeholder="Daniel Sefiw">
+            </div>
+
+            <div class="input-group">
+                <label for="password">password</label>
+                <input type="password" id="password" name="user-password" name="user-password" required placeholder="atleast 8 char">
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="User-email" required placeholder="Dani**21@gmail.com">
+            </div>
+
+            <button type="submit" class="signup-btn">Sign up</button>
+
+        </form>
+
+    </div>
+</body>
+</html>
