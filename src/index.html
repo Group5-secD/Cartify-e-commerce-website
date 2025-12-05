@@ -1,5 +1,74 @@
 <!DOCTYPE html>
-<HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/ico" href="img/favicon.ico" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <title>Cartify Online Store</title>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <nav class="navbar" id="navbar">
+        <!-- Cartify Logo -->
+        <div class="logo" id="logo">
+          <img src="img/cartify2.jpg" alt="Cartify Logo" />
+        </div>
+
+        <!-- Desktop navigation -->
+        <div class="desktopNav" id="desktopNav">
+          <ul class="items" id="items">
+            <li><a href="">Home</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Category</a></li>
+            <li><a href="">Cart</a></li>
+            <li><a href="">Feedback</a></li>
+            <div class="right" id="right">
+              <li><a href="">Contact us</a></li>
+              <li><a href="" class="last" id="last">Login</a></li>
+            </div>
+          </ul>
+        </div>
+
+        <!-- Mobile navigation -->
+        <div class="mobileNav" id="mobileNav">
+          <i class="fa-solid fa-cart-shopping myIcon"></i>
+          <button class="loginbtn" id="loginbtn">Login</button>
+          <i class="fa-solid fa-bars myIcon hamburger" id="hamburger"></i>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="searchbar" id="searchbar">
+      <input
+        id="search"
+        class="search"
+        type="text"
+        placeholder="Search products..."
+      />
+      <i class="fa-solid fa-magnifying-glass searchIcon"></i>
+    </div>
+
+    <!-- Image Slider -->
+
+    <script>
+      const hamburger = document.querySelector("#hamburger");
+      const items = document.querySelector("#items");
+
+      hamburger.addEventListener("click", () => {
+        items.classList.toggle("show");
+      });
+    </script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
     <head>
         <meta charset="UTF-8">
         <link rel="icon" type="image/jpg" href="img/cartify2.jpg">
@@ -35,4 +104,4 @@
             <p>&copy; 2025 | Cartify</p>
         </footer>
     </body>
-</HTML>    
+</html>     -->
