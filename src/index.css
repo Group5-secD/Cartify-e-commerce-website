@@ -89,6 +89,7 @@ body {
   right: 2.5rem;
   box-shadow: -2px 2px 2px grey;
   border-right: 1px gray solid;
+  z-index: 1;
 }
 
 .items.show {
@@ -140,6 +141,11 @@ body {
   transform: translate(0, -50%);
 }
 
+/* Hide the image slider for mobile screens */
+.slider-container {
+  display: none;
+}
+
 /* Removing hover effect */
 @media (max-width: 1024px) {
   .items li a:hover {
@@ -155,8 +161,7 @@ body {
   }
 
   .navbar {
-    margin: 1.2rem 7%;
-    padding: 0 0 0 1.2rem;
+    margin: 1.2rem 5%;
   }
 
   .mobileNav {
@@ -214,5 +219,120 @@ body {
     padding: 1rem;
   }
 
-  /* Image slider */
+  /* Desktop Image slider */
+  .slider-container {
+    margin: 1.2rem 10%;
+    height: 65vmin;
+    display: flex;
+    gap: 1.2rem;
+    overflow-x: auto;
+    border-radius: 0.6rem;
+    box-shadow: 4px 4px 10px #b6adad;
+    padding: 0.2rem;
+    background-color: #c4c2c2;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    anchor-name: --slider;
+    scroll-marker-group: after;
+  }
+
+  .slider-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slider-container::scroll-button(right),
+  .slider-container::scroll-button(left) {
+    content: "\2192";
+    font-size: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #5db15d;
+    color: whitesmoke;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --slider;
+    position-area: right center;
+    transform: translateX(-100%);
+  }
+
+  .slider-container::scroll-button(left) {
+    content: "\2190";
+    position-area: left center;
+    transform: translateX(100%);
+  }
+
+  .slider-container::scroll-button(right):disabled,
+  .slider-container::scroll-button(left):disabled {
+    opacity: 0.5;
+    cursor: auto;
+  }
+
+  .slider-container::scroll-marker-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+
+  .slides::scroll-marker {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #6b7280;
+    transition: 200ms ease-in;
+  }
+
+  .slides::scroll-marker:target-current {
+    background-color: #5db15d;
+  }
+
+  .slides {
+    flex: 0 0 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 2px;
+    scroll-snap-align: start;
+    position: relative;
+  }
+
+  .slides img {
+    border-radius: 0.5rem;
+    aspect-ratio: 6 / 6;
+    width: 100%;
+    height: 100%;
+    object-fit: var(--container-width);
+  }
+
+  /* Definitely we will change the colors used here */
+
+  .slides h2 {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(109, 104, 104);
+    line-height: 1;
+  }
+
+  .slides span {
+    background-color: #5db15d;
+    padding: 0.5rem;
+    border-radius: 10px;
+    font-size: 34px;
+    color: #1b4332;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slides h4 {
+    position: absolute;
+    bottom: 10%;
+    left: 1.5rem;
+    color: rgb(43, 39, 39);
+  }
+
 }
