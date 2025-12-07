@@ -146,12 +146,35 @@ body {
   display: none;
 }
 
-/* Removing hover effect */
+/* Category indicator on mobile screen */
+.mobile-indicator {
+  margin: 1.3rem 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.mobile-indicator p {
+  font-size: small;
+  cursor: pointer;
+  transition: color 200ms ease-in-out;
+}
+
+.mobile-indicator p:hover {
+  color: #5db15d;
+}
+
+/* Remove Elements from mobile screens */
 @media (max-width: 1024px) {
   .items li a:hover {
     background-color: #5db15d;
     transition: 300ms ease-in-out;
   }
+
+  .desktop-indicator {
+  display: none;
+}
 }
 
 /* Desktop navigation bar */
@@ -202,11 +225,12 @@ body {
     background-color: var(--nav-icon-color);
     color: rgb(253, 249, 249);
     box-shadow: 2px 2px 2px green;
+    opacity: 0.8;
   }
 
   .right .last:hover {
-    background-color: rgba(93, 177, 93, 0.7);
-    transition: 300ms;
+    transition: 300ms ease-in-out;
+    opacity: 1;
   }
 
   /* Searchbar on the desktop */
@@ -222,7 +246,7 @@ body {
   /* Desktop Image slider */
   .slider-container {
     margin: 1.2rem 10%;
-    height: 65vmin;
+    height: 55vmin;
     display: flex;
     gap: 1.2rem;
     overflow-x: auto;
@@ -247,7 +271,7 @@ body {
     width: 2.5rem;
     height: 2.5rem;
     background-color: #5db15d;
-    color: whitesmoke;
+    color: rgb(252, 233, 233);
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -335,4 +359,45 @@ body {
     color: rgb(43, 39, 39);
   }
 
+  /* Desktop screen category indicator */
+  .mobile-indicator {
+    display: none;
+  }
+
+  .desktop-indicator {
+    margin: 3rem 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .category i {
+    font-size: 1.5rem;
+    color: #5db15d;
+    opacity: 0.8;
+  }
+
+  .category p {
+    font-size: small;
+  }
+
+  .category:hover i {
+    opacity: 1;
+   transform: scale(1.1);
+   transition: transform 300ms ease-in-out;
+  }
+
+  .category:hover p {
+    color: #5db15d;
+  }
 }
