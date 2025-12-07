@@ -1,271 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="icon" type="image/ico" href="img/favicon.ico" />
-	<link rel="stylesheet" href="index.css" />
-	<link
-	  rel="stylesheet"
-	  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-	/>
-	<title>Cartify Online Store</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/ico" href="img/favicon.ico" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <title>Cartify Online Store</title>
   </head>
   <body>
-	<header class="header" id="header">
-	  <nav class="navbar" id="navbar">
-		<!-- Cartify Logo -->
-		<div class="logo" id="logo">
-		  <img src="img/cartify2.jpg" alt="Cartify Logo" />
-		</div>
+    <header class="header" id="header">
+      <nav class="navbar" id="navbar">
+        <!-- Cartify Logo -->
+        <div class="logo" id="logo">
+          <img src="img/cartify2.jpg" alt="Cartify Logo" />
+        </div>
 
-		<!-- Desktop navigation -->
-		<div class="desktopNav" id="desktopNav">
-		  <ul class="items" id="items">
-			<li><a href="">Home</a></li>
-			<li><a href="">Products</a></li>
-			<li><a href="">Category</a></li>
-			<li><a href="">Cart</a></li>
-			<li><a href="">Feedback</a></li>
-			<div class="right" id="right">
-			  <li><a href="">Contact us</a></li>
-			  <li><a href="" class="last" id="last">Login</a></li>
-			</div>
-		  </ul>
-		</div>
+        <!-- Desktop navigation -->
+        <div class="desktopNav" id="desktopNav">
+          <ul class="items" id="items">
+            <li><a href="">Home</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Category</a></li>
+            <li><a href="">Cart</a></li>
+            <li><a href="">Feedback</a></li>
+            <div class="right" id="right">
+              <li><a href="">Contact us</a></li>
+              <li><a href="" class="last" id="last">Login</a></li>
+            </div>
+          </ul>
+        </div>
 
-		<!-- Mobile navigation -->
-		<div class="mobileNav" id="mobileNav">
-		  <i class="fa-solid fa-cart-shopping myIcon"></i>
-		  <button class="loginbtn" id="loginbtn">Login</button>
-		  <i class="fa-solid fa-bars myIcon hamburger" id="hamburger"></i>
-		</div>
-	  </nav>
-	</header>
+        <!-- Mobile navigation -->
+        <div class="mobileNav" id="mobileNav">
+          <i class="fa-solid fa-cart-shopping myIcon"></i>
+          <button class="loginbtn" id="loginbtn">Login</button>
+          <i class="fa-solid fa-bars myIcon hamburger" id="hamburger"></i>
+        </div>
+      </nav>
+    </header>
 
-	<!-- Search Bar -->
-	<div class="searchbar" id="searchbar">
-	  <input
-		id="search"
-		class="search"
-		type="text"
-		placeholder="Search products..."
-	  />
-	  <i class="fa-solid fa-magnifying-glass searchIcon"></i>
-	</div>
+    <!-- Search Bar -->
+    <div class="searchbar" id="searchbar">
+      <input
+        id="search"
+        class="search"
+        type="text"
+        placeholder="Search products..."
+      />
+      <i class="fa-solid fa-magnifying-glass searchIcon"></i>
+    </div>
 
+    <!-- Image Slider -->
+    <div class="slider-container" id="slider-container">
+      <!-- We can apply this using JavaScript Dynamically -->
+      <div class="slides" id="slides">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1677995700941-100976883af7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+          alt="Shop now"
+        />
+        <h2><span>Cartify</span> Elevating Your Shopping Experience</h2>
+        <h4>Where Shopping Meets Perfection</h4>
+      </div>
+      <div class="slides" id="slides">
+        <img
+          src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZSUyMGNvbW1lcmNlJTIwcHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D"
+          alt="Perfume"
+        />
+        <h4>Perfume</h4>
+      </div>
+      <div class="slides" id="slides">
+        <img
+          src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+          alt="Air pod"
+        />
+        <h4>Air pod</h4>
+      </div>
+      <div class="slides" id="slides">
+        <img
+          src="https://images.unsplash.com/photo-1549049950-48d5887197a0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+          alt="Shampoo"
+        />
+        <h4>Shampoo</h4>
+      </div>
+      <div class="slides" id="slides">
+        <img
+          src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+          alt="full cloth package"
+        />
+        <h4>full cloth package</h4>
+      </div>
+      <div class="slides" id="slides">
+        <img
+          src="https://images.unsplash.com/photo-1762512949121-c1fc05b36e1a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+          alt="Smartphones"
+        />
+        <h4>Smartphones</h4>
+      </div>
+      <div class="slides" id="slides">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1680371835470-532ce168376e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+          alt="Tablets"
+        />
+        <h4>Tablets</h4>
+      </div>
+      <div class="slides" id="slides">
+        <img
+          src="https://images.unsplash.com/photo-1760804876422-7efb73b58048?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+          alt="Perfume"
+        />
+        <h4>Perfume</h4>
+      </div>
+      <div class="slides" id="slides">
+        <img
+          src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
+          alt="Camera"
+        />
+        <h4>Camera</h4>
+      </div>
+      <div class="slides" id="slides">
+        <img
+          src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZSUyMGNvbW1lcmNlJTIwcHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D"
+          alt="Glass"
+        />
+        <h4>Glass</h4>
+      </div>
+    </div>
 
-	<!-- Image Slider -->
-	<div class="slider-container" id="slider-container">
-	  <!-- We can apply this using JavaScript Dynamically -->
-	  <div class="slides" id="slides">
-		<img
-		  src="https://plus.unsplash.com/premium_photo-1677995700941-100976883af7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
-		  alt="Shop now"
-		/>
-		<h2><span>Cartify</span> Elevating Your Shopping Experience</h2>
-		<h4>Where Shopping Meets Perfection</h4>
-	  </div>
-	  <div class="slides" id="slides">
-		<img
-		  src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZSUyMGNvbW1lcmNlJTIwcHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D"
-		  alt="Perfume"
-		/>
-		<h4>Perfume</h4>
-	  </div>
-	  <div class="slides" id="slides">
-		<img
-		  src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
-		  alt="Air pod"
-		/>
-		<h4>Air pod</h4>
-	  </div>
-	  <div class="slides" id="slides">
-		<img
-		  src="https://images.unsplash.com/photo-1549049950-48d5887197a0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
-		  alt="Shampoo"
-		/>
-		<h4>Shampoo</h4>
-	  </div>
-	  <div class="slides" id="slides">
-		<img
-		  src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
-		  alt="full cloth package"
-		/>
-		<h4>full cloth package</h4>
-	  </div>
-	  <div class="slides" id="slides">
-		<img
-		  src="https://images.unsplash.com/photo-1762512949121-c1fc05b36e1a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
-		  alt="Smartphones"
-		/>
-		<h4>Smartphones</h4>
-	  </div>
-	  <div class="slides" id="slides">
-		<img
-		  src="https://plus.unsplash.com/premium_photo-1680371835470-532ce168376e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
-		  alt="Tablets"
-		/>
-		<h4>Tablets</h4>
-	  </div>
-	  <div class="slides" id="slides">
-		<img
-		  src="https://images.unsplash.com/photo-1760804876422-7efb73b58048?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
-		  alt="Perfume"
-		/>
-		<h4>Perfume</h4>
-	  </div>
-	  <div class="slides" id="slides">
-		<img
-		  src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGUlMjBjb21tZXJjZSUyMHByb2R1Y3R8ZW58MHx8MHx8fDA%3D"
-		  alt="Camera"
-		/>
-		<h4>Camera</h4>
-	  </div>
-	  <div class="slides" id="slides">
-		<img
-		  src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZSUyMGNvbW1lcmNlJTIwcHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D"
-		  alt="Glass"
-		/>
-		<h4>Glass</h4>
-	  </div>
-	</div>
+    <div class="category-container" id="category-container">
+      <!-- Category Indicator on large screen -->
+      <div class="desktop-indicator" id="desktop-indicator">
+        <div class="category" id="category">
+          <i class="fa-solid fa-grip"></i>
+          <p>View All</p>
+        </div>
+        <div class="category" id="category">
+          <i class="fa-solid fa-shirt"></i>
+          <p>Clothings</p>
+        </div>
+        <div class="category" id="category">
+          <i class="fa-solid fa-briefcase"></i>
+          <p>Accessories</p>
+        </div>
+        <div class="category" id="category">
+          <i class="fa-solid fa-book"></i>
+          <p>Books</p>
+        </div>
+        <div class="category" id="category">
+          <i class="fa-solid fa-computer"></i>
+          <p>Electronics</p>
+        </div>
+      </div>
 
+      <!-- Mobile screen category indicator -->
+      <div class="mobile-indicator" id="mobile-indecator">
+        <p class="mobile-category active" id="mobile-category">
+          Popular products
+        </p>
+        <p class="mobile-category" id="mobile-category">All products</p>
+      </div>
+    </div>
 
-	<div class="category-container" id="category-container">
-		<!-- Category Indicator on large screen -->
-		<div class="desktop-indicator" id="desktop-indicator">
-			<div class="category" id="category">
-				<i class="fa-solid fa-grip"></i>
-				<p>View All</p>
-			</div>
-			<div class="category" id="category">
-				<i class="fa-solid fa-shirt"></i>
-				<p>Clothings</p>
-			</div>
-			<div class="category" id="category">
-				<i class="fa-solid fa-briefcase"></i>
-				<p>Accessories</p>
-			</div>
-			<div class="category" id="category">
-				<i class="fa-solid fa-book"></i>
-				<p>Books</p>
-			</div>
-			<div class="category" id="category">
-				<i class="fa-solid fa-computer"></i>
-				<p>Electronics</p>
-			</div>
-		</div>
+    <!-- Products category showcase -> to be implemented dynamically using JavaScript -->
+    <div class="product-list" id="product-list">
+      <!-- Category header -->
+      <div class="heading" id="heading">
+        <h3>Popular products</h3>
+        <a href="">See all</a>
+      </div>
 
-		<!-- Mobile screen category indicator -->
-		<div class="mobile-indicator" id="mobile-indecator">
-			<p class="mobile-category active" id="mobile-category">Popular products</p>
-			<p class="mobile-category" id="mobile-category">All products</p>
-		</div>
-	 </div>
+      <!-- Card container -->
+      <div class="card-container" id="card-container">
+        <!-- Category cards  -->
+        <div class="product-card" id="product-card">
+          <i class="fa-regular fa-heart heart-icon"></i>
+          <img
+            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZHVjdHN8ZW58MHx8MHx8fDA%3D"
+            alt="Headset"
+          />
+          <h3>Headset</h3>
+          <div>
+            <p>Br.1200</p>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+          <p class="quantity" id="quantity">Quantity: 8</p>
+        </div>
 
+        <!-- Category cards  -->
+        <div class="product-card" id="product-card">
+          <i class="fa-regular fa-heart heart-icon"></i>
+          <img
+            src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHN8ZW58MHx8MHx8fDA%3D"
+            alt="Cosmetics"
+          />
+          <h3>Cosmetics for Girls</h3>
+          <div>
+            <p>Br.500</p>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+          <p class="quantity" id="quantity">Quantity: 10</p>
+        </div>
 
-	 <!-- Products category showcase -> to be implemented dynamically using JavaScript -->
-	 <div class="product-list" id="product-list">
+        <!-- Category cards  -->
+        <div class="product-card" id="product-card">
+          <i class="fa-regular fa-heart heart-icon"></i>
+          <img
+            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZHVjdHN8ZW58MHx8MHx8fDA%3D"
+            alt="Smart watch"
+          />
+          <h3>Smart Watch from Dubai</h3>
+          <div>
+            <p>Br.2999</p>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+          <p class="quantity" id="quantity">Quantity: 5</p>
+        </div>
 
-		<!-- Category header -->
-		<div class="heading" id="heading">
-			<h3>Popular products</h3>
-			<a href="">See all</a>
-		</div>
+        <!-- Category cards  -->
+        <div class="product-card" id="product-card">
+          <i class="fa-regular fa-heart heart-icon"></i>
+          <img
+            src="https://images.unsplash.com/photo-1640890959827-6307611b34a1?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Smart Camera"
+          />
+          <h3>Smart Camera</h3>
+          <div>
+            <p>Br.7499</p>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+          <p class="quantity" id="quantity">Quantity: 3</p>
+        </div>
 
-		<!-- Card container -->
-		 <div class="card-container" id="card-container">
+        <!-- Category cards  -->
+        <div class="product-card" id="product-card">
+          <i class="fa-regular fa-heart heart-icon"></i>
+          <img
+            src="https://images.unsplash.com/photo-1627384113743-6bd5a479fffd?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Perfume"
+          />
+          <h3>PMV chamara perfume</h3>
+          <div>
+            <p>Br.5400</p>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+          <p class="quantity" id="quantity">Quantity: 7</p>
+        </div>
 
-			 <!-- Category cards  -->
-			  <div class="product-card" id="product-card">
-				<i class="fa-regular fa-heart heart-icon"></i>
-				 <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZHVjdHN8ZW58MHx8MHx8fDA%3D" alt="Headset">
-				 <h3>Headset</h3>
-				 <div>
-					 <p>Br.1200</p>
-					 <i class="fa-solid fa-cart-shopping"></i>
-				 </div>
-				 <p  class="quantity" id="quantity">Quantity: 8</p>
-			  </div>
+        <!-- Category cards  -->
+        <div class="product-card" id="product-card">
+          <i class="fa-regular fa-heart heart-icon"></i>
+          <img
+            src="https://images.unsplash.com/photo-1499096382193-ebb232527fee?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Assorted bottles"
+          />
+          <h3>Assorted Bottles</h3>
+          <div>
+            <p>Br.230</p>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+          <p class="quantity" id="quantity">Quantity: 50</p>
+        </div>
+      </div>
+    </div>
 
-			  <!-- Category cards  -->
-			  <div class="product-card" id="product-card">
-				<i class="fa-regular fa-heart heart-icon"></i>
-				 <img src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHN8ZW58MHx8MHx8fDA%3D" alt="Cosmetics">
-				 <h3>Cosmetics for Girls</h3>
-				 <div>
-					 <p>Br.500</p>
-					 <i class="fa-solid fa-cart-shopping"></i>
-				 </div>
-				 <p class="quantity" id="quantity">Quantity: 10</p>
-			  </div>
+    <script>
+      const hamburger = document.querySelector("#hamburger");
+      const items = document.querySelector("#items");
 
-			  <!-- Category cards  -->
-			  <div class="product-card" id="product-card">
-				<i class="fa-regular fa-heart heart-icon"></i>
-				 <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZHVjdHN8ZW58MHx8MHx8fDA%3D" alt="Smart watch">
-				 <h3>Smart Watch from Dubai</h3>
-				 <div>
-					 <p>Br.2999</p>
-					 <i class="fa-solid fa-cart-shopping"></i>
-				 </div>
-				 <p class="quantity" id="quantity">Quantity: 5</p>
-			  </div>
-
-			  <!-- Category cards  -->
-			  <div class="product-card" id="product-card">
-				<i class="fa-regular fa-heart heart-icon"></i>
-				 <img src="https://images.unsplash.com/photo-1640890959827-6307611b34a1?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHByb2R1Y3RzfGVufDB8fDB8fHww" alt="Smart Camera">
-				 <h3>Smart Camera</h3>
-				 <div>
-					 <p>Br.7499</p>
-					 <i class="fa-solid fa-cart-shopping"></i>
-				 </div>
-				 <p class="quantity" id="quantity">Quantity: 3</p>
-			  </div>
-
-			  <!-- Category cards  -->
-			  <div class="product-card" id="product-card">
-				<i class="fa-regular fa-heart heart-icon"></i>
-				 <img src="https://images.unsplash.com/photo-1627384113743-6bd5a479fffd?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2R1Y3RzfGVufDB8fDB8fHww" alt="Perfume">
-				 <h3>PMV chamara perfume</h3>
-				 <div>
-					 <p>Br.5400</p>
-					 <i class="fa-solid fa-cart-shopping"></i>
-				 </div>
-				 <p class="quantity" id="quantity">Quantity: 7</p>
-			  </div>
-
-			  <!-- Category cards  -->
-			  <div class="product-card" id="product-card">
-				<i class="fa-regular fa-heart heart-icon"></i>
-				 <img src="https://images.unsplash.com/photo-1499096382193-ebb232527fee?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fHByb2R1Y3RzfGVufDB8fDB8fHww" alt="Assorted bottles">
-				 <h3>Assorted Bottles</h3>
-				 <div>
-					 <p>Br.230</p>
-					 <i class="fa-solid fa-cart-shopping"></i>
-				 </div>
-				 <p class="quantity" id="quantity">Quantity: 50</p>
-			  </div>			  
-		</div>
-	 </div>
-
-
-
-
-
-
-
-
-	<script>
-	  const hamburger = document.querySelector("#hamburger");
-	  const items = document.querySelector("#items");
-
-	  hamburger.addEventListener("click", () => {
-		items.classList.toggle("show");
-	  });
-	</script>
+      hamburger.addEventListener("click", () => {
+        items.classList.toggle("show");
+      });
+    </script>
   </body>
 </html>
 
