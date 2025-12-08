@@ -25,7 +25,23 @@ body {
   padding: 0.5rem;
 }
 
-/* Logo image */
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.logo h1 {
+  font-weight: normal;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: #5db15d;
+  border-radius: 0.8rem;
+  color: whitesmoke;
+}
+
 .logo img {
   max-width: 70px;
   border-radius: 50%;
@@ -154,8 +170,8 @@ body {
   display: none;
 }
 
-/* Category indicator on mobile screen */
-.mobile-indicator {
+/* Category indicator Style on mobile screen */
+.indicator {
   margin: 1.3rem 10%;
   display: flex;
   align-items: center;
@@ -163,20 +179,37 @@ body {
   gap: 1.5rem;
 }
 
-.mobile-indicator p {
+.indicator p {
   font-size: small;
   cursor: pointer;
   transition: color 200ms ease-in-out;
   color: #5db15d;
   opacity: 0.6;
   transition: opacity 200ms ease-in-out;
+  white-space: nowrap;
 }
 
-.mobile-indicator p:hover {
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.category i {
+  font-size: 1rem;
+  color: #5db15d;
+  opacity: 0.8;
+  transition: opacity 200ms ease-in-out;
+}
+
+.category:hover i {
   opacity: 1;
 }
 
-.mobile-indicator .active {
+.category:hover p {
   opacity: 1;
 }
 
@@ -351,6 +384,7 @@ body {
 }
 
 .footer-element:nth-last-child(2) i {
+  font-size: 1.3rem;
   color: #5db15d;
   opacity: 0.7;
   transition: opacity 100ms ease-in-out;
@@ -367,10 +401,6 @@ body {
     background-color: #5db15d;
     transition: 300ms ease-in-out;
   }
-
-  .desktop-indicator {
-    display: none;
-  }
 }
 
 /* Desktop navigation bar */
@@ -380,7 +410,16 @@ body {
   }
 
   .navbar {
-    margin: 1.2rem 5%;
+    margin: 1.2rem 10%;
+  }
+
+  /* Logo Section for desktop screen */
+  .logo {
+    gap: 1rem;
+  }
+
+  .logo h1 {
+    font-size: 1.5rem;
   }
 
   .mobileNav {
@@ -394,6 +433,16 @@ body {
     box-shadow: none;
     border: none;
     padding: 0;
+  }
+
+  .myIcon {
+    color: #5db15d;
+    opacity: 0.7;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  .myIcon:hover {
+    opacity: 1;
   }
 
   .right {
@@ -421,11 +470,11 @@ body {
     background-color: var(--nav-icon-color);
     color: rgb(253, 249, 249);
     box-shadow: 2px 2px 2px green;
-    opacity: 0.8;
+    opacity: 0.7;
+    transition: opacity 200ms ease-in-out;
   }
 
   .right .last:hover {
-    transition: 300ms ease-in-out;
     opacity: 1;
   }
 
@@ -556,46 +605,19 @@ body {
   }
 
   /* Desktop screen category indicator */
-  .mobile-indicator {
-    display: none;
-  }
-
-  .desktop-indicator {
+  .indicator {
     margin: 3rem 30%;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
-  }
-
-  .category {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    cursor: pointer;
   }
 
   .category i {
     font-size: 1.5rem;
-    color: #5db15d;
-    opacity: 0.8;
-    transition: transform 300ms ease-in-out;
-  }
-
-  .category p {
-    font-size: small;
-    transition: color 200ms ease-in-out;
+    transition: transform 200ms ease-in-out;
   }
 
   .category:hover i {
     opacity: 1;
     transform: scale(1.1);
-  }
-
-  .category:hover p {
-    color: #5db15d;
   }
 
   /* Desktop Product category showcase styling */

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/ico" href="img/favicon.ico" />
+    <link rel="icon" type="image/jped" href="img/favicon.jpeg" />
     <link rel="stylesheet" href="index.css" />
     <link
       rel="stylesheet"
@@ -17,6 +17,7 @@
         <!-- Cartify Logo -->
         <div class="logo" id="logo">
           <img src="img/cartify2.jpg" alt="Cartify Logo" />
+          <h1>Cartify Store</h1>
         </div>
 
         <!-- Desktop navigation -->
@@ -24,11 +25,8 @@
           <ul class="items" id="items">
             <li><a href="">Home</a></li>
             <li><a href="">Products</a></li>
-            <li><a href="">Category</a></li>
-            <li><a href="">Cart</a></li>
-            <li><a href="">Feedback</a></li>
+            <li><a href=""><i class="fa-solid fa-cart-shopping myIcon"></i></a></li>
             <div class="right" id="right">
-              <li><a href="">Contact us</a></li>
               <li><a href="" class="last" id="last">Login</a></li>
             </div>
           </ul>
@@ -132,7 +130,7 @@
 
     <div class="category-container" id="category-container">
       <!-- Category Indicator on large screen -->
-      <div class="desktop-indicator" id="desktop-indicator">
+      <div class="indicator" id="indicator">
         <div class="category" id="category">
           <i class="fa-solid fa-grip"></i>
           <p>View All</p>
@@ -155,14 +153,14 @@
         </div>
       </div>
 
-      <!-- Mobile screen category indicator -->
+      <!-- Mobile screen category indicator
       <div class="mobile-indicator" id="mobile-indecator">
         <p class="mobile-category active" id="mobile-category">
           Popular products
         </p>
         <p class="mobile-category" id="mobile-category">All products</p>
       </div>
-    </div>
+    </div> -->
 
     <!-- Products category showcase -> to be implemented dynamically using JavaScript -->
     <div class="product-list" id="product-list">
