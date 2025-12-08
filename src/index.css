@@ -289,6 +289,79 @@ body {
   margin: 0 0.3rem 0.3rem;
 }
 
+/* Footer Section style */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+  margin: 1.5rem 0;
+  border-radius: 1.2rem;
+  background-color: #36383b;
+  padding: 1rem 0;
+}
+
+.footer h2 {
+  font-weight: normal;
+  font-size: 1.2rem;
+  padding: 0.3rem;
+}
+
+.footer-element img {
+  width: 4rem;
+  height: 3rem;
+  border-radius: 12px;
+}
+
+.footer p {
+  color: #5db15d;
+  opacity: 0.5;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #5db15d;
+  opacity: 0.8;
+  transition: opacity 200ms ease-in-out;
+}
+
+.footer a:hover {
+  opacity: 1;
+}
+
+.footer-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.6rem 0;
+  padding: 0.4rem;
+  line-height: 1.6;
+}
+
+.footer-element div {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-element .contact {
+  gap: 0.6rem;
+}
+
+.footer-element:nth-last-child(2) i{
+  color: #5db15d;
+  opacity: 0.7;
+  transition: opacity 100ms ease-in-out;
+  cursor: pointer;
+}
+
+.footer-element:nth-last-child(2) i:hover {
+  opacity: 1;
+}
+
+
 /* Remove Elements from mobile screens */
 @media (max-width: 1024px) {
   .items li a:hover {
