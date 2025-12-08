@@ -81,6 +81,32 @@ body {
   opacity: 1;
 }
 
+/* Category section style */
+.category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.2rem;
+    gap: 1.5rem;
+    flex-wrap: nowrap;
+}
+
+.category a {
+    text-decoration: none;
+    color: #5db15d;
+    opacity: 0.7;
+    transition: opacity 200ms ease-in-out;
+    font-size: 0.9rem;
+}
+
+.category a:hover {
+    opacity: 1;
+}
+
+.category .current {
+    opacity: 1;
+}
+
 @media (min-width: 1025px) {
   /* Header style for desktop screen */
   .header {
@@ -97,5 +123,10 @@ body {
     border-radius: 0.8rem;
     color: whitesmoke;
     white-space: nowrap;
+  }
+
+  /* Category for desktop screen */
+  .category {
+    gap: 2rem;
   }
 }
