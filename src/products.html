@@ -12,38 +12,364 @@
     <title>Products</title>
   </head>
   <body>
-    <header class="header" id="header">
-      <!-- Cartify logo -->
-      <div class="logo" id="logo">
-        <img src="img/cartify2.jpg" alt="Cartify Logo" />
-        <h1>Cartify Store</h1>
-      </div>
+    <nav class="sticky-nav" id="sticky-nav">
+        <header class="header" id="header">
+          <!-- Cartify logo -->
+          <div class="logo" id="logo">
+            <img src="img/cartify2.jpg" alt="Cartify Logo" />
+            <h1>Cartify Store</h1>
+          </div>
+    
+          <!-- Search bar -->
+          <div class="searchbar" id="searchbar">
+            <input
+              id="search"
+              class="search"
+              type="text"
+              placeholder="Search products..."
+            />
+            <i class="fa-solid fa-magnifying-glass searchIcon"></i>
+          </div>
+    
+          <!-- Cart -->
+          <div>
+            <a href=""><i class="fa-solid fa-cart-shopping myIcon"></i></a>
+          </div>
+        </header>
+    
+        <!-- Category indicators -->
+        <div class="category" id="category">
+          <a href="">Popular</a>
+          <a href="">Clothing</a>
+          <a href="">Accessories</a>
+          <a href="">Books</a>
+          <a href="">Electronics</a>
+        </div>
+    </nav>
 
-      <!-- Search bar -->
-      <div class="searchbar" id="searchbar">
-        <input
-          id="search"
-          class="search"
-          type="text"
-          placeholder="Search products..."
-        />
-        <i class="fa-solid fa-magnifying-glass searchIcon"></i>
+    <!-- Category container -> to be implemented with JavaScript Dynamically -->
+    <div class="category-container" id="category-container">
+      <div class="title" id="title">
+        <h3>popular</h3>
+        <a href="">See all</a>
       </div>
-
-      <!-- Cart -->
-      <div>
-        <a href=""><i class="fa-solid fa-cart-shopping myIcon"></i></a>
+      <div class="card-container" id="card-container">
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1565714138558-4d2eaa7cea34?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9wdWxhciUyMHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Iphone"
+          />
+          <h3>Iphone pro max</h3>
+          <div>
+            <p>Br.99899</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 9</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1661423616067-abfd050798a5?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cG9wdWxhciUyMHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Wooden hair brush"
+          />
+          <h3>Wooden hair brush</h3>
+          <div>
+            <p>Br.1200</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 10</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c25hY2tzfGVufDB8fDB8fHww"
+            alt="Snacks"
+          />
+          <h3>Snacks</h3>
+          <div>
+            <p>Br.100</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 120</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdGhpbmdzfGVufDB8fDB8fHww"
+            alt="Women assorted cloth full package"
+          />
+          <h3>Women Assorted Cloth Full package</h3>
+          <div>
+            <p>Br.3000</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 10</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1602810317536-5d5e8a552d15?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2xvdGhpbmdzfGVufDB8fDB8fHww"
+            alt="White shirt"
+          />
+          <h3>White shirt</h3>
+          <div>
+            <p>Br.1200</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 12</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/3/www.madebyvadim.com.jpg?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D"
+            alt="Full package for mens"
+          />
+          <h3>Phone, Glass and Headphone full package</h3>
+          <div>
+            <p>Br.10000</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 15</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
       </div>
-    </header>
-
-    <!-- Category indicators -->
-    <div class="category" id="category">
-      <a href="">All</a>
-      <a href="">Clothing</a>
-      <a href="">Accessories</a>
-      <a href="">Books</a>
-      <a href="">Electronics</a>
     </div>
+
+    <div class="category-container" id="category-container">
+      <div class="title" id="title">
+        <h3>Clothing</h3>
+        <a href="">See all</a>
+      </div>
+      <div class="card-container" id="card-container">
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1565714138558-4d2eaa7cea34?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9wdWxhciUyMHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Iphone"
+          />
+          <h3>Iphone pro max</h3>
+          <div>
+            <p>Br.99899</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 9</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1661423616067-abfd050798a5?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cG9wdWxhciUyMHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Wooden hair brush"
+          />
+          <h3>Wooden hair brush</h3>
+          <div>
+            <p>Br.1200</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 10</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c25hY2tzfGVufDB8fDB8fHww"
+            alt="Snacks"
+          />
+          <h3>Snacks</h3>
+          <div>
+            <p>Br.100</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 120</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdGhpbmdzfGVufDB8fDB8fHww"
+            alt="Women assorted cloth full package"
+          />
+          <h3>Women Assorted Cloth Full package</h3>
+          <div>
+            <p>Br.3000</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 10</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1602810317536-5d5e8a552d15?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2xvdGhpbmdzfGVufDB8fDB8fHww"
+            alt="White shirt"
+          />
+          <h3>White shirt</h3>
+          <div>
+            <p>Br.1200</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 12</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/3/www.madebyvadim.com.jpg?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D"
+            alt="Full package for mens"
+          />
+          <h3>Phone, Glass and Headphone full package</h3>
+          <div>
+            <p>Br.10000</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 15</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-container" id="category-container">
+      <div class="title" id="title">
+        <h3>Accessories</h3>
+        <a href="">See all</a>
+      </div>
+      <div class="card-container" id="card-container">
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1565714138558-4d2eaa7cea34?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9wdWxhciUyMHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Iphone"
+          />
+          <h3>Iphone pro max</h3>
+          <div>
+            <p>Br.99899</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 9</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1661423616067-abfd050798a5?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cG9wdWxhciUyMHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Wooden hair brush"
+          />
+          <h3>Wooden hair brush</h3>
+          <div>
+            <p>Br.1200</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 10</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c25hY2tzfGVufDB8fDB8fHww"
+            alt="Snacks"
+          />
+          <h3>Snacks</h3>
+          <div>
+            <p>Br.100</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 120</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdGhpbmdzfGVufDB8fDB8fHww"
+            alt="Women assorted cloth full package"
+          />
+          <h3>Women Assorted Cloth Full package</h3>
+          <div>
+            <p>Br.3000</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 10</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1602810317536-5d5e8a552d15?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2xvdGhpbmdzfGVufDB8fDB8fHww"
+            alt="White shirt"
+          />
+          <h3>White shirt</h3>
+          <div>
+            <p>Br.1200</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 12</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/3/www.madebyvadim.com.jpg?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D"
+            alt="Full package for mens"
+          />
+          <h3>Phone, Glass and Headphone full package</h3>
+          <div>
+            <p>Br.10000</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 15</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-container" id="category-container">
+      <div class="title" id="title">
+        <h3>Books</h3>
+        <a href="">See all</a>
+      </div>
+      <div class="card-container" id="card-container">
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1565714138558-4d2eaa7cea34?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9wdWxhciUyMHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Iphone"
+          />
+          <h3>Iphone pro max</h3>
+          <div>
+            <p>Br.99899</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 9</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1661423616067-abfd050798a5?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cG9wdWxhciUyMHByb2R1Y3RzfGVufDB8fDB8fHww"
+            alt="Wooden hair brush"
+          />
+          <h3>Wooden hair brush</h3>
+          <div>
+            <p>Br.1200</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 10</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c25hY2tzfGVufDB8fDB8fHww"
+            alt="Snacks"
+          />
+          <h3>Snacks</h3>
+          <div>
+            <p>Br.100</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 120</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+        <div class="card" id="card">
+          <img
+            src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdGhpbmdzfGVufDB8fDB8fHww"
+            alt="Women assorted cloth full package"
+          />
+          <h3>Women Assorted Cloth Full package</h3>
+          <div>
+            <p>Br.3000</p>
+            <i class="fa-solid fa-cart-shopping myIcon"></i>
+          </div>
+          <p>Quantity: 10</p>
+          <button class="btn" id="btn">Buy now</button>
+        </div>
+    </div>
+    
+
   </body>
 </html>
 
