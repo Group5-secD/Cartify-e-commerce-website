@@ -295,3 +295,21 @@ var validators = {
     return address.length >= 5 && address.length <= 100;
     }
 };
+
+// rendering function/ what is shown
+function renderProducts(filterCategory) {
+    var category = filterCategory || 'all';
+    var container = document.getElementById('products-grid');
+    if (!container) return;
+
+  // Filter products
+    var filteredProducts = [];
+    if (category === 'all') {
+    filteredProducts = products;
+    } else {
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].category === category) {
+        filteredProducts.push(products[i]);
+        }
+    }
+    }
