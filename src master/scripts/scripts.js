@@ -377,3 +377,275 @@ function clearAllErrors() {
     clearError(arguments[i]);
     }
 }
+
+//  initialization // this runs when dom is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // Register Form
+    var registerForm = document.getElementById('register-form');
+    if (registerForm) {
+    registerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+      
+        var username = document.getElementById('reg-username').value;
+        var email = document.getElementById('reg-email').value;
+        var password = document.getElementById('reg-password').value;
+        var confirmPassword = document.getElementById('reg-confirm-password').value;
+
+        clearAllErrors('reg-username', 'reg-email', 'reg-password', 'reg-confirm-password');
+
+        var isValid = true;
+
+        if (!validators.username(username)) {
+        showError('reg-username', 'Username must be 3-16 alphanumeric characters');
+        isValid = false;
+        }
+
+        if (!validators.email(email)) {
+        showError('reg-email', 'Please enter a valid email address');
+        isValid = false;
+        }
+
+        if (!validators.password(password)) {
+        showError('reg-password', 'Password must be 8+ chars with uppercase, lowercase, number, and special character');
+        isValid = false;
+        }
+
+        if (password !== confirmPassword) {
+        showError('reg-confirm-password', 'Passwords do not match');
+        isValid = false;
+        }
+
+        if (isValid) {
+        var newUser = new User(username, email, password);
+        appState.currentUser = newUser;
+        alert('Registration successful! Welcome, ' + username + '!');
+        showView('products-view')();
+        registerForm.reset();
+        }
+    });
+    }
+
+  // Login Form
+    var loginForm = document.getElementById('login-form');
+    if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        var email = document.getElementById('login-email').value;
+        var password = document.getElementById('login-password').value;
+
+        clearAllErrors('login-email', 'login-password');
+
+        var isValid = true;
+
+        if (!validators.email(email)) {
+        showError('login-email', 'Please enter a valid email address');
+        isValid = false;
+        }
+
+        if (password.length < 1) {
+        showError('login-password', 'Please enter your password');
+        isValid = false;
+        }
+
+        if (isValid) {
+        // Simulate login (no backend)
+        appState.currentUser = new User('DemoUser', email, password);
+        alert('Welcome back, ' + email + '!');
+        showView('products-view')();
+        loginForm.reset();
+        }
+    });
+    }
+
+  // Checkout Form
+    var checkoutForm = document.getElementById('checkout-form');
+    if (checkoutForm) {
+    checkoutForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (cart.items.length === 0) {
+        alert('Your cart is empty!');
+        return;
+        }
+
+        var fullName = document.getElementById('checkout-name').value;
+        var email = document.getElementById('checkout-email').value;
+        var phone = document.getElementById('checkout-phone').value;
+        var address = document.getElementById('checkout-address').value;
+        var city = document.getElementById('checkout-city').value;
+        var zipCode = document.getElementById('checkout-zip').value;
+
+        clearAllErrors('checkout-name', 'checkout-email', 'checkout-phone', 'checkout-address', 'checkout-city', 'checkout-zip');
+
+        var isValid = true;
+
+        if (!validators.name(fullName)) {
+        showError('checkout-name', 'Please enter a valid name (2-50 characters, letters only)');
+        isValid = false;
+        }
+
+        if (!validators.email(email)) {
+        showError('checkout-email', 'Please enter a valid email address');
+        isValid = false;
+        }
+
+        if (!validators.phone(phone)) {
+        showError('checkout-phone', 'Please enter a valid phone number (e.g., 123-456-7890)');
+        isValid = false;
+        }
+
+        if (!validators.address(address)) {
+        showError('checkout-address', 'Please enter a valid address (5-100 characters)');
+        isValid = false;
+        }
+
+        if (!validators.name(city)) {
+        showError('checkout-city', 'Please enter a valid city name');
+        isValid = false;
+        }
+
+        if (!validators.zipCode(zipCode)) {
+        showError('checkout-zip', 'Please enter a valid ZIP code (e.g., 12345 or 12345-6789)');
+        isValid = false;
+        }
+
+        if (isValid) {
+        // Create Order using Constructor
+        var orderInfo = { 
+            fullName: fullName, 
+            email: email, 
+            phone: phone, 
+            address: address, 
+            city: city, 
+            zipCode: zipCode 
+        };
+        var newOrder = new Order(cart.items, orderInfo);
+        appState.orders.push(newOrder);
+
+        console.log('=== ORDER CREATED ===');
+        console.log(newOrder.displaySummary());
+        console.log('Order Details:', newOrder);
+        console.log('Using Object.keys():', Object.keys(newOrder));
+        console.log('Using Object.values():', Object.values(newOrder));
+        
+        alert('Order placed successfully!\n' + newOrder.displaySummary());
+        
+        cart.clear();
+        showView('products-view')();
+        checkoutForm.reset();
+        }
+     
+    });
+    }
+
+  // Category Filter
+    var categoryBtns = document.querySelectorAll('.category-btn');
+    for (var i = 0; i < categoryBtns.length; i++) {
+    categoryBtns[i].addEventListener('click', function(e) {
+        var category = e.target.getAttribute('data-category') || 'all';
+        
+        var allBtns = document.querySelectorAll('.category-btn');
+        for (var j = 0; j < allBtns.length; j++) {
+        allBtns[j].classList.remove('active');
+        }
+        e.target.classList.add('active');
+      
+        renderProducts(category);
+    });
+    }
+
+  // Navigation
+    var navProducts = document.getElementById('nav-products');
+    if (navProducts) {
+    navProducts.addEventListener('click', function() {
+        showView('products-view')();
+        navProducts.classList.add('active');
+    });
+    }
+
+    var navCart = document.getElementById('nav-cart');
+    if (navCart) {
+    navCart.addEventListener('click', function() {
+        showView('cart-view')();
+        cart.render();
+        });
+    }
+
+    var navLogin = document.getElementById('nav-login');
+    if (navLogin) {
+    navLogin.addEventListener('click', function() {
+        showView('login-view')();
+    });
+    }
+
+    var navRegister = document.getElementById('nav-register');
+    if (navRegister) {
+    navRegister.addEventListener('click', function() {
+        showView('register-view')();
+    });
+    }
+
+    var btnProceedCheckout = document.getElementById('btn-proceed-checkout');
+    if (btnProceedCheckout) {
+    btnProceedCheckout.addEventListener('click', function() {
+        if (cart.items.length === 0) {
+        alert('Your cart is empty!');
+        return;
+        }
+        showView('checkout-view')();
+    });
+    }
+
+    var btnContinueShopping = document.getElementById('btn-continue-shopping');
+    if (btnContinueShopping) {
+    btnContinueShopping.addEventListener('click', function() {
+        showView('products-view')();
+    });
+    }
+
+    var showRegisterLink = document.getElementById('show-register');
+    if (showRegisterLink) {
+    showRegisterLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showView('register-view')();
+    });
+    }
+
+    var showLoginLink = document.getElementById('show-login');
+    if (showLoginLink) {
+    showLoginLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showView('login-view')();
+    });
+    }
+
+  // INITIALIZATION
+    renderProducts();
+    cart.updateCartBadge();
+    showView('products-view')();
+
+    console.log('=== CARTIFY INITIALIZED ===');
+    console.log('Demonstrating Object Traversal:');
+    console.log('Product Keys:', Object.keys(products[0]));
+    console.log('Product Values:', Object.values(products[0]));
+    console.log('\nAll Products:');
+    for (var i in products) {
+    console.log('Product ' + i + ':', products[i].name);
+    }
+    console.log('\n Educational Concepts Demonstrated:');
+    console.log('✓ Constructor Functions (Product, User, Order)');
+    console.log('✓ Prototype Methods (displayInfo, validatePassword, etc.)');
+    console.log('✓ Regular Expressions (Email, Password, Phone validation)');
+    console.log('✓ Object Manipulation (Object.keys, Object.values, Object.assign)');
+    console.log('✓ Function Closures (showView function)');
+    console.log('✓ Getters/Setters (cart.total, cart.itemCount)');
+    console.log('✓ Built-in Objects (Date, Math)');
+    console.log('\n Try the features:');
+    console.log('1. Browse products and add to cart');
+    console.log('2. Register with validation (password must have 8+ chars, uppercase, lowercase, number, special char)');
+    console.log('3. Complete checkout with form validation');
+    console.log('4. Check console for order details!');
+});
+
