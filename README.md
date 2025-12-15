@@ -1,3 +1,6 @@
+### im didnt finish home age still, and other informatics (ha, is there a word informatics)
+
+
 # Cartify E-commerce Website
 Cartify is a frontend e-commerce simulation built to demonstrate mastery of basic web technologies, core JavaScript concepts, specifically focusing on functions, and regular expressions.
 
