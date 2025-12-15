@@ -1,5 +1,4 @@
 
-
 /* Reset & Base Styles */
 * {
   margin: 0;
@@ -48,7 +47,6 @@ body {
 }
 
    /* HEADER & NAVIGATION */
-
 
 .header {
   background-color: var(--bg-white);
@@ -128,6 +126,7 @@ body {
   justify-content: center;
 }
 
+
    /* VIEWS & SECTIONS */
 
 .view {
@@ -153,7 +152,9 @@ body {
   font-size: 1.1rem;
 }
 
+
    /* CATEGORIES */
+
 
 .categories {
   display: flex;
@@ -188,6 +189,7 @@ body {
 }
 
    /* PRODUCTS GRID */
+
 
 .products-grid {
   display: grid;
@@ -293,7 +295,9 @@ body {
   transform: scale(0.98);
 }
 
+
    /* SHOPPING CART */
+
 
 .cart-container {
   max-width: 800px;
@@ -449,8 +453,7 @@ body {
   color: var(--primary-color);
 }
 
-
-  /* FORMS */
+   /* FORMS */
 
 .form-container {
   max-width: 500px;
@@ -556,7 +559,8 @@ body {
 }
 
 
-/*BUTTONS*/
+   /* BUTTONS */
+
 
 .btn {
   padding: 0.75rem 1.5rem;
@@ -591,10 +595,8 @@ body {
 .btn-full {
   width: 100%;
 }
+   /* NOTIFICATION */
 
-/* ============================================
-   NOTIFICATION
-   ============================================ */
 
 .notification {
   position: fixed;
@@ -617,10 +619,7 @@ body {
   transform: translateY(0);
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
-
+   /* FOOTER */
 .footer {
   background-color: var(--text-primary);
   color: white;
@@ -638,7 +637,8 @@ body {
   font-size: 0.9rem;
 }
 
-  /*RESPONSIVE DESIGN */
+   /* RESPONSIVE DESIGN */
+
 
 @media (max-width: 768px) {
   .header-content {
@@ -726,7 +726,8 @@ body {
   }
 }
 
-  /*ANIMATIONS*/
+
+   /* ANIMATIONS */
 
 @keyframes fadeIn {
   from {
