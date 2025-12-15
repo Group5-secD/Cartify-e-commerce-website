@@ -258,3 +258,40 @@ var appState = {
     selectedCategory: 'all',
     orders: []
 };
+
+// validation function (Using Regex)
+var validators = {
+    email: function(email) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+    },
+  
+    password: function(password) {
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+    },
+  
+    username: function(username) {
+    var usernameRegex = /^[a-zA-Z0-9]{3,16}$/;
+    return usernameRegex.test(username);
+    },
+  
+    phone: function(phone) {
+    var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    return phoneRegex.test(phone);
+    },
+  
+    zipCode: function(zip) {
+    var zipRegex = /^\d{5}(-\d{4})?$/;
+    return zipRegex.test(zip);
+    },
+
+    name: function(name) {
+    var nameRegex = /^[a-zA-Z\s]{2,50}$/;
+    return nameRegex.test(name);
+    },
+
+    address: function(address) {
+    return address.length >= 5 && address.length <= 100;
+    }
+};
