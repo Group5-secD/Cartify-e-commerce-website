@@ -320,3 +320,29 @@ function renderProducts(filterCategory) {
     }
     container.innerHTML = html;
 }
+
+// navigation function (Function Expressions & Closures) 
+function showView(viewName) {
+  // Closure: Maintains access to viewName
+    return function() {
+    // Hide all views
+    var views = ['products-view', 'cart-view', 'login-view', 'register-view', 'checkout-view'];
+    for (var i = 0; i < views.length; i++) {
+        var element = document.getElementById(views[i]);
+        if (element) element.style.display = 'none';
+    }
+
+    // Show selected view
+    var selectedView = document.getElementById(viewName);
+    if (selectedView) {
+        selectedView.style.display = 'block';
+        appState.currentView = viewName;
+    }
+
+    // Update nav active state
+    var navLinks = document.querySelectorAll('.nav-link');
+    for (var i = 0; i < navLinks.length; i++) {
+        navLinks[i].classList.remove('active');
+    }
+    };
+}
