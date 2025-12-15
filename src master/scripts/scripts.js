@@ -241,9 +241,9 @@ var cart = {
 
 //mock product data / as per per requirement
 var products = [
-    new Product(1, 'Wireless Headphones', 79.99, 'Electronics', 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400', 'Premium sound quality with noise cancellation'),
-    new Product(2, 'Smart Watch', 199.99, 'Electronics', 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400', 'Track your fitness and stay connected'),
-    new Product(3, 'Laptop Backpack', 49.99, 'Accessories', 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', 'Durable and spacious for daily use'),
+    new Product(1, 'Wireless Headphones', 79.99, 'Electronics', 'https://i5.walmartimages.com/seo/Lydiaunistar-Waterproof-Bluetooth-Earbuds-Wireless-Sports-Headphones-Noise-Cancelling-Stereo-Sound-15H-Playtime-Comfort-Foldable-Design-Gym-Running-T_c1a4a089-aa9f-4225-baeb-2f84ab39b96f.6e1f56815ec95dc0935ca994cb3b692a.jpeg', 'Premium sound quality with noise cancellation'),
+    new Product(2, 'Smart Watch', 199.99, 'Electronics', 'https://sm.mashable.com/t/mashable_in/photo/default/redmi-watch_15wr.1200.jpg', 'Track your fitness and stay connected'),
+    new Product(3, 'Laptop Backpack', 49.99, 'Accessories', 'https://www.level8cases.com/cdn/shop/files/13-_3_1600x1600.jpg?v=1613737033', 'Durable and spacious for daily use'),
     new Product(4, 'Coffee Maker', 89.99, 'Home', 'https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=400', 'Brew perfect coffee every morning'),
     new Product(5, 'Running Shoes', 119.99, 'Sports', 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400', 'Comfortable and lightweight design'),
     new Product(6, 'Desk Lamp', 34.99, 'Home', 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400', 'Adjustable LED lighting for your workspace'),
