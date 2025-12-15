@@ -78,6 +78,166 @@ Order.prototype.displaySummary = function() {
     return 'Order #' + this.id + ' - Total: $' + this.total.toFixed(2) + ' - Date: ' + this.timestamp.toLocaleString();
 };
 
+// ========== CART OBJECT (Chapter 4: Objects with Getters/Setters) ==========
+var cart = {
+    items: [], 
+  // Getter (Accessor Property) - ES5 compatible
+    get total() {
+    var sum = 0;
+    for (var i = 0; i < this.items.length; i++) {
+      sum += this.items[i].price * this.items[i].quantity;
+    }
+    return sum;
+    },
+
+    get itemCount() {
+    var count = 0;
+    for (var i = 0; i < this.items.length; i++) {
+        count += this.items[i].quantity;
+    }
+    return count;
+    },
+
+  // Methods
+    add: function(productId) {
+    var product = null;
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].id === productId) {
+        product = products[i];
+        break;
+        }
+    }
+    
+    if (!product) return;
+
+    var existingItem = null;
+    for (var i = 0; i < this.items.length; i++) {
+        if (this.items[i].id === productId) {
+        existingItem = this.items[i];
+        break;
+        }
+    }
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        this.items.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: 1,
+        image: product.image
+        });
+    }
+
+    this.render();
+    this.updateCartBadge();
+    this.showNotification(product.name + ' added to cart!');
+    },
+
+    remove: function(productId) {
+    var newItems = [];
+    for (var i = 0; i < this.items.length; i++) {
+        if (this.items[i].id !== productId) {
+        newItems.push(this.items[i]);
+        }
+    }
+    this.items = newItems;
+    this.render();
+    this.updateCartBadge();
+    },
+
+    updateQuantity: function(productId, newQuantity) {
+    for (var i = 0; i < this.items.length; i++) {
+        if (this.items[i].id === productId) {
+        if (newQuantity <= 0) {
+            this.remove(productId);
+        } else {
+            this.items[i].quantity = newQuantity;
+            this.render();
+            this.updateCartBadge();
+        }
+        break;
+        }
+    }
+    },
+
+    clear: function() {
+    this.items = [];
+    this.render();
+    this.updateCartBadge();
+    },
+
+    render: function() {
+    var cartContainer = document.getElementById('cart-items');
+    var emptyMessage = document.getElementById('cart-empty');
+    var cartSummary = document.getElementById('cart-summary');
+
+    if (this.items.length === 0) {
+        cartContainer.innerHTML = '';
+        emptyMessage.style.display = 'block';
+        cartSummary.style.display = 'none';
+        return;
+    }
+
+    emptyMessage.style.display = 'none';
+    cartSummary.style.display = 'block';
+
+    // Object Traversal using loops
+    var html = '';
+    for (var i = 0; i < this.items.length; i++) {
+        var item = this.items[i];
+        html += `
+        <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image" />
+            <div class="cart-item-details">
+            <h4>${item.name}</h4>
+            <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+            </div>
+            <div class="cart-item-controls">
+            <button onclick="cart.updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
+            <span>${item.quantity}</span>
+            <button onclick="cart.updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
+            </div>
+            <div class="cart-item-total">
+            $${(item.price * item.quantity).toFixed(2)}
+            </div>
+        <button class="cart-item-remove" onclick="cart.remove(${item.id})">×</button>
+        </div>
+        `;
+    }
+
+    cartContainer.innerHTML = html;
+    document.getElementById('cart-total').textContent = '$' + this.total.toFixed(2);
+    },
+
+    updateCartBadge: function() {
+    var badge = document.getElementById('cart-badge');
+    if (badge) {
+        badge.textContent = this.itemCount;
+        badge.style.display = this.itemCount > 0 ? 'flex' : 'none';
+    }
+    },
+
+    showNotification: function(message) {
+    var notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(function() {
+        notification.classList.add('show');
+    }, 10);
+
+    setTimeout(function() {
+        notification.classList.remove('show');
+        setTimeout(function() {
+        notification.remove();
+        }, 300);
+    }, 2000);
+    }
+};
+
 
 //mock product data / as per per requirement
 var products = [
