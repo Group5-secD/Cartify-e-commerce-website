@@ -346,3 +346,34 @@ function showView(viewName) {
     }
     };
 }
+
+// form handler// basically how the feedback works
+function showError(inputId, message) {
+    var input = document.getElementById(inputId);
+    if (!input) return;
+  
+    var errorDiv = input.nextElementSibling;
+    if (errorDiv && errorDiv.classList.contains('error-message')) {
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block';
+    }
+    input.classList.add('input-error');
+}
+
+function clearError(inputId) {
+    var input = document.getElementById(inputId);
+    if (!input) return;
+  
+    var errorDiv = input.nextElementSibling;
+    if (errorDiv && errorDiv.classList.contains('error-message')) {
+    errorDiv.style.display = 'none';
+    }
+    input.classList.remove('input-error');
+}
+
+function clearAllErrors() {
+  // Using arguments object (Function feature)
+    for (var i = 0; i < arguments.length; i++) {
+    clearError(arguments[i]);
+    }
+}
