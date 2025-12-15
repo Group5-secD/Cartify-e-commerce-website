@@ -78,7 +78,7 @@ Order.prototype.displaySummary = function() {
     return 'Order #' + this.id + ' - Total: $' + this.total.toFixed(2) + ' - Date: ' + this.timestamp.toLocaleString();
 };
 
-// ========== CART OBJECT (Chapter 4: Objects with Getters/Setters) ==========
+// cart object /Chapter 4: Objects with Getters/Setters
 var cart = {
     items: [], 
   // Getter (Accessor Property) - ES5 compatible
@@ -247,15 +247,14 @@ var products = [
     new Product(4, 'Coffee Maker', 89.99, 'Home', 'https://i.pinimg.com/1200x/6d/ae/f1/6daef13dd0fd00426eb5fb70ee26ecff.jpg', 'Brew perfect coffee every morning'),
     new Product(5, 'Running Shoes', 119.99, 'Sports', 'https://i.pinimg.com/1200x/b3/3b/98/b33b9878ae8c7848ac450d32714d911f.jpg', 'Comfortable and lightweight design'),
     new Product(6, 'Desk Lamp', 34.99, 'Home', 'https://i.pinimg.com/1200x/5d/0c/2a/5d0c2a69797cc4c06b005a67ffdd1e1c.jpg', 'Adjustable LED lighting for your workspace'),
-    new Product(7, 'Vienna Sofa', 34.99, 'Home', 'https://i.pinimg.com/736x/1a/11/c2/1a11c2734fbc205b078385b87f0e7566.jpg', 'Adjustable LED lighting for your workspace'),
-    new Product(8, 'Black Single Clover Gold Plated Necklace', 49.99, 'Accessories', 'https://i.pinimg.com/1200x/17/a7/2e/17a72ecdce94c131fa695913f7a03290.jpg', 'Durable and spacious for daily use'),
-    new Product(9, 'O AirPods Max original', 34.99, 'Electronics', 'https://i.pinimg.com/1200x/c0/84/43/c084439636bec268040bbcc792fe7f27.jpg', 'Adjustable LED lighting for your workspace'),
+    new Product(7, 'Vienna Sofa', 34.99, 'Home', 'https://i.pinimg.com/736x/1a/11/c2/1a11c2734fbc205b078385b87f0e7566.jpg', 'Comfortable sofa with a modern design, ideal for living rooms and guest areas.'),
+    new Product(8, 'Black Single Clover Gold Plated Necklace', 49.99, 'Accessories', 'https://i.pinimg.com/1200x/17/a7/2e/17a72ecdce94c131fa695913f7a03290.jpg', 'Elegant gold-plated necklace suitable for daily wear and special occasions.'),
+    new Product(9, 'O AirPods Max original', 34.99, 'Electronics', 'https://i.pinimg.com/1200x/c0/84/43/c084439636bec268040bbcc792fe7f27.jpg', 'Over-ear wireless headphones with stylish design and rich audio output.'),
     new Product(10, 'Desk Lamp', 34.99, 'Electronics', 'https://i.pinimg.com/736x/2d/c4/c4/2dc4c4d9c81ae2fb381517c62d4bdb33.jpg', 'Adjustable LED lighting for your workspace'),
     new Product(11, 'Yoga Mat', 29.99, 'Sports', 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400', 'Non-slip surface for your practice'),
     new Product(13, 'Bluetooth Speaker', 59.99, 'Electronics', 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400', 'Portable with powerful bass'),
-    new Product(14, 'SLOVIC Dumbbells Set', 29.99, 'Sports', 'https://i.pinimg.com/736x/61/22/cb/6122cb2e189778ef56f9a77aa6eddbcf.jpg', 'Non-slip surface for your practice'),
-    new Product(15, 'stainless steel silver men rings', 49.99, 'Accessories', 'https://i.pinimg.com/1200x/25/ab/5c/25ab5cfb89dc69f2f8a85c121fc0ba13.jpg', 'Durable and spacious for daily use'),
-
+    new Product(14, 'SLOVIC Dumbbells Set', 29.99, 'Sports', 'https://i.pinimg.com/736x/61/22/cb/6122cb2e189778ef56f9a77aa6eddbcf.jpg', 'Durable dumbbells set designed for home workouts and strength training.'),
+    new Product(15, 'stainless steel silver men rings', 49.99, 'Accessories', 'https://i.pinimg.com/1200x/25/ab/5c/25ab5cfb89dc69f2f8a85c121fc0ba13.jpg', 'Stylish stainless steel ring designed for everyday men’s fashion.'),
 
   ];
 
