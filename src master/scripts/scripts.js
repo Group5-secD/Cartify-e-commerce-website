@@ -313,3 +313,10 @@ function renderProducts(filterCategory) {
         }
     }
     }
+    // Use prototype method to generate HTML
+    var html = '';
+    for (var i = 0; i < filteredProducts.length; i++) {
+    html += filteredProducts[i].displayInfo();
+    }
+    container.innerHTML = html;
+}
