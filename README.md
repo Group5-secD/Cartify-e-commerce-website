@@ -1,4 +1,4 @@
-### im didnt finish home age still, and other informatics (ha, is there a word informatics)
+### i didnt finish home age still, and other informatics (ha, is there a word informatics)
 
 
 # Cartify E-commerce Website
