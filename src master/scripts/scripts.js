@@ -243,13 +243,21 @@ var cart = {
 var products = [
     new Product(1, 'Wireless Headphones', 79.99, 'Electronics', 'https://i5.walmartimages.com/seo/Lydiaunistar-Waterproof-Bluetooth-Earbuds-Wireless-Sports-Headphones-Noise-Cancelling-Stereo-Sound-15H-Playtime-Comfort-Foldable-Design-Gym-Running-T_c1a4a089-aa9f-4225-baeb-2f84ab39b96f.6e1f56815ec95dc0935ca994cb3b692a.jpeg', 'Premium sound quality with noise cancellation'),
     new Product(2, 'Smart Watch', 199.99, 'Electronics', 'https://sm.mashable.com/t/mashable_in/photo/default/redmi-watch_15wr.1200.jpg', 'Track your fitness and stay connected'),
-    new Product(3, 'Laptop Backpack', 49.99, 'Accessories', 'https://www.level8cases.com/cdn/shop/files/13-_3_1600x1600.jpg?v=1613737033', 'Durable and spacious for daily use'),
-    new Product(4, 'Coffee Maker', 89.99, 'Home', 'https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=400', 'Brew perfect coffee every morning'),
-    new Product(5, 'Running Shoes', 119.99, 'Sports', 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400', 'Comfortable and lightweight design'),
-    new Product(6, 'Desk Lamp', 34.99, 'Home', 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400', 'Adjustable LED lighting for your workspace'),
-    new Product(7, 'Yoga Mat', 29.99, 'Sports', 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400', 'Non-slip surface for your practice'),
-    new Product(8, 'Bluetooth Speaker', 59.99, 'Electronics', 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400', 'Portable with powerful bass'),
-];
+    new Product(3, 'Laptop Backpack', 49.99, 'Accessories', 'https://i.pinimg.com/1200x/24/21/a0/2421a07892b7f02eed3ec73f92afa6c8.jpg', 'Durable and spacious for daily use'),
+    new Product(4, 'Coffee Maker', 89.99, 'Home', 'https://i.pinimg.com/1200x/6d/ae/f1/6daef13dd0fd00426eb5fb70ee26ecff.jpg', 'Brew perfect coffee every morning'),
+    new Product(5, 'Running Shoes', 119.99, 'Sports', 'https://i.pinimg.com/1200x/b3/3b/98/b33b9878ae8c7848ac450d32714d911f.jpg', 'Comfortable and lightweight design'),
+    new Product(6, 'Desk Lamp', 34.99, 'Home', 'https://i.pinimg.com/1200x/5d/0c/2a/5d0c2a69797cc4c06b005a67ffdd1e1c.jpg', 'Adjustable LED lighting for your workspace'),
+    new Product(7, 'Vienna Sofa', 34.99, 'Home', 'https://i.pinimg.com/736x/1a/11/c2/1a11c2734fbc205b078385b87f0e7566.jpg', 'Adjustable LED lighting for your workspace'),
+    new Product(8, 'Black Single Clover Gold Plated Necklace', 49.99, 'Accessories', 'https://i.pinimg.com/1200x/17/a7/2e/17a72ecdce94c131fa695913f7a03290.jpg', 'Durable and spacious for daily use'),
+    new Product(9, 'O AirPods Max original', 34.99, 'Electronics', 'https://i.pinimg.com/1200x/c0/84/43/c084439636bec268040bbcc792fe7f27.jpg', 'Adjustable LED lighting for your workspace'),
+    new Product(10, 'Desk Lamp', 34.99, 'Electronics', 'https://i.pinimg.com/736x/2d/c4/c4/2dc4c4d9c81ae2fb381517c62d4bdb33.jpg', 'Adjustable LED lighting for your workspace'),
+    new Product(11, 'Yoga Mat', 29.99, 'Sports', 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400', 'Non-slip surface for your practice'),
+    new Product(13, 'Bluetooth Speaker', 59.99, 'Electronics', 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400', 'Portable with powerful bass'),
+    new Product(14, 'SLOVIC Dumbbells Set', 29.99, 'Sports', 'https://i.pinimg.com/736x/61/22/cb/6122cb2e189778ef56f9a77aa6eddbcf.jpg', 'Non-slip surface for your practice'),
+    new Product(15, 'stainless steel silver men rings', 49.99, 'Accessories', 'https://i.pinimg.com/1200x/25/ab/5c/25ab5cfb89dc69f2f8a85c121fc0ba13.jpg', 'Durable and spacious for daily use'),
+
+
+  ];
 
 // app state data
 var appState = {
