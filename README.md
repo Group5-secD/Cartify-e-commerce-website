@@ -1,7 +1,7 @@
 
 # Cartify E-commerce Website
 
-**Cartify** is a frontend e-commerce simulation that demonstrates mastery of core web technologies like HTML, CSS, and JavaScript. The project focuses on implementing key JavaScript concepts such as functions, regular expressions, and prototype-based object-oriented programming — all without relying on external frameworks or backend services.
+**Cartify** is a frontend e-commerce simulation that demonstrates mastery of core web technologies like HTML, CSS, and JavaScript. The project focuses on implementing key JavaScript concepts such as functions, regular expressions, and prototype based object oriented programming all without relying on external frameworks or backend services.
 
 ---
 
