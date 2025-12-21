@@ -1,0 +1,16 @@
+const products = [
+    new Product(1, 'Wireless Headphones', 4469.99, 'Electronics', 'https://i5.walmartimages.com/seo/Lydiaunistar-Waterproof-Bluetooth-Earbuds-Wireless-Sports-Headphones-Noise-Cancelling-Stereo-Sound-15H-Playtime-Comfort-Foldable-Design-Gym-Running-T_c1a4a089-aa9f-4225-baeb-2f84ab39b96f.6e1f56815ec95dc0935ca994cb3b692a.jpeg', 'Premium sound quality with noise cancellation'),
+    new Product(2, 'Smart Watch', 3209.99, 'Electronics', 'https://sm.mashable.com/t/mashable_in/photo/default/redmi-watch_15wr.1200.jpg', 'Track your fitness and stay connected'),
+    new Product(3, 'Laptop Backpack', 3049.99, 'Accessories', 'https://i.pinimg.com/1200x/24/21/a0/2421a07892b7f02eed3ec73f92afa6c8.jpg', 'Durable and spacious for daily use'),
+    new Product(4, 'Coffee Maker', 5089.99, 'Home', 'https://i.pinimg.com/1200x/6d/ae/f1/6daef13dd0fd00426eb5fb70ee26ecff.jpg', 'Brew perfect coffee every morning'),
+    new Product(5, 'Running Shoes', 2019.99, 'Sports', 'https://i.pinimg.com/1200x/b3/3b/98/b33b9878ae8c7848ac450d32714d911f.jpg', 'Comfortable and lightweight design'),
+    new Product(6, 'Desk Lamp', 1034.99, 'Home', 'https://i.pinimg.com/1200x/5d/0c/2a/5d0c2a69797cc4c06b005a67ffdd1e1c.jpg', 'Adjustable LED lighting for your workspace'),
+    new Product(7, 'Vienna Sofa', 15034.99, 'Home', 'https://i.pinimg.com/736x/1a/11/c2/1a11c2734fbc205b078385b87f0e7566.jpg', 'Comfortable sofa with a modern design, ideal for living rooms and guest areas.'),
+    new Product(8, 'Black Single Clover Gold Plated Necklace', 849.99, 'Accessories', 'https://i.pinimg.com/1200x/17/a7/2e/17a72ecdce94c131fa695913f7a03290.jpg', 'Elegant gold-plated necklace suitable for daily wear and special occasions.'),
+    new Product(9, 'O AirPods Max original', 5034.99, 'Electronics', 'https://i.pinimg.com/1200x/c0/84/43/c084439636bec268040bbcc792fe7f27.jpg', 'Over-ear wireless headphones with stylish design and rich audio output.'),
+    new Product(10, 'MacBook Air 13- and 15-inc', 140334.99, 'Electronics', 'https://i.pinimg.com/1200x/91/3b/f9/913bf94d641495f2afc9c3967e01424d.jpg', 'A powerful and stylish ultra-slim laptop designed for performance and portability.'),
+    new Product(11, 'Yoga Mat', 929.99, 'Sports', 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400', 'Non-slip surface for your practice'),
+    new Product(13, 'Bluetooth Speaker', 1059.99, 'Electronics', 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400', 'Portable with powerful bass'),
+    new Product(14, 'SLOVIC Dumbbells Set', 3029.99, 'Sports', 'https://i.pinimg.com/736x/61/22/cb/6122cb2e189778ef56f9a77aa6eddbcf.jpg', 'Durable dumbbells set designed for home workouts and strength training.'),
+    new Product(15, 'stainless steel silver men rings', 549.99, 'Accessories', 'https://i.pinimg.com/1200x/25/ab/5c/25ab5cfb89dc69f2f8a85c121fc0ba13.jpg', 'Stylish stainless steel ring designed for everyday men’s fashion.'),
+];
