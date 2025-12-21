@@ -1,4 +1,4 @@
-### This branche strictly follows the project proposal
+
 ### i didnt finish home age still, and other informatics (ha, is there a word informatics)
 
 
@@ -17,7 +17,7 @@ Implement strict Form Validation using Regular Expressions.
 
 Showcase advanced Function usage (Closures, Arrow Functions).
 
-**[Project Proposal](https://docs.google.com/document/d/1a-qHc03OlWYk6956-7VhKDkrgqSPtKosFTFSGhwzETA/edit?usp=sharing)**
+
 
 
 # Cartify E-commerce Website
@@ -53,4 +53,4 @@ It aims to strengthen understanding of fundamental JavaScript principles and sho
 > No frameworks or backend services — pure frontend application.
 
 git clone https://github.com/Group5-secD/Cartify-ecommerce-website.git
-
+### This branche strictly follows the project proposal [Project Proposal](https://docs.google.com/document/d/1a-qHc03OlWYk6956-7VhKDkrgqSPtKosFTFSGhwzETA/edit?usp=sharing)**
