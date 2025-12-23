@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Attach Global Event Listeners
 
-    // Search
+    //search functionality
     const searchInput = document.getElementById('product-search');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
