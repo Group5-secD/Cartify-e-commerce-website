@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartify - E-Commerce Frontend Demo</title>
+  <meta name="description"
+    content="Cartify E-Commerce - Educational project demonstrating JavaScript Constructors, Prototypes, Regex Validation, and Object Manipulation">
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="imgs/favicon.png">
+</head>
+
+<body>
+  <!-- Application Container -->
+  <div id="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container header-content">
+        <a href="#" class="logo" onclick="showView('home-view')(); return false;">
+          <img src="imgs/logo.png" alt="Cartify Logo" class="logo-image">
+          <span>Cartify</span>
+        </a>
+        <nav class="nav">
+          <button id="nav-home" class="nav-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" style="width: 18px; height: 18px;">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Home</span>
+          </button>
+          <button id="nav-products" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" style="width: 18px; height: 18px;">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+              <path d="M3 6h18"></path>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span>Shop</span>
+          </button>
+          <button id="nav-wishlist" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" style="width: 18px; height: 18px;">
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+              </path>
+            </svg>
+            <span>Wishlist</span>
+          </button>
+          <button id="nav-about" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" style="width: 18px; height: 18px;">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+            <span>About</span>
+          </button>
+          <button id="nav-contact" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" style="width: 18px; height: 18px;">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+              </path>
+            </svg>
+            <span>Contact</span>
+          </button>
+          <button id="nav-cart" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" style="width: 18px; height: 18px;">
+              <circle cx="8" cy="21" r="1"></circle>
+              <circle cx="19" cy="21" r="1"></circle>
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+            </svg>
+            <span>Cart</span>
+            <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
+          </button>
+          <button id="nav-login" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" style="width: 18px; height: 18px;">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Login</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+    <!-- Dynamic View Containers -->
+    <div id="home-view" class="view">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-logo-large" style="margin-bottom: 2rem;">
+              <img src="imgs/logo.png" alt="Cartify Logo"
+                style="height: 120px; width: auto; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
+            </div>
+            <h1>Smarter Shopping.</h1>
+            <p>Premium products curated for your lifestyle. High-speed delivery, secure payments, and a seamless
+              shopping experience.</p>
+            <div class="hero-btns">
+              <button class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.125rem;"
+                onclick="showView('products-view')()">Shop Now</button>
+              <button class="btn"
+                style="background: var(--bg-card); border: 1px solid var(--border); padding: 1rem 2.5rem; font-size: 1.125rem;"
+                onclick="showView('about-view')()">Our Story</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="about-view" class="view" style="display: none;">
+      <div class="container">
+        <div class="content-section">
+          <div class="section-header">
+            <h2>Our Story</h2>
+            <p class="subtitle">Crafting the future of premium retail since 2025.</p>
+          </div>
+          <div class="about-grid">
+            <div class="about-text">
+              <p style="margin-bottom: 1.5rem; line-height: 1.8; color: var(--text-muted);">Cartify started with a
+                simple belief: that shopping for premium essentials should be as effortless and beautiful as the
+                products themselves. We've built a platform that combines cutting-edge technology with a human
+                touch.</p>
+              <p style="line-height: 1.8; color: var(--text-muted);">Our mission is to bridge the gap between
+                world-class designers and modern consumers who value quality over quantity. Every item in our
+                collection is handpicked to ensure it meets our rigorous standards of sustainability and style.</p>
+            </div>
+            <div class="about-image-container">
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800" alt="Office"
+                class="about-image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact-view" class="view" style="display: none;">
+      <div class="container">
+        <div class="content-section">
+          <div class="section-header">
+            <h2>Get in Touch</h2>
+            <p class="subtitle">We're here to help you with anything you need.</p>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-info">
+              <div class="contact-info-item">
+                <div class="contact-icon"></div>
+                <div>
+                  <h4 style="margin-bottom: 0.25rem;">Email Us</h4>
+                  <p style="color: var(--text-muted);">support@cartify.com</p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-icon"></div>
+                <div>
+                  <h4 style="margin-bottom: 0.25rem;">Call Us</h4>
+                  <p style="color: var(--text-muted);">+1 (555) 000-0000</p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-icon"></div>
+                <div>
+                  <h4 style="margin-bottom: 0.25rem;">Visit Us</h4>
+                  <p style="color: var(--text-muted);">123 Design District, NY 10001</p>
+                </div>
+              </div>
+            </div>
+            <div class="contact-form-container">
+              <form class="form"
+                onsubmit="event.preventDefault(); alert('Message sent! We\'ll get back to you soon.'); this.reset();">
+                <div class="form-group">
+                  <label>Your Name</label>
+                  <input type="text" class="form-input" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input type="email" class="form-input" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label>Message</label>
+                  <textarea class="form-input" style="min-height: 120px; resize: none;" placeholder="How can we help?"
+                    required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="products-view" class="view" style="display: none;">
+      <div class="container">
+        <div class="search-container" style="margin-top: 2rem;">
+          <div class="search-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="search-icon">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="product-search" class="search-input"
+              placeholder="Search for products, categories, or brands...">
+          </div>
+        </div>
+
+        <div class="categories" style="margin-top: 2rem;">
+          <button class="category-btn active" data-category="all">All Products</button>
+          <button class="category-btn" data-category="Electronics">Electronics</button>
+          <button class="category-btn" data-category="Accessories">Accessories</button>
+          <button class="category-btn" data-category="Home">Home Office</button>
+          <button class="category-btn" data-category="Sports">Sports Gear</button>
+        </div>
+
+        <div id="products-grid" class="products-grid">
+          <!-- Products will be rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <div id="cart-view" class="view" style="display: none;">
+      <div class="container">
+        <div class="cart-container">
+          <div class="section-header">
+            <h2>Your Cart</h2>
+            <p class="subtitle">Review your selection before checkout.</p>
+          </div>
+
+          <div id="cart-empty" style="text-align: center; padding: 4rem 2rem; display: none;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🛒</div>
+            <h3>Your cart is empty</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Looks like you haven't added anything yet.</p>
+            <button class="btn btn-primary" onclick="showView('products-view')()">Start Shopping</button>
+          </div>
+
+          <div id="cart-items">
+            <!-- Cart items will be rendered here -->
+          </div>
+
+          <div id="cart-summary" class="cart-summary" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+              <span style="font-size: 1.125rem; font-weight: 600; color: var(--text-muted);">Total Amount</span>
+              <span id="cart-total" class="cart-summary-total">ETB 0.00</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <button class="btn" style="background: var(--bg-main); border: 1px solid var(--border);"
+                onclick="cart.clear()">Clear Cart</button>
+              <button class="btn btn-primary" onclick="showView('checkout-view')()">Checkout Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="wishlist-view" class="view" style="display: none;">
+      <div class="container">
+        <div class="section-header">
+          <h2>My Wishlist</h2>
+          <p class="subtitle">Your curated collection of premium favorites.</p>
+        </div>
+
+        <div id="wishlist-empty" style="text-align: center; padding: 4rem 2rem; display: none;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">✨</div>
+          <h3>Your wishlist is empty</h3>
+          <p style="color: var(--text-muted); margin-bottom: 2rem;">Save items you love to find them easily later.</p>
+          <button class="btn btn-primary" onclick="showView('products-view')()">Browse Products</button>
+        </div>
+
+        <div id="wishlist-items" class="products-grid">
+          <!-- Wishlist items will be rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <div id="login-view" class="view" style="display: none;">
+      <div class="container">
+        <div class="form-container">
+          <div class="section-header">
+            <h2>Welcome Back</h2>
+            <p class="subtitle">Enter your credentials to access your account.</p>
+          </div>
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-email">Email Address</label>
+              <input type="email" id="login-email" class="form-input" placeholder="name@example.com" required>
+              <div class="error-message"></div>
+            </div>
+            <div class="form-group" style="margin-bottom: 2rem;">
+              <label for="login-password">Password</label>
+              <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+              <div class="error-message"></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+            <p style="margin-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+              Don't have an account? <a href="#" onclick="showView('register-view')(); return false;"
+                style="color: var(--primary); font-weight: 600; text-decoration: none;">Create one now</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="register-view" class="view" style="display: none;">
+      <div class="container">
+        <div class="form-container">
+          <div class="section-header">
+            <h2>Join Cartify</h2>
+            <p class="subtitle">Experience the future of premium retail today.</p>
+          </div>
+          <form id="register-form">
+            <div class="form-group">
+              <label for="reg-username">Username</label>
+              <input type="text" id="reg-username" class="form-input" placeholder="johndoe123" required>
+              <div class="error-message"></div>
+            </div>
+            <div class="form-group">
+              <label for="reg-email">Email Address</label>
+              <input type="email" id="reg-email" class="form-input" placeholder="name@example.com" required>
+              <div class="error-message"></div>
+            </div>
+            <div class="form-group">
+              <label for="reg-password">Password</label>
+              <input type="password" id="reg-password" class="form-input" placeholder="••••••••" required>
+              <div class="error-message"></div>
+            </div>
+            <div class="form-group" style="margin-bottom: 2rem;">
+              <label for="reg-confirm-password">Confirm Password</label>
+              <input type="password" id="reg-confirm-password" class="form-input" placeholder="••••••••" required>
+              <div class="error-message"></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+            <p style="margin-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+              Already have an account? <a href="#" onclick="showView('login-view')(); return false;"
+                style="color: var(--primary); font-weight: 600; text-decoration: none;">Sign in</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="checkout-view" class="view" style="display: none;">
+      <div class="container">
+        <div class="form-container checkout-container">
+          <div class="section-header">
+            <h2>Complete Your Order</h2>
+            <p class="subtitle">Enter your shipping details to finish your purchase.</p>
+          </div>
+          <form id="checkout-form">
+            <div class="form-group">
+              <label for="checkout-name">Full Name</label>
+              <input type="text" id="checkout-name" class="form-input" placeholder="John Doe" required>
+              <div class="error-message"></div>
+            </div>
+            <div class="form-group">
+              <label for="checkout-email">Email Address</label>
+              <input type="email" id="checkout-email" class="form-input" placeholder="name@example.com" required>
+              <div class="error-message"></div>
+            </div>
+            <div class="form-group">
+              <label for="checkout-address">Street Address</label>
+              <input type="text" id="checkout-address" class="form-input" placeholder="123 Main Street" required>
+              <div class="error-message"></div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+              <div class="form-group">
+                <label for="checkout-city">City</label>
+                <input type="text" id="checkout-city" class="form-input" placeholder="New York" required>
+                <div class="error-message"></div>
+              </div>
+              <div class="form-group">
+                <label for="checkout-zip">ZIP Code</label>
+                <input type="text" id="checkout-zip" class="form-input" placeholder="12345" required>
+                <div class="error-message"></div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Place Order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="footer-logo">
+              <img src="imgs/logo.png" alt="Cartify Logo">
+            </div>
+            <p class="footer-desc">Premium products curated for your modern lifestyle. Experience the future of shopping
+              with Cartify.</p>
+            <div class="social-links">
+              <div class="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" style="width: 18px; height: 18px;">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </div>
+              <div class="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" style="width: 18px; height: 18px;">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <div class="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" style="width: 18px; height: 18px;">
+                  <path
+                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-head">Shop</h4>
+            <ul class="footer-links">
+              <li class="footer-link"><a href="#"
+                  onclick="appState.selectedCategory='Electronics'; showView('products-view')(); renderProducts('Electronics'); return false;">Electronics</a>
+              </li>
+              <li class="footer-link"><a href="#"
+                  onclick="appState.selectedCategory='Accessories'; showView('products-view')(); renderProducts('Accessories'); return false;">Accessories</a>
+              </li>
+              <li class="footer-link"><a href="#"
+                  onclick="appState.selectedCategory='Home'; showView('products-view')(); renderProducts('Home'); return false;">Home
+                  Office</a></li>
+              <li class="footer-link"><a href="#"
+                  onclick="appState.selectedCategory='Sports'; showView('products-view')(); renderProducts('Sports'); return false;">Sports
+                  Gear</a></li>
+              <li class="footer-link"><a href="#" onclick="showView('about-view')(); return false;">Our Story</a></li>
+              <li class="footer-link"><a href="#" onclick="showView('contact-view')(); return false;">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-head">Customer</h4>
+            <ul class="footer-links">
+              <li class="footer-link"><a href="#" onclick="showView('login-view')(); return false;">My Account</a></li>
+              <li class="footer-link"><a href="#" onclick="showView('wishlist-view')(); return false;">Wishlist</a></li>
+              <li class="footer-link"><a href="#" onclick="showView('cart-view')(); return false;">My Cart</a></li>
+              <li class="footer-link"><a href="#" onclick="showView('checkout-view')(); return false;">Checkout</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-head">Stay Updated</h4>
+            <p class="footer-desc" style="font-size: 0.875rem; margin-bottom: 1rem;">Get the latest product drops and
+              exclusive offers.</p>
+            <form class="newsletter-form"
+              onsubmit="event.preventDefault(); alert('Success! You have joined the Cartify elite.'); this.reset();">
+              <input type="email" class="newsletter-input" placeholder="Enter email" required>
+              <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1rem;">Join</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2025 Cartify - Group5-secD | Vanilla JavaScript Excellence</p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookies</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- End #app -->
+
+  <!-- Application Scripts (Correct Order) -->
+  <script src="js/utils.js"></script>
+  <script src="js/models.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
