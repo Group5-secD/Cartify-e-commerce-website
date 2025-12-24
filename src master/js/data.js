@@ -16,7 +16,7 @@ const dbProducts = [
     new Product(15, 'stainless steel silver men rings', 549.99, 'Accessories', 'https://i.pinimg.com/1200x/25/ab/5c/25ab5cfb89dc69f2f8a85c121fc0ba13.jpg', 'Stylish stainless steel ring designed for everyday men’s fashion.'),
 ];
 
-//have a look on the next block pls check it
+//have a look on the next block pls check it, maybe need to change the delay time
 
 // Simulate Asynchronous API call to fetch products 
 function fetchProducts() {
