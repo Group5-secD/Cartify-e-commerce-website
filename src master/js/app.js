@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderCart();
     });
 
+    wishlist.subscribe(() => {
+        renderProducts(appState.selectedCategory, searchInput?.value);
+        if (appState.currentView === 'wishlist-view') renderWishlist();
+    });
+    
     // To restore the "Item added to cart" notification, we can hook into cart.add
     const originalAdd = cart.add.bind(cart);
     cart.add = (id) => {
