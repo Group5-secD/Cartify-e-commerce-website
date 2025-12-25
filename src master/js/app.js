@@ -1,45 +1,14 @@
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize State
     cart.load();
     wishlist.load();
-
-    // Subscribe UI to State changes
-    cart.subscribe(() => {
-        renderCart();
-    });
-
-    wishlist.subscribe(() => {
-        renderProducts(appState.selectedCategory, searchInput?.value);
-        if (appState.currentView === 'wishlist-view') renderWishlist();
-    });
-    
-    // To restore the "Item added to cart" notification, we can hook into cart.add
-    const originalAdd = cart.add.bind(cart);
-    cart.add = (id) => {
-        originalAdd(id);
-        showNotification('Item updated in cart!');
-    };
-
-    // Initial render (will show loading state because appState.products is empty)
-    showView('home-view')();
     renderProducts();
-
-    try {
-        console.log('Fetching products...');
-        const products = await fetchProducts();
-        appState.products = products;
-        console.log('Products fetched:', products);
-
-        // Re-render to show actual products
-        renderProducts();
-    } catch (error) {
-        console.error('Failed to load products:', error);
-        showNotification('Failed to load products. Please refresh.');
-    }
+    cart.updateCartBadge();
+    showView('home-view')();
 
     // 2. Attach Global Event Listeners
 
-    // Search
+    //search functionality
     const searchInput = document.getElementById('product-search');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
@@ -154,5 +123,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    console.log('=== CARTIFY 2.0 (Standard Script) INITIALIZED ===');
+    console.log('=== CARTIFY 2.0 LOCAL INITIALIZED ===');
+});
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav');
+
+hamburger.addEventListener('click', () => {
+  nav.classList.toggle('open');
 });

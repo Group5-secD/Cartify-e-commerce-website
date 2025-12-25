@@ -1,25 +1,12 @@
 // Product Grid Renderer
 function renderProducts(filterCategory, searchQuery) {
-    // Access products from appState (Asynchronous Source)
-    const currentProducts = appState.products;
     const category = filterCategory || appState.selectedCategory || 'all';
     const query = (searchQuery || '').toLowerCase();
 
     const container = document.getElementById('products-grid');
     if (!container) return;
 
-    // Show loading state if products are not yet loaded
-    if (currentProducts.length === 0) {
-        container.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem;">
-                <h3 style="font-size: 1.5rem;">Loading Products...</h3>
-                <p style="color: var(--text-muted);">Please wait while we fetch the latest collection.</p>
-            </div>
-        `;
-        return;
-    }
-
-    const filtered = currentProducts.filter(p => {
+    const filtered = products.filter(p => {
         const matchesCategory = category === 'all' || p.category === category;
         const matchesQuery = !query ||
             p.name.toLowerCase().includes(query) ||
@@ -40,7 +27,7 @@ function renderProducts(filterCategory, searchQuery) {
 
     container.innerHTML = filtered.map(p => {
         const prod = new Product(p.id, p.name, p.price, p.category, p.image, p.description);
-        return prod.displayInfo(wishlist.has(p.id), 'wishlist.toggle', 'cart.add');
+        return prod.displayInfo(wishlist.has(p.id));
     }).join('');
 }
 
@@ -49,8 +36,6 @@ function renderCart() {
     const container = document.getElementById('cart-items');
     const empty = document.getElementById('cart-empty');
     const summary = document.getElementById('cart-summary');
-
-    updateCartBadge();
 
     if (cart.items.length === 0) {
         if (container) container.innerHTML = '';
@@ -85,14 +70,6 @@ function renderCart() {
     if (totalEl) totalEl.textContent = 'ETB ' + cart.total.toFixed(2);
 }
 
-function updateCartBadge() {
-    const badge = document.getElementById('cart-badge');
-    if (badge) {
-        badge.textContent = cart.itemCount;
-        badge.style.display = cart.itemCount > 0 ? 'flex' : 'none';
-    }
-}
-
 // Wishlist Renderer
 function renderWishlist() {
     const container = document.getElementById('wishlist-items');
@@ -108,7 +85,7 @@ function renderWishlist() {
     if (empty) empty.style.display = 'none';
     container.innerHTML = wishlist.items.map(p => {
         const prod = new Product(p.id, p.name, p.price, p.category, p.image, p.description);
-        return prod.displayInfo(true, 'wishlist.toggle', 'cart.add');
+        return prod.displayInfo(true);
     }).join('');
 }
 

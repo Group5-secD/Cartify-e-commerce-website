@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/views.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/about.css">
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,127 +30,257 @@
   <div id="app">
 
     <!-- Header -->
-    <header class="header">
-      <div class="container header-content">
-        <a href="#" class="logo" onclick="showView('home-view')(); return false;">
-          <img src="imgs/logo.png" alt="Cartify Logo" class="logo-image">
-          <span>Cartify</span>
-        </a>
-        <nav class="nav">
-          <button id="nav-home" class="nav-link active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" style="width: 18px; height: 18px;">
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            <span>Home</span>
-          </button>
-          <button id="nav-products" class="nav-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" style="width: 18px; height: 18px;">
-              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-              <path d="M3 6h18"></path>
-              <path d="M16 10a4 4 0 0 1-8 0"></path>
-            </svg>
-            <span>Shop</span>
-          </button>
-          <button id="nav-wishlist" class="nav-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" style="width: 18px; height: 18px;">
-              <path
-                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
-              </path>
-            </svg>
-            <span>Wishlist</span>
-          </button>
-          <button id="nav-about" class="nav-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" style="width: 18px; height: 18px;">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 16v-4"></path>
-              <path d="M12 8h.01"></path>
-            </svg>
-            <span>About</span>
-          </button>
-          <button id="nav-contact" class="nav-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" style="width: 18px; height: 18px;">
-              <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-              </path>
-            </svg>
-            <span>Contact</span>
-          </button>
-          <button id="nav-cart" class="nav-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" style="width: 18px; height: 18px;">
-              <circle cx="8" cy="21" r="1"></circle>
-              <circle cx="19" cy="21" r="1"></circle>
-              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
-            </svg>
-            <span>Cart</span>
-            <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
-          </button>
-          <button id="nav-login" class="nav-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" style="width: 18px; height: 18px;">
-              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>Login</span>
-          </button>
-        </nav>
-      </div>
-    </header>
-    <!-- Dynamic View Containers -->
-    <div id="home-view" class="view">
-      <section class="hero">
-        <div class="container">
-          <div class="hero-content">
-            <div class="hero-logo-large" style="margin-bottom: 2rem;">
-              <img src="imgs/logo.png" alt="Cartify Logo"
-                style="height: 120px; width: auto; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
-            </div>
-            <h1>Smarter Shopping.</h1>
-            <p>Premium products curated for your lifestyle. High-speed delivery, secure payments, and a seamless
-              shopping experience.</p>
-            <div class="hero-btns">
-              <button class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.125rem;"
-                onclick="showView('products-view')()">Shop Now</button>
-              <button class="btn"
-                style="background: var(--bg-card); border: 1px solid var(--border); padding: 1rem 2.5rem; font-size: 1.125rem;"
-                onclick="showView('about-view')()">Our Story</button>
-            </div>
-          </div>
-        </div>
-      </section>
+   <header class="header">
+  <div class="container header-content">
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <img src="imgs/logo.png" alt="Cartify Logo" class="logo-image">
+    </a>
+
+    <!-- Hamburger (mobile only) -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
-    <div id="about-view" class="view" style="display: none;">
+    <!-- Navigation -->
+    <nav class="nav">
+      <button id="nav-home" class="nav-link active">
+        <span>Home</span>
+      </button>
+      <button id="nav-products" class="nav-link">
+        <span>Shop</span>
+      </button>
+      <button id="nav-wishlist" class="nav-link">
+        <span>Wishlist</span>
+      </button>
+      <button id="nav-about" class="nav-link">
+        <span>About</span>
+      </button>
+      <button id="nav-contact" class="nav-link">
+        <span>Contact</span>
+      </button>
+      <button id="nav-cart" class="nav-link">
+        <span>Cart</span>
+        <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
+      </button>
+      <button id="nav-login" class="nav-link">
+        <span>Login</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Dynamic View Containers -->
+<div id="home-view" class="view home-view active">
+  <div class="home-container">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Shop the Best Deals Online</h1>
+        <p class="hero-subtitle">
+          Come shop with us and discover amazing products at unbeatable prices!
+        </p>
+        <p class="hero-description">
+          From trending gadgets to must-have accessories, find everything you love in one place. Fast, fun, and easy shopping awaits!
+        </p>
+
+        <div class="home-actions">
+          <button class="btn btn-primary" onclick="showView('products-view')()">
+            Start Shopping
+          </button>
+          <button class="btn btn-outline" onclick="showView('wishlist-view')()">
+            View Wishlist
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="featured-section">
+      <h2 class="section-title">Featured Products</h2>
+      <p class="section-subtitle">
+        Dive through our quality products.
+      </p>
+
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-icon">💻</div> <!-- Electronics -->
+          <h3>Electronics</h3>
+        </div>
+
+        <div class="product-card">
+          <div class="product-icon">⌚</div> <!-- Accessories -->
+          <h3>Accessories</h3>
+        </div>
+
+        <div class="product-card">
+          <div class="product-icon">🏠</div> <!-- Home Office -->
+          <h3>Home Office</h3>
+        </div>
+
+        <div class="product-card">
+          <div class="product-icon">🏋️‍♂️</div> <!-- Sport Gear -->
+          <h3>Sport Gear</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="how-it-works-section">
       <div class="container">
-        <div class="content-section">
-          <div class="section-header">
-            <h2>Our Story</h2>
-            <p class="subtitle">Crafting the future of premium retail since 2025.</p>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Shopping has never been this easy. Just 4 simple steps!</p>
+
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-icon">🛒</div>
+            <h3>Browse Products</h3>
+            <p>Discover trending gadgets, stylish accessories, and essentials you’ll love.</p>
           </div>
-          <div class="about-grid">
-            <div class="about-text">
-              <p style="margin-bottom: 1.5rem; line-height: 1.8; color: var(--text-muted);">Cartify started with a
-                simple belief: that shopping for premium essentials should be as effortless and beautiful as the
-                products themselves. We've built a platform that combines cutting edge technology with a human
-                touch.</p>
-              <p style="line-height: 1.8; color: var(--text-muted);">Our mission is to bridge the gap between
-                world class products and modern consumers who value quality over quantity. Every item in our
-                collection is handpicked to ensure it meets our rigorous standards of sustainability and style.</p>
-            </div>
-            <div class="about-image-container">
-              <img src="https://i.pinimg.com/736x/3a/b3/39/3ab3391295b81ff8ce0bf1e3aeadafe1.jpg" alt="Office"
-                class="about-image">
-            </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-icon">➕</div>
+            <h3>Add to Cart</h3>
+            <p>Quickly add your favorite items to the cart with ease and speed.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-icon">💳</div>
+            <h3>Checkout</h3>
+            <p>Secure payment and fast checkout—your order is on its way!</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-icon">🎁</div>
+            <h3>Enjoy Your Items</h3>
+            <p>Receive your products quickly and enjoy what you’ve purchased.</p>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- DISCOUNT SECTION -->
+    <section class="discount-section">
+      <div class="container discount-container">
+        <div class="discount-text">
+          <h2>🎄 Holiday Mega Sale</h2>
+          <p>
+            Enjoy our exclusive holiday offers! Find amazing deals on electronics, accessories, and more. Limited time only!
+          </p>
+          <button class="btn btn-discount">
+            30% Off
+          </button>
+        </div>
+
+        <div class="discount-image">
+          <img src="imgs/cg.jpg" alt="Christmas Sale" class="discount-img">
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+
+<div id="about-view" class="view about-view" style="display:none;">
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="about-hero-overlay"></div>
+    <div class="about-hero-content">
+      <h1>Built for Modern Shoppers</h1>
+      <p>Where design, quality, and technology meet.</p>
     </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="about-section container">
+    <div class="about-story">
+      <div class="story-text">
+        <h2>Our Story</h2>
+        <p>
+          Cartify was born from a simple idea: shopping should feel inspiring, not exhausting.
+          We wanted to build more than an online store — we built an experience.
+        </p>
+        <p>
+          Since 2025, we’ve partnered with creators, designers, and innovators who believe in
+          quality over quantity. Every product you see is chosen with purpose.
+        </p>
+      </div>
+
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1000" alt="Our workspace">
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="about-stats">
+    <div class="stats-container">
+      <div class="stat">
+        <h3>10K+</h3>
+        <p>Happy Customers</p>
+      </div>
+      <div class="stat">
+        <h3>500+</h3>
+        <p>Curated Products</p>
+      </div>
+      <div class="stat">
+        <h3>25+</h3>
+        <p>Global Partners</p>
+      </div>
+      <div class="stat">
+        <h3>99%</h3>
+        <p>Satisfaction Rate</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="about-section container">
+    <h2 class="center">What We Believe In</h2>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <span>🎨</span>
+        <h4>Design First</h4>
+        <p>Beautiful, thoughtful design in everything we deliver.</p>
+      </div>
+
+      <div class="value-card">
+        <span>🌱</span>
+        <h4>Sustainability</h4>
+        <p>Products that respect the planet and future generations.</p>
+      </div>
+
+      <div class="value-card">
+        <span>⚡</span>
+        <h4>Innovation</h4>
+        <p>Powered by modern tech for a seamless experience.</p>
+      </div>
+
+      <div class="value-card">
+        <span>🤝</span>
+        <h4>Trust</h4>
+        <p>Transparency and honesty with every interaction.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta">
+    <h2>Join the Cartify Movement</h2>
+    <p>Experience premium shopping made simple.</p>
+    <button class="btn-primary" onclick="showView('products-view')()">Explore Products</button>
+  </section>
+</div>
+
 
     <div id="contact-view" class="view" style="display: none;">
       <div class="container">
@@ -176,7 +309,7 @@
                 <div class="contact-icon"></div>
                 <div>
                   <h4 style="margin-bottom: 0.25rem;">Visit Us</h4>
-                  <p style="color: var(--text-muted);">Addis Ababa, Bole Main Street</p>
+                  <p style="color: var(--text-muted);">123 Design District, NY 10001</p>
                 </div>
               </div>
             </div>
@@ -185,11 +318,11 @@
                 onsubmit="event.preventDefault(); alert('Message sent! We\'ll get back to you soon.'); this.reset();">
                 <div class="form-group">
                   <label>Your Name</label>
-                  <input type="text" class="form-input" placeholder="Yeisrael Dawit" required>
+                  <input type="text" class="form-input" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
                   <label>Email Address</label>
-                  <input type="email" class="form-input" placeholder="yeisrael@example.com" required>
+                  <input type="email" class="form-input" placeholder="john@example.com" required>
                 </div>
                 <div class="form-group">
                   <label>Message</label>
@@ -324,7 +457,7 @@
           <form id="register-form">
             <div class="form-group">
               <label for="reg-username">Username</label>
-              <input type="text" id="reg-username" class="form-input" placeholder="YeisraelD" required>
+              <input type="text" id="reg-username" class="form-input" placeholder="johndoe123" required>
               <div class="error-message"></div>
             </div>
             <div class="form-group">
@@ -372,7 +505,7 @@
             </div>
             <div class="form-group">
               <label for="checkout-address">Street Address</label>
-              <input type="text" id="checkout-address" class="form-input" placeholder="Addis Ababa, bole Main Street" required>
+              <input type="text" id="checkout-address" class="form-input" placeholder="123 Main Street" required>
               <div class="error-message"></div>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
@@ -399,7 +532,7 @@
         <div class="footer-grid">
           <div class="footer-col">
             <div class="footer-logo">
-              <img src="imgs/logo.png" alt="Cartify Logo">
+              <img src="imgs/logo-leaf.png" alt="Cartify Logo">
             </div>
             <p class="footer-desc">Premium products curated for your modern lifestyle. Experience the future of shopping
               with Cartify.</p>
@@ -473,7 +606,7 @@
         </div>
 
         <div class="footer-bottom">
-          <p>© 2025 Cartify - Group5-secD | Client Side Programming Excellence</p>
+          <p>© 2025 Cartify - Group5-secD | Vanilla JavaScript Excellence</p>
           <div class="footer-legal">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
@@ -486,10 +619,10 @@
   </div> <!-- End #app -->
 
   <!-- Application Scripts (Correct Order) -->
-  <script src="js/utils.js"></script>
   <script src="js/models.js"></script>
   <script src="js/data.js"></script>
   <script src="js/state.js"></script>
+  <script src="js/utils.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/app.js"></script>
 </body>

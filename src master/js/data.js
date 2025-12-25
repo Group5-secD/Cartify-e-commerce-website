@@ -1,5 +1,4 @@
-// Requires Product class to be loaded first
-const dbProducts = [
+const products = [
     new Product(1, 'Wireless Headphones', 4469.99, 'Electronics', 'https://i5.walmartimages.com/seo/Lydiaunistar-Waterproof-Bluetooth-Earbuds-Wireless-Sports-Headphones-Noise-Cancelling-Stereo-Sound-15H-Playtime-Comfort-Foldable-Design-Gym-Running-T_c1a4a089-aa9f-4225-baeb-2f84ab39b96f.6e1f56815ec95dc0935ca994cb3b692a.jpeg', 'Premium sound quality with noise cancellation'),
     new Product(2, 'Smart Watch', 3209.99, 'Electronics', 'https://sm.mashable.com/t/mashable_in/photo/default/redmi-watch_15wr.1200.jpg', 'Track your fitness and stay connected'),
     new Product(3, 'Laptop Backpack', 3049.99, 'Accessories', 'https://i.pinimg.com/1200x/24/21/a0/2421a07892b7f02eed3ec73f92afa6c8.jpg', 'Durable and spacious for daily use'),
@@ -15,14 +14,3 @@ const dbProducts = [
     new Product(14, 'SLOVIC Dumbbells Set', 3029.99, 'Sports', 'https://i.pinimg.com/736x/61/22/cb/6122cb2e189778ef56f9a77aa6eddbcf.jpg', 'Durable dumbbells set designed for home workouts and strength training.'),
     new Product(15, 'stainless steel silver men rings', 549.99, 'Accessories', 'https://i.pinimg.com/1200x/25/ab/5c/25ab5cfb89dc69f2f8a85c121fc0ba13.jpg', 'Stylish stainless steel ring designed for everyday men’s fashion.'),
 ];
-
-//have a look on the next block pls check it, maybe need to change the delay time
-
-// Simulate Asynchronous API call to fetch products 
-function fetchProducts() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve([...dbProducts]); // Return a copy
-        }, 800); // 800ms simulated network delay
-    });
-}
