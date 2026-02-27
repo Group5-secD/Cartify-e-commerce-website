@@ -1,8 +1,7 @@
 ## Contributors
-- ###Name                        ###ID                         Github acount
-- **Thomas Addisu_ETS 1350/16** 
-  
-- **[Tinsae Zegeye_ETS 1359/16](https://github.com/TinsaeZegeye)**  \
+
+- **Thomas Addisu    ETS 1350/16**  ***[]()*
+- **Tinsae Zegeye    ETS 1359/16**  **[](https://avatars.githubusercontent.com/u/184353915?v=4)**  \
  
 - **[Yeabsira Yohannes_ETS 1574/16](https://github.com/yeabuti17)** \
 
