@@ -5,7 +5,7 @@
 -
 -
 -
-- ETS1446/16   Yeisrael Dawit [YeisraelD](https://github.com/YeisraelD) 
+- ETS1446/16__Yeisrael Dawit__ [YeisraelD](https://github.com/YeisraelD) 
 
 # Cartify E-commerce Website
 
