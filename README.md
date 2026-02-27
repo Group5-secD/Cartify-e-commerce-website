@@ -1,18 +1,11 @@
-## Contributors
-
-- **Thomas Addisu    ETS 1350/16**  ***[]()*
-- **Tinsae Zegeye    ETS 1359/16**  **[](https://avatars.githubusercontent.com/u/184353915?v=4)**  \
- 
-- **[Yeabsira Yohannes_ETS 1574/16](https://github.com/yeabuti17)** \
-
-- **[Yeabsira Taye_ETS 1439/16](https://github.com/Yeab18)** \
-
-- **[Yeisrael Dawit_ETS 1446/16](https://github.com/Yetdev27)** \
-  
-
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 
-
+-
+-
+-
+-
+-
+- ## YeisraelDawit      ETS1446/16**[YeisraelD](https://github.com/YeisraelD)** 
 
 # Cartify E-commerce Website
 
