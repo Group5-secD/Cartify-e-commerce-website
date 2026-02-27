@@ -1,6 +1,6 @@
 ## Contributors
-
-- **[Thomas Addisu_ETS 1350/16](https://github.com/janedoe)**  \
+- ###Name                        ###ID                         Github acount
+- **Thomas Addisu_ETS 1350/16** 
   
 - **[Tinsae Zegeye_ETS 1359/16](https://github.com/TinsaeZegeye)**  \
  
