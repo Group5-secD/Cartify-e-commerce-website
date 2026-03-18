@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Initialize State
+  checkSession();
   cart.load();
   wishlist.load();
   renderProducts();
@@ -131,22 +132,54 @@ document.addEventListener("DOMContentLoaded", () => {
   // Login Form
   const loginForm = document.getElementById("login-form");
   if (loginForm) {
-    loginForm.addEventListener("submit", (e) => {
+    loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = document.getElementById("login-email").value;
       const password = document.getElementById("login-password").value;
 
       clearAllErrors("login-email", "login-password");
 
-      if (validators.email(email)) {
-        appState.currentUser = new User("DemoUser", email, password);
-        showNotification(`Welcome back, ${email}!`);
-        showView("products-view")();
-        loginForm.reset();
-      } else {
+      if (!validators.email(email)) {
         showError("login-email", "Please enter a valid email address");
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/auth/login.php`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+          credentials: "include"
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          appState.currentUser = new User("User", email, ""); // Password omitted for security
+          showNotification(`Welcome! Login successful.`);
+          showView("products-view")();
+          loginForm.reset();
+        } else {
+          showNotification(result.error || "Login failed", "error");
+        }
+      } catch (error) {
+        console.error("Login error:", error);
+        showNotification("Could not connect to authentication server", "error");
       }
     });
+  }
+
+  async function checkSession() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/auth/session.php`, { credentials: "include" });
+      const result = await response.json();
+      if (result.logged_in) {
+        appState.currentUser = new User(result.username || "User", "", "");
+        console.log("Session active:", result.username);
+      }
+    } catch (error) {
+      console.error("Session check failed:", error);
+    }
   }
 
   // Checkout Form
