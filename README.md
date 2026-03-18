@@ -1,11 +1,11 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 
--
--
--
--
--
-- ETS1446/16__Yeisrael Dawit__ [YeisraelD](https://github.com/YeisraelD) 
+- ETS1272/16 **Senpair Alemneh** [senpair776](https://github.com/senpair776)
+- ETS1350/16 **Thomas Addisu** [thomasaddisu](https://github.com/thomasaddisu)
+- ETS1359/16 **Tinsae Zegeye** [TinsaeZegeye](https://github.com/TinsaeZegeye)
+- ETS1439/16 **Yeabsira Taye** [Yeab18](https://github.com/Yeab18)
+- ETS1574/16 **Yeabisira Yohannes** [yeabuti17](https://github.com/yeabuti17)
+- ETS1446/16 **Yeisrael Dawit** [YeisraelD](https://github.com/YeisraelD)
 
 # Cartify E-commerce Website
 
