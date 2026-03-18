@@ -1,3 +1,5 @@
+const API_BASE_URL = 'http://localhost:8000';
+
 const appState = {
     currentUser: null,
     currentView: 'home-view',
@@ -13,7 +15,7 @@ const cart = {
     get itemCount() {
         return this.items.reduce((count, item) => count + item.quantity, 0);
     },
-    add(productId) {
+    async add(productId) {
         const product = products.find(p => p.id === productId);
         if (!product) return;
 
@@ -25,7 +27,19 @@ const cart = {
         }
         this.save();
         this.updateCartBadge();
-        // UI notification handled in app.js or ui.js
+
+        // Sync with backend
+        try {
+            await fetch(`${API_BASE_URL}/api/cart/add.php`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ product_id: productId, quantity: 1 }),
+                credentials: "include"
+            });
+        } catch (error) {
+            console.error("Failed to sync cart with backend:", error);
+        }
+
         if (typeof showNotification === 'function') {
             showNotification(product.name + ' added to cart!');
         }
