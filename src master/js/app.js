@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const username = document.getElementById("reg-username").value;
       const email = document.getElementById("reg-email").value;
       const password = document.getElementById("reg-password").value;
-      const confirm = document.getElementById("reg-confirm-password").value;
 
       const formData = new FormData(registerForm);
 
@@ -75,30 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "reg-password",
         "reg-confirm-password",
       );
-
-      let isValid = true;
-      if (!validators.username(username)) {
-        showError(
-          "reg-username",
-          "Username must be 3-16 alphanumeric characters",
-        );
-        isValid = false;
-      }
-      if (!validators.email(email)) {
-        showError("reg-email", "Please enter a valid email address");
-        isValid = false;
-      }
-      if (!validators.password(password)) {
-        showError(
-          "reg-password",
-          "Password must be 8+ chars with uppercase, lowercase, number, and special char",
-        );
-        isValid = false;
-      }
-      if (password !== confirm) {
-        showError("reg-confirm-password", "Passwords do not match");
-        isValid = false;
-      }
 
       // Sending form data
       try {
@@ -119,9 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
           registerForm.reset();
           window.location.href = "index.html#products-view";
         } else {
-          const profileError = document.getElementById("image-error");
-          profileError.innerHTML = result.message;
-          profileError.classList = "image-error";
+          if (result.field) {
+            showError(result.field, result.message);
+          } else {
+            alert(result.message);
+          }
         }
       } catch (error) {
         console.log(error);
@@ -149,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
-          credentials: "include"
+          credentials: "include",
         });
 
         const result = await response.json();
@@ -171,7 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function checkSession() {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/session.php`, { credentials: "include" });
+      const response = await fetch(`${API_BASE_URL}/api/auth/session.php`, {
+        credentials: "include",
+      });
       const result = await response.json();
       if (result.logged_in) {
         appState.currentUser = new User(result.username || "User", "", "");
@@ -212,4 +191,3 @@ const nav = document.querySelector(".nav");
 hamburger.addEventListener("click", () => {
   nav.classList.toggle("open");
 });
-

@@ -120,7 +120,11 @@
   border-radius: 8px;
 }
 
-.image-error {
+.error-message {
+  display: none;
+}
+
+.error {
   background-color: #f1b5b5;
   color: #990000;
   padding: 2px 15px;
