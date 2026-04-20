@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Sending form data
       try {
         const response = await fetch(
-          "http://localhost:8000/api/auth/register.php",
+          `${API_BASE_URL}/api/auth/register_api.php`,
           {
             method: "POST",
             body: formData,
@@ -116,10 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       clearAllErrors("login-email", "login-password");
 
-      if (!validators.email(email)) {
-        showError("login-email", "Please enter a valid email address");
-        return;
-      }
+      // Frontend validation skipped here; backend handles the email format check.
 
       try {
         const response = await fetch(`${API_BASE_URL}/api/auth/login.php`, {
@@ -131,13 +128,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const result = await response.json();
 
-        if (response.ok) {
+        if (result.status === "success") {
           appState.currentUser = new User("User", email, ""); // Password omitted for security
           showNotification(`Welcome! Login successful.`);
           showView("products-view")();
           loginForm.reset();
+          window.location.href = "index.html#products-view";
         } else {
-          showNotification(result.error || "Login failed", "error");
+          showNotification(result.message || "Login failed", "error");
         }
       } catch (error) {
         console.error("Login error:", error);
