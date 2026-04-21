@@ -7,13 +7,15 @@
     --danger: #ef4444;
     --success: #10b981;
 
-    --bg-main: #f8fafc;
+    --bg-main: #f3f7f3; /* Light minty neutral */
     --bg-card: #ffffff;
-    --bg-glass: rgba(255, 255, 255, 0.7);
+    --bg-secondary: #ecfdf5; /* Very light mint */
+    --bg-glass: rgba(255, 255, 255, 0.8);
 
-    --text-main: #0f172a;
-    --text-muted: #64748b;
+    --text-main: #111827; /* Deep Slate / Black */
+    --text-muted: #6b7280;
     --text-on-primary: #ffffff;
+    --bg-dark: #111827; /* For that cool dark contrast */
 
     --border: #e2e8f0;
     --border-focus: #10b981;

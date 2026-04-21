@@ -35,8 +35,8 @@
       <header class="header">
         <div class="container header-content">
           <!-- Logo -->
-          <a href="#" class="logo">
-            <img src="imgs/logo.png" alt="Cartify Logo" class="logo-image" />
+          <a href="#" class="logo" onclick="showView('home-view')(); return false;">
+            <img src="imgs/logo.png" alt="Cartify Logo" style="height: 48px; width: auto; object-fit: contain;" />
           </a>
 
           <!-- Hamburger (mobile only) -->
@@ -93,139 +93,108 @@
       <!-- Dynamic View Containers -->
       <div id="home-view" class="view home-view active">
         <div class="home-container">
-          <!-- HERO SECTION -->
-          <section class="hero-section">
-            <div class="hero-content">
-              <h1>Shop the Best Deals Online</h1>
-              <p class="hero-subtitle">
-                Come shop with us and discover amazing products at unbeatable
-                prices!
-              </p>
-              <p class="hero-description">
-                From trending gadgets to must-have accessories, find everything
-                you love in one place. Fast, fun, and easy shopping awaits!
-              </p>
-
-              <div class="home-actions">
-                <button
-                  class="btn btn-primary"
-                  onclick="showView('products-view')()"
-                >
-                  Start Shopping
-                </button>
-              </div>
-            </div>
-          </section>
-
-          <!-- FEATURED PRODUCTS -->
-          <section class="featured-section">
-            <h2 class="section-title">Featured Products</h2>
-            <p class="section-subtitle">Dive through our quality products.</p>
-
-            <div class="products-grid">
-              <div class="product-card">
-                <div class="product-icon">💻</div>
-                <!-- Electronics -->
-                <h3>Electronics</h3>
-              </div>
-
-              <div class="product-card">
-                <div class="product-icon">⌚</div>
-                <!-- Accessories -->
-                <h3>Accessories</h3>
-              </div>
-
-              <div class="product-card">
-                <div class="product-icon">🏠</div>
-                <!-- Home Office -->
-                <h3>Home Office</h3>
-              </div>
-
-              <div class="product-card">
-                <div class="product-icon">🏋️‍♂️</div>
-                <!-- Sport Gear -->
-                <h3>Sport Gear</h3>
-              </div>
-            </div>
-          </section>
-
-          <!-- HOW IT WORKS SECTION -->
-          <section class="how-it-works-section">
-            <div class="container">
-              <h2 class="section-title">How It Works</h2>
-              <p class="section-subtitle">
-                Shopping has never been this easy. Just 4 simple steps!
-              </p>
-
-              <div class="steps-container">
-                <div class="step-card">
-                  <div class="step-number">1</div>
-                  <div class="step-icon">🛒</div>
-                  <h3>Browse Products</h3>
-                  <p>
-                    Discover trending gadgets, stylish accessories, and
-                    essentials you’ll love.
-                  </p>
+          <!-- NANO HERO SECTION -->
+          <section class="nano-hero">
+            <div class="nano-hero-content">
+              <div class="hero-text-side">
+                <div class="hero-badge-container">
+                    <span class="hero-badge">🚀 New Collection Available</span>
                 </div>
-
-                <div class="step-card">
-                  <div class="step-number">2</div>
-                  <div class="step-icon">➕</div>
-                  <h3>Add to Cart</h3>
-                  <p>
-                    Quickly add your favorite items to the cart with ease and
-                    speed.
-                  </p>
-                </div>
-
-                <div class="step-card">
-                  <div class="step-number">3</div>
-                  <div class="step-icon">💳</div>
-                  <h3>Checkout</h3>
-                  <p>
-                    Secure payment and fast checkout—your order is on its way!
-                  </p>
-                </div>
-
-                <div class="step-card">
-                  <div class="step-number">4</div>
-                  <div class="step-icon">🎁</div>
-                  <h3>Enjoy Your Items</h3>
-                  <p>
-                    Receive your products quickly and enjoy what you’ve
-                    purchased.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- DISCOUNT SECTION -->
-          <section class="discount-section">
-            <div class="container discount-container">
-              <div class="discount-text">
-                <h2>🎄 Holiday Mega Sale</h2>
-                <p>
-                  Enjoy our exclusive holiday offers! Find amazing deals on
-                  electronics, accessories, and more. Limited time only!
+                <h1>Shop Smarter, <span class="text-green">Live Better</span></h1>
+                <p class="hero-desc">
+                  Discover amazing products at unbeatable prices. Your one-stop destination for quality electronics, fashion, and accessories.
                 </p>
-                <button class="btn btn-discount">30% Off</button>
+                <div class="nano-hero-actions">
+                  <button class="btn btn-green" onclick="showView('products-view')()">Shop Now →</button>
+                  <button class="btn btn-white" onclick="showView('products-view')()">View Catalog</button>
+                </div>
+                <div class="hero-features">
+                  <div class="feature-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><path d="M5 18h14M5 14h14M5 10h14M5 6h14"></path></svg>
+                    <span>Free Shipping</span>
+                  </div>
+                  <div class="feature-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span>Secure Payment</span>
+                  </div>
+                  <div class="feature-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><path d="M3 12h18M3 12l4-4M3 12l4 4"></path></svg>
+                    <span>Easy Returns</span>
+                  </div>
+                </div>
               </div>
+              <div class="hero-image-side">
+                <div class="hero-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1400" alt="Hero Image" class="hero-main-img">
+                    <!-- Floating Brand Badge -->
+                    <div class="floating-brand-badge">
+                      <img src="imgs/logo.png" alt="Cartify Icon">
+                      <span>Premium Choice</span>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-              <div class="discount-image">
-                <img
-                  src="imgs/cg.jpg"
-                  alt="Christmas Sale"
-                  class="discount-img"
-                />
+          <!-- CATEGORY SECTION -->
+          <section class="nano-categories">
+            <div class="section-header">
+              <span class="header-tag">BROWSE BY</span>
+              <h2>Categories</h2>
+            </div>
+            <div class="category-grid">
+              <div class="category-card" onclick="appState.selectedCategory='electronics'; showView('products-view')()">
+                <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&q=80&w=1000" alt="Electronics">
+                <div class="category-overlay">
+                  <h3>Electronics</h3>
+                  <p>12 Products</p>
+                  <span class="shop-now">Shop Now →</span>
+                </div>
               </div>
+              <div class="category-card" onclick="appState.selectedCategory='clothing'; showView('products-view')()">
+                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&q=80&w=1000" alt="Clothing">
+                <div class="category-overlay">
+                  <h3>Clothing</h3>
+                  <p>8 Products</p>
+                  <span class="shop-now">Shop Now →</span>
+                </div>
+              </div>
+              <div class="category-card" onclick="appState.selectedCategory='accessories'; showView('products-view')()">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=1000" alt="Accessories">
+                <div class="category-overlay">
+                  <h3>Accessories</h3>
+                  <p>15 Products</p>
+                  <span class="shop-now">Shop Now →</span>
+                </div>
+              </div>
+              <div class="category-card" onclick="appState.selectedCategory='footwear'; showView('products-view')()">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1000" alt="Footwear">
+                <div class="category-overlay">
+                  <h3>Footwear</h3>
+                  <p>6 Products</p>
+                  <span class="shop-now">Shop Now →</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- TRENDING SECTION -->
+          <section class="nano-trending">
+            <div class="section-header-inline">
+              <div class="header-left">
+                <span class="header-tag">FEATURED COLLECTION</span>
+                <h2>Trending Now</h2>
+              </div>
+              <button class="view-all-btn" onclick="showView('products-view')()">View All Products →</button>
+            </div>
+            <div id="featured-products" class="products-grid">
+              <!-- Dynamically populated in app.js -->
             </div>
           </section>
         </div>
       </div>
 
       <div id="about-view" class="view about-view" style="display: none">
-        <!-- HERO -->
         <section class="about-hero">
           <div class="about-hero-overlay"></div>
           <div class="about-hero-content">
@@ -233,8 +202,6 @@
             <p>Where design, quality, and technology meet.</p>
           </div>
         </section>
-
-        <!-- STORY -->
         <section class="about-section container">
           <div class="about-story">
             <div class="story-text">
@@ -250,76 +217,15 @@
                 you see is chosen with purpose.
               </p>
             </div>
-
             <div class="story-image">
-              <img
-                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1000"
-                alt="Our workspace"
-              />
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1000" alt="Our workspace" />
             </div>
           </div>
         </section>
-
-        <!-- STATS -->
-        <section class="about-stats">
-          <div class="stats-container">
-            <div class="stat">
-              <h3>10K+</h3>
-              <p>Happy Customers</p>
-            </div>
-            <div class="stat">
-              <h3>500+</h3>
-              <p>Curated Products</p>
-            </div>
-            <div class="stat">
-              <h3>25+</h3>
-              <p>Global Partners</p>
-            </div>
-            <div class="stat">
-              <h3>99%</h3>
-              <p>Satisfaction Rate</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- VALUES -->
-        <section class="about-section container">
-          <h2 class="center">What We Believe In</h2>
-
-          <div class="values-grid">
-            <div class="value-card">
-              <span>🎨</span>
-              <h4>Design First</h4>
-              <p>Beautiful, thoughtful design in everything we deliver.</p>
-            </div>
-
-            <div class="value-card">
-              <span>🌱</span>
-              <h4>Sustainability</h4>
-              <p>Products that respect the planet and future generations.</p>
-            </div>
-
-            <div class="value-card">
-              <span>⚡</span>
-              <h4>Innovation</h4>
-              <p>Powered by modern tech for a seamless experience.</p>
-            </div>
-
-            <div class="value-card">
-              <span>🤝</span>
-              <h4>Trust</h4>
-              <p>Transparency and honesty with every interaction.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- CTA -->
         <section class="about-cta">
           <h2>Join the Cartify Movement</h2>
           <p>Experience premium shopping made simple.</p>
-          <button class="btn-primary" onclick="showView('products-view')()">
-            Explore Products
-          </button>
+          <button class="btn-primary" onclick="showView('products-view')()">Explore Products</button>
         </section>
       </div>
 
@@ -328,9 +234,7 @@
           <div class="content-section">
             <div class="section-header">
               <h2>Get in Touch</h2>
-              <p class="subtitle">
-                We're here to help you with anything you need.
-              </p>
+              <p class="subtitle">We're here to help you with anything you need.</p>
             </div>
             <div class="contact-grid">
               <div class="contact-info">
@@ -341,62 +245,22 @@
                     <p style="color: var(--text-muted)">support@cartify.com</p>
                   </div>
                 </div>
-                <div class="contact-info-item">
-                  <div class="contact-icon"></div>
-                  <div>
-                    <h4 style="margin-bottom: 0.25rem">Call Us</h4>
-                    <p style="color: var(--text-muted)">+1 (555) 000-0000</p>
-                  </div>
-                </div>
-                <div class="contact-info-item">
-                  <div class="contact-icon"></div>
-                  <div>
-                    <h4 style="margin-bottom: 0.25rem">Visit Us</h4>
-                    <p style="color: var(--text-muted)">
-                      123 Design District, NY 10001
-                    </p>
-                  </div>
-                </div>
               </div>
               <div class="contact-form-container">
-                <form
-                  class="form"
-                  onsubmit="
-                    event.preventDefault();
-                    alert('Message sent! We\'ll get back to you soon.');
-                    this.reset();
-                  "
-                >
+                <form class="form" onsubmit="event.preventDefault(); alert('Message sent!'); this.reset();">
                   <div class="form-group">
                     <label>Your Name</label>
-                    <input
-                      type="text"
-                      class="form-input"
-                      placeholder="John Doe"
-                      required
-                    />
+                    <input type="text" class="form-input" placeholder="John Doe" required />
                   </div>
                   <div class="form-group">
                     <label>Email Address</label>
-                    <input
-                      type="email"
-                      class="form-input"
-                      placeholder="john@example.com"
-                      required
-                    />
+                    <input type="email" class="form-input" placeholder="john@example.com" required />
                   </div>
                   <div class="form-group">
                     <label>Message</label>
-                    <textarea
-                      class="form-input"
-                      style="min-height: 120px; resize: none"
-                      placeholder="How can we help?"
-                      required
-                    ></textarea>
+                    <textarea class="form-input" style="min-height: 120px;" placeholder="How can we help?" required></textarea>
                   </div>
-                  <button type="submit" class="btn btn-primary btn-full">
-                    Send Message
-                  </button>
+                  <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                 </form>
               </div>
             </div>
@@ -408,48 +272,18 @@
         <div class="container">
           <div class="search-container" style="margin-top: 2rem">
             <div class="search-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="search-icon"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              <input
-                type="text"
-                id="product-search"
-                class="search-input"
-                placeholder="Search for products, categories, or brands..."
-              />
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="product-search" class="search-input" placeholder="Search for products..." />
             </div>
           </div>
-
           <div class="categories" style="margin-top: 2rem">
-            <button class="category-btn active" data-category="all">
-              All Products
-            </button>
-            <button class="category-btn" data-category="Electronics">
-              Electronics
-            </button>
-            <button class="category-btn" data-category="Accessories">
-              Accessories
-            </button>
-            <button class="category-btn" data-category="Home">
-              Home Office
-            </button>
-            <button class="category-btn" data-category="Sports">
-              Sports Gear
-            </button>
+            <button class="category-btn active" data-category="all">All Products</button>
+            <button class="category-btn" data-category="Electronics">Electronics</button>
+            <button class="category-btn" data-category="Accessories">Accessories</button>
+            <button class="category-btn" data-category="Clothing">Clothing</button>
+            <button class="category-btn" data-category="Footwear">Footwear</button>
           </div>
-
-          <div id="products-grid" class="products-grid">
-            <!-- Products will be rendered here -->
-          </div>
+          <div id="products-grid" class="products-grid"></div>
         </div>
       </div>
 
@@ -458,69 +292,18 @@
           <div class="cart-container">
             <div class="section-header">
               <h2>Your Cart</h2>
-              <p class="subtitle">Review your selection before checkout.</p>
             </div>
-
-            <div
-              id="cart-empty"
-              style="text-align: center; padding: 4rem 2rem; display: none"
-            >
-              <div style="font-size: 3rem; margin-bottom: 1rem">🛒</div>
+            <div id="cart-empty" style="text-align: center; padding: 4rem 2rem; display: none">
               <h3>Your cart is empty</h3>
-              <p style="color: var(--text-muted); margin-bottom: 2rem">
-                Looks like you haven't added anything yet.
-              </p>
-              <button
-                class="btn btn-primary"
-                onclick="showView('products-view')()"
-              >
-                Start Shopping
-              </button>
+              <button class="btn btn-primary" onclick="showView('products-view')()">Start Shopping</button>
             </div>
-
-            <div id="cart-items">
-              <!-- Cart items will be rendered here -->
-            </div>
-
+            <div id="cart-items"></div>
             <div id="cart-summary" class="cart-summary" style="display: none">
-              <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 2rem;
-                "
-              >
-                <span
-                  style="
-                    font-size: 1.125rem;
-                    font-weight: 600;
-                    color: var(--text-muted);
-                  "
-                  >Total Amount</span
-                >
+              <div style="display: flex; justify-content: space-between; margin-bottom: 2rem;">
+                <span style="font-weight: 600;">Total</span>
                 <span id="cart-total" class="cart-summary-total">ETB 0.00</span>
               </div>
-              <div
-                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem"
-              >
-                <button
-                  class="btn"
-                  style="
-                    background: var(--bg-main);
-                    border: 1px solid var(--border);
-                  "
-                  onclick="cart.clear()"
-                >
-                  Clear Cart
-                </button>
-                <button
-                  class="btn btn-primary"
-                  onclick="showView('checkout-view')()"
-                >
-                  Checkout Now
-                </button>
-              </div>
+              <button class="btn btn-primary btn-full" onclick="showView('checkout-view')()">Checkout Now</button>
             </div>
           </div>
         </div>
@@ -530,31 +313,11 @@
         <div class="container">
           <div class="section-header">
             <h2>My Wishlist</h2>
-            <p class="subtitle">
-              Your curated collection of premium favorites.
-            </p>
           </div>
-
-          <div
-            id="wishlist-empty"
-            style="text-align: center; padding: 4rem 2rem; display: none"
-          >
-            <div style="font-size: 3rem; margin-bottom: 1rem">✨</div>
+          <div id="wishlist-empty" style="text-align: center; padding: 4rem 2rem; display: none">
             <h3>Your wishlist is empty</h3>
-            <p style="color: var(--text-muted); margin-bottom: 2rem">
-              Save items you love to find them easily later.
-            </p>
-            <button
-              class="btn btn-primary"
-              onclick="showView('products-view')()"
-            >
-              Browse Products
-            </button>
           </div>
-
-          <div id="wishlist-items" class="products-grid">
-            <!-- Wishlist items will be rendered here -->
-          </div>
+          <div id="wishlist-items" class="products-grid"></div>
         </div>
       </div>
 
@@ -563,58 +326,20 @@
           <div class="form-container">
             <div class="section-header">
               <h2>Welcome Back</h2>
-              <p class="subtitle">
-                Enter your credentials to access your account.
-              </p>
+              <p class="subtitle">Enter your credentials to access your account.</p>
             </div>
             <form id="login-form">
               <div class="form-group">
                 <label for="login-email">Email Address</label>
-                <input
-                  type="email"
-                  id="login-email"
-                  class="form-input"
-                  placeholder="name@example.com"
-                  required
-                />
-                <div class="error-message"></div>
+                <input type="email" id="login-email" class="form-input" placeholder="name@example.com" required />
               </div>
               <div class="form-group" style="margin-bottom: 2rem">
                 <label for="login-password">Password</label>
-                <input
-                  type="password"
-                  id="login-password"
-                  class="form-input"
-                  placeholder="••••••••"
-                  required
-                />
-                <div class="error-message"></div>
+                <input type="password" id="login-password" class="form-input" placeholder="••••••••" required />
               </div>
-              <button type="submit" class="btn btn-primary btn-full">
-                Sign In
-              </button>
-              <p
-                style="
-                  margin-top: 2rem;
-                  text-align: center;
-                  color: var(--text-muted);
-                  font-size: 0.875rem;
-                "
-              >
-                Don't have an account?
-                <a
-                  href="#"
-                  onclick="
-                    showView('register-view')();
-                    return false;
-                  "
-                  style="
-                    color: var(--primary);
-                    font-weight: 600;
-                    text-decoration: none;
-                  "
-                  >Create one now</a
-                >
+              <button type="submit" class="btn btn-primary btn-full" style="background: #111827;">Sign In</button>
+              <p style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem;">
+                Don't have an account? <a href="#" onclick="showView('register-view')()" style="color: #10b981; font-weight: 700; text-decoration: none;">Create one</a>
               </p>
             </form>
           </div>
@@ -626,104 +351,34 @@
           <div class="form-container">
             <div class="section-header">
               <h2>Join Cartify</h2>
-              <p class="subtitle">
-                Experience the future of premium retail today.
-              </p>
+              <p class="subtitle">Experience the future of premium retail today.</p>
             </div>
-            <form
-              id="register-form"
-              action="http://localhost:8000/api/auth/register.php"
-              method="POST"
-              enctype="multipart/form-data"
-            >
+            <form id="register-form" action="http://localhost:8000/api/auth/register.php" method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="reg-username">Username</label>
-                <input
-                  type="text"
-                  id="reg-username"
-                  name="username"
-                  class="form-input"
-                  placeholder="johndoe123"
-                  required
-                />
-                <div class="error-message"></div>
+                <input type="text" id="reg-username" name="username" class="form-input" placeholder="johndoe123" required />
               </div>
               <div class="form-group">
                 <label for="reg-email">Email Address</label>
-                <input
-                  type="email"
-                  id="reg-email"
-                  name="email"
-                  class="form-input"
-                  placeholder="name@example.com"
-                  required
-                />
-                <div class="error-message"></div>
+                <input type="email" id="reg-email" name="email" class="form-input" placeholder="name@example.com" required />
               </div>
               <div class="form-group">
                 <label for="reg-password">Password</label>
-                <input
-                  type="password"
-                  id="reg-password"
-                  name="password"
-                  class="form-input"
-                  placeholder="••••••••"
-                  required
-                />
-                <div class="error-message"></div>
+                <input type="password" id="reg-password" name="password" class="form-input" placeholder="••••••••" required />
               </div>
-              <div class="form-group" style="margin-bottom: 2rem">
-                <label for="reg-confirm-password">Confirm Password</label>
-                <input
-                  type="password"
-                  id="reg-confirm-password"
-                  name="confirm-password"
-                  class="form-input"
-                  placeholder="••••••••"
-                  required
-                />
-                <div class="error-message"></div>
+              <div class="form-group">
+                <label>Profile Picture</label>
+                <div class="file-input-wrapper">
+                  <input type="file" id="user-profile" name="profile-image" class="file-input-hidden" />
+                  <label for="user-profile" class="file-input-label">
+                    <span class="file-btn">Choose File</span>
+                    <span class="file-name">No file chosen</span>
+                  </label>
+                </div>
               </div>
-              <div class="form-group" style="margin-bottom: 2rem">
-                <label for="user-profile">Select profile picture</label>
-                <input
-                  type="file"
-                  id="user-profile"
-                  class="form-input"
-                  name="profile-image"
-                  placeholder="Select your Profile"
-                />
-                <div class="error-message"></div>
-              </div>
-              <button
-                type="submit"
-                name="submit"
-                class="btn btn-primary btn-full"
-              >
-                Create Account
-              </button>
-              <p
-                style="
-                  margin-top: 2rem;
-                  text-align: center;
-                  color: var(--text-muted);
-                  font-size: 0.875rem;
-                "
-              >
-                Already have an account?
-                <a
-                  href="#"
-                  onclick="
-                    showView('login-view')();
-                    return false;
-                  "
-                  style="
-                    color: var(--primary);
-                    font-weight: 600;
-                    text-decoration: none;
-                  "
-                  >Sign in</a
-                >
+              <button type="submit" name="submit" class="btn btn-primary btn-full" style="background: #111827;">Create Account</button>
+              <p style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem;">
+                Already have an account? <a href="#" onclick="showView('login-view')()" style="color: #10b981; font-weight: 700; text-decoration: none;">Sign in</a>
               </p>
             </form>
           </div>
@@ -732,328 +387,95 @@
 
       <div id="checkout-view" class="view" style="display: none">
         <div class="container">
-          <div class="form-container checkout-container">
+          <div class="form-container">
             <div class="section-header">
-              <h2>Complete Your Order</h2>
-              <p class="subtitle">
-                Enter your shipping details to finish your purchase.
-              </p>
+              <h2>Checkout</h2>
+              <p class="subtitle">Complete your order.</p>
             </div>
             <form id="checkout-form">
               <div class="form-group">
-                <label for="checkout-name">Full Name</label>
-                <input
-                  type="text"
-                  id="checkout-name"
-                  class="form-input"
-                  placeholder="John Doe"
-                  required
-                />
-                <div class="error-message"></div>
+                <label>Full Name</label>
+                <input type="text" class="form-input" placeholder="John Doe" required />
               </div>
               <div class="form-group">
-                <label for="checkout-email">Email Address</label>
-                <input
-                  type="email"
-                  id="checkout-email"
-                  class="form-input"
-                  placeholder="name@example.com"
-                  required
-                />
-                <div class="error-message"></div>
+                <label>Address</label>
+                <textarea class="form-input" placeholder="123 Street..." required></textarea>
               </div>
-              <div class="form-group">
-                <label for="checkout-address">Street Address</label>
-                <input
-                  type="text"
-                  id="checkout-address"
-                  class="form-input"
-                  placeholder="123 Main Street"
-                  required
-                />
-                <div class="error-message"></div>
-              </div>
-              <div
-                style="
-                  display: grid;
-                  grid-template-columns: 1fr 1fr;
-                  gap: 1rem;
-                  margin-bottom: 2rem;
-                "
-              >
-                <div class="form-group">
-                  <label for="checkout-city">City</label>
-                  <input
-                    type="text"
-                    id="checkout-city"
-                    class="form-input"
-                    placeholder="New York"
-                    required
-                  />
-                  <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                  <label for="checkout-zip">ZIP Code</label>
-                  <input
-                    type="text"
-                    id="checkout-zip"
-                    class="form-input"
-                    placeholder="12345"
-                    required
-                  />
-                  <div class="error-message"></div>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary btn-full">
-                Place Order
-              </button>
+              <button type="submit" class="btn btn-primary btn-full" style="background: #111827;">Place Order</button>
             </form>
           </div>
         </div>
       </div>
 
-      <!-- Footer -->
+      <!-- GLOBAL FOOTER -->
       <footer class="footer">
         <div class="container">
-          <div class="footer-grid">
-            <div class="footer-col">
-              <div class="footer-logo">
-                <img src="imgs/logo-leaf.png" alt="Cartify Logo" />
-              </div>
-              <p class="footer-desc">
-                Premium products curated for your modern lifestyle. Experience
-                the future of shopping with Cartify.
-              </p>
-              <div class="social-links">
-                <div class="social-icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    style="width: 18px; height: 18px"
-                  >
-                    <path
-                      d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="social-icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    style="width: 18px; height: 18px"
-                  >
-                    <rect
-                      x="2"
-                      y="2"
-                      width="20"
-                      height="20"
-                      rx="5"
-                      ry="5"
-                    ></rect>
-                    <path
-                      d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                    ></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                </div>
-                <div class="social-icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    style="width: 18px; height: 18px"
-                  >
-                    <path
-                      d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            <div class="footer-col">
-              <h4 class="footer-head">Shop</h4>
-              <ul class="footer-links">
-                <li class="footer-link">
-                  <a
-                    href="#"
-                    onclick="
-                      appState.selectedCategory = 'Electronics';
-                      showView('products-view')();
-                      renderProducts('Electronics');
-                      return false;
-                    "
-                    >Electronics</a
-                  >
-                </li>
-                <li class="footer-link">
-                  <a
-                    href="#"
-                    onclick="
-                      appState.selectedCategory = 'Accessories';
-                      showView('products-view')();
-                      renderProducts('Accessories');
-                      return false;
-                    "
-                    >Accessories</a
-                  >
-                </li>
-                <li class="footer-link">
-                  <a
-                    href="#"
-                    onclick="
-                      appState.selectedCategory = 'Home';
-                      showView('products-view')();
-                      renderProducts('Home');
-                      return false;
-                    "
-                    >Home Office</a
-                  >
-                </li>
-                <li class="footer-link">
-                  <a
-                    href="#"
-                    onclick="
-                      appState.selectedCategory = 'Sports';
-                      showView('products-view')();
-                      renderProducts('Sports');
-                      return false;
-                    "
-                    >Sports Gear</a
-                  >
-                </li>
-                <li class="footer-link">
-                  <a
-                    href="#"
-                    onclick="
-                      showView('about-view')();
-                      return false;
-                    "
-                    >Our Story</a
-                  >
-                </li>
-                <li class="footer-link">
-                  <a
-                    href="#"
-                    onclick="
-                      showView('contact-view')();
-                      return false;
-                    "
-                    >Contact Us</a
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <div class="footer-col">
-              <h4 class="footer-head">Customer</h4>
-              <ul class="footer-links">
-                <li class="footer-link">
-                  <a
-                    href="#"
-                    onclick="
-                      showView('login-view')();
-                      return false;
-                    "
-                    >My Account</a
-                  >
-                </li>
-                <li class="footer-link">
-                  <a
-                    href="#"
-                    onclick="
-                      showView('wishlist-view')();
-                      return false;
-                    "
-                    >Wishlist</a
-                  >
-                </li>
-                <li class="footer-link">
-                  <a
-                    href="#"
-                    onclick="
-                      showView('cart-view')();
-                      return false;
-                    "
-                    >My Cart</a
-                  >
-                </li>
-                <li class="footer-link">
-                  <a
-                    href="#"
-                    onclick="
-                      showView('checkout-view')();
-                      return false;
-                    "
-                    >Checkout</a
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <div class="footer-col">
-              <h4 class="footer-head">Stay Updated</h4>
-              <p
-                class="footer-desc"
-                style="font-size: 0.875rem; margin-bottom: 1rem"
-              >
-                Get the latest product drops and exclusive offers.
-              </p>
-              <form
-                class="newsletter-form"
-                onsubmit="
-                  event.preventDefault();
-                  alert('Success! You have joined the Cartify elite.');
-                  this.reset();
-                "
-              >
-                <input
-                  type="email"
-                  class="newsletter-input"
-                  placeholder="Enter email"
-                  required
-                />
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  style="padding: 0.5rem 1rem"
-                >
-                  Join
-                </button>
+          <section class="newsletter-section">
+            <div class="newsletter-content">
+              <h2>Stay Updated</h2>
+              <p>Subscribe for exclusive deals and new arrivals.</p>
+              <form class="newsletter-form" onsubmit="event.preventDefault(); showNotification('Subscribed successfully!')">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn-subscribe">Subscribe →</button>
               </form>
+            </div>
+          </section>
+
+          <div class="footer-grid">
+            <div class="footer-column info">
+              <img src="./imgs/logo.png" alt="Cartify Logo" style="height: 54px; margin-bottom: 1.5rem; object-fit: contain;" />
+              <p class="footer-desc">Where quality meets modern design. Experience the future of shopping with Cartify.</p>
+              <div class="social-links">
+                <a href="#" class="social-icon">FB</a>
+                <a href="#" class="social-icon">TW</a>
+                <a href="#" class="social-icon">IG</a>
+              </div>
+            </div>
+            <div class="footer-column">
+              <h3>Shop</h3>
+              <ul>
+                <li><a href="#" onclick="showView('products-view')()">All Products</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Clothing</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Company</h3>
+              <ul>
+                <li><a href="#" onclick="showView('about-view')()">Our Story</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Support</h3>
+              <ul>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">FAQs</a></li>
+              </ul>
             </div>
           </div>
 
           <div class="footer-bottom">
-            <p>© 2025 Cartify - Group5-secD | Vanilla JavaScript Excellence</p>
-            <div class="footer-legal">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-              <a href="#">Cookies</a>
-            </div>
+            <p>© 2026 Cartify | Premium Excellence</p>
           </div>
         </div>
       </footer>
     </div>
-    <!-- End #app -->
 
-    <!-- Application Scripts (Correct Order) -->
+    <!-- Application Scripts -->
     <script src="js/models.js"></script>
     <script src="js/data.js"></script>
     <script src="js/state.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/app.js"></script>
+    <script>
+      // Update file name in input
+      document.getElementById('user-profile')?.addEventListener('change', function(e) {
+        const fileName = e.target.files[0]?.name || 'No file chosen';
+        const nameDisplay = document.querySelector('.file-name');
+        if (nameDisplay) nameDisplay.textContent = fileName;
+      });
+    </script>
   </body>
 </html>

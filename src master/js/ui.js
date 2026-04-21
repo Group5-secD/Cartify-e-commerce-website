@@ -128,3 +128,17 @@ function showView(viewName) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 }
+
+// Featured Products (Home Page)
+function renderFeaturedProducts() {
+    const container = document.getElementById('featured-products');
+    if (!container) return;
+
+    // Take top 4 products for trending
+    const featured = products.slice(0, 4);
+
+    container.innerHTML = featured.map(p => {
+        const prod = new Product(p.id, p.name, p.price, p.category, p.image, p.description);
+        return prod.displayInfo(wishlist.has(p.id));
+    }).join('');
+}

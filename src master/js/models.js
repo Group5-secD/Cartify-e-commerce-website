@@ -9,20 +9,28 @@ function Product(id, name, price, category, image, description) {
 }
 
 Product.prototype.displayInfo = function (isWishlisted) {
+  const rating = (Math.random() * (5 - 4.2) + 4.2).toFixed(1);
+  const reviews = Math.floor(Math.random() * 500) + 50;
+
   return `
     <div class="product-card" data-id="${this.id}">
         <div class="product-image-container">
+            <span class="badge-new">NEW</span>
             <button class="wishlist-btn ${isWishlisted ? "active" : ""}" onclick="wishlist.toggle(${this.id}, event)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
             </button>
             <img src="${this.image}" alt="${this.name}" class="product-image" />
         </div>
         <div class="product-details">
             <span class="product-category">${this.category}</span>
             <h3 class="product-name">${this.name}</h3>
-            <p class="product-description">${this.description}</p>
+            <div class="product-rating">
+                <span class="star-icon">★</span>
+                <span class="rating-value">${rating}</span>
+                <span class="review-count">(${reviews} reviews)</span>
+            </div>
             <div class="product-footer">
-                <span class="product-price"> ETB ${this.price.toFixed(2)}</span>
+                <span class="product-price">ETB ${this.price.toFixed(2)}</span>
                 <button class="btn-add-to-cart" onclick="cart.add(${this.id})">
                     Add to Cart
                 </button>

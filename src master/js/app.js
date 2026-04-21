@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   cart.load();
   wishlist.load();
   renderProducts();
+  renderFeaturedProducts();
   cart.updateCartBadge();
   showView("home-view")();
 
