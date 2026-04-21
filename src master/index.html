@@ -76,7 +76,7 @@
             <!-- Profile Dropdown (Right Most) -->
             <div id="user-profile-nav" class="profile-dropdown" style="display: none;">
               <div class="profile-trigger" id="profile-trigger">
-                <img id="nav-user-img" src="" alt="" class="nav-user-img">
+                <img id="nav-user-img" src="https://ui-avatars.com/api/?name=User&background=ecfdf5&color=10b981" alt="User" class="nav-user-img" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid #ecfdf5;">
                 <span id="nav-username" class="nav-username"></span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </div>
@@ -353,7 +353,7 @@
               <h2>Join Cartify</h2>
               <p class="subtitle">Experience the future of premium retail today.</p>
             </div>
-            <form id="register-form" action="http://localhost:8000/api/auth/register.php" method="POST" enctype="multipart/form-data">
+            <form id="register-form" action="http://localhost:8000/api/auth/register_api.php" method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="reg-username">Username</label>
                 <input type="text" id="reg-username" name="username" class="form-input" placeholder="johndoe123" required />
@@ -365,6 +365,10 @@
               <div class="form-group">
                 <label for="reg-password">Password</label>
                 <input type="password" id="reg-password" name="password" class="form-input" placeholder="••••••••" required />
+              </div>
+              <div class="form-group">
+                <label for="reg-confirm-password">Confirm Password</label>
+                <input type="password" id="reg-confirm-password" name="confirm-password" class="form-input" placeholder="••••••••" required />
               </div>
               <div class="form-group">
                 <label>Profile Picture</label>
@@ -470,6 +474,45 @@
     <script src="js/ui.js"></script>
     <script src="js/app.js"></script>
     <script>
+      // Handle Registration via AJAX for "Stunning" feedback
+      document.getElementById('register-form')?.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        
+        try {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Creating Account...';
+          
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData
+          });
+          
+          const result = await response.json();
+          
+          if (result.status === 'success') {
+            showNotification('Success! Account created.', 'success');
+            setTimeout(() => {
+              showView('login-view')();
+              form.reset();
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Create Account';
+            }, 1500);
+          } else {
+            showNotification(result.message || 'Registration failed', 'error');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Create Account';
+          }
+        } catch (error) {
+          console.error('Registration Error:', error);
+          showNotification('Server connection error', 'error');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Create Account';
+        }
+      });
+
       // Update file name in input
       document.getElementById('user-profile')?.addEventListener('change', function(e) {
         const fileName = e.target.files[0]?.name || 'No file chosen';

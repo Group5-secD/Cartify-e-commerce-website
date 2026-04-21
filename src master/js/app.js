@@ -211,10 +211,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (navUsername) navUsername.textContent = appState.currentUser.username;
         if (navUserImg) {
           if (appState.currentUser.profilePicture) {
-            navUserImg.src = `${API_BASE_URL}/api/auth/${appState.currentUser.profilePicture}`;
+            const fullImgPath = appState.currentUser.profilePicture.startsWith('http') 
+              ? appState.currentUser.profilePicture 
+              : `${API_BASE_URL}/api/auth/${appState.currentUser.profilePicture}`;
+            navUserImg.src = fullImgPath;
             navUserImg.style.display = "block";
           } else {
-            navUserImg.style.display = "none";
+            navUserImg.src = `https://ui-avatars.com/api/?name=${appState.currentUser.username}&background=ecfdf5&color=10b981`;
+            navUserImg.style.display = "block";
           }
         }
       }
