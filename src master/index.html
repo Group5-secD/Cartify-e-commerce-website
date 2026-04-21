@@ -72,6 +72,20 @@
             <button id="nav-login" class="nav-link">
               <span>Login</span>
             </button>
+
+            <!-- Profile Dropdown (Right Most) -->
+            <div id="user-profile-nav" class="profile-dropdown" style="display: none;">
+              <div class="profile-trigger" id="profile-trigger">
+                <img id="nav-user-img" src="" alt="" class="nav-user-img">
+                <span id="nav-username" class="nav-username"></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+              <div class="dropdown-menu" id="profile-dropdown-menu">
+                <button id="nav-logout" class="dropdown-item">
+                  <span>Logout</span>
+                </button>
+              </div>
+            </div>
           </nav>
         </div>
       </header>

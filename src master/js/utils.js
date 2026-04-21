@@ -27,12 +27,20 @@ function clearAllErrors(...inputIds) {
   inputIds.forEach(clearError);
 }
 
-function showNotification(message) {
+function showNotification(message, type = "success") {
   const notification = document.createElement("div");
-  notification.className = "notification";
+  notification.className = `notification ${type}`;
+
+  const icon =
+    type === "success"
+      ? '<polyline points="20 6 9 17 4 12"></polyline>'
+      : '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>';
+
+  const iconColor = type === "success" ? "var(--primary)" : "#ef4444";
+
   notification.innerHTML = `
         <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: var(--primary);"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="${iconColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">${icon}</svg>
             <span>${message}</span>
         </div>
     `;

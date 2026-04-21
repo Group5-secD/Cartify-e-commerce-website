@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'http://127.0.0.1:8000';
 
 const appState = {
     currentUser: null,
@@ -19,29 +19,39 @@ const cart = {
         const product = products.find(p => p.id === productId);
         if (!product) return;
 
-        const existingItem = this.items.find(item => item.id === productId);
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            this.items.push({ ...product, quantity: 1 });
-        }
-        this.save();
-        this.updateCartBadge();
-
-        // Sync with backend
+        // Sync with backend FIRST to check authorization
         try {
-            await fetch(`${API_BASE_URL}/api/cart/add.php`, {
+            const response = await fetch(`${API_BASE_URL}/api/cart/add.php`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ product_id: productId, quantity: 1 }),
                 credentials: "include"
             });
-        } catch (error) {
-            console.error("Failed to sync cart with backend:", error);
-        }
 
-        if (typeof showNotification === 'function') {
-            showNotification(product.name + ' added to cart!');
+            if (response.status === 401) {
+                showNotification("Please log in to add items to your cart", "error");
+                showView("login-view")();
+                return;
+            }
+
+            if (!response.ok) throw new Error("Backend sync failed");
+
+            // Only update local state if backend succeeds
+            const existingItem = this.items.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                this.items.push({ ...product, quantity: 1 });
+            }
+            this.save();
+            this.updateCartBadge();
+
+            if (typeof showNotification === 'function') {
+                showNotification(product.name + ' added to cart!');
+            }
+        } catch (error) {
+            console.error("Cart sync error:", error);
+            showNotification("Could not connect to server", "error");
         }
     },
     remove(productId) {
@@ -112,5 +122,11 @@ const wishlist = {
         if (saved) {
             this.items = JSON.parse(saved);
         }
+    },
+    clear() {
+        this.items = [];
+        this.save();
+        if (typeof renderProducts === 'function') renderProducts();
+        if (typeof renderWishlist === 'function') renderWishlist();
     }
 };

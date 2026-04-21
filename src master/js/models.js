@@ -33,10 +33,11 @@ Product.prototype.displayInfo = function (isWishlisted) {
 };
 
 // User Constructor
-function User(username, email, password) {
+function User(username, email, password, profilePicture = null) {
   this.username = username;
   this.email = email;
   this.password = password;
+  this.profilePicture = profilePicture;
 }
 
 // Order Constructor

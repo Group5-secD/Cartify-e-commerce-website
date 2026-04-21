@@ -42,19 +42,39 @@ document.addEventListener("DOMContentLoaded", () => {
     "nav-cart": "cart-view",
     "nav-login": "login-view",
     "nav-register": "register-view",
+    "nav-logout": null,
   };
 
-  Object.entries(navMap).forEach(([id, view]) => {
+    Object.entries(navMap).forEach(([id, view]) => {
     const el = document.getElementById(id);
     if (el) {
       el.addEventListener("click", (e) => {
         e.preventDefault();
+        if (id === "nav-logout") {
+          logout();
+          return;
+        }
         showView(view)();
         if (view === "cart-view") renderCart();
         if (view === "wishlist-view") renderWishlist();
       });
     }
   });
+
+  // Profile Dropdown Toggle
+  const profileTrigger = document.getElementById("profile-trigger");
+  const profileMenu = document.getElementById("profile-dropdown-menu");
+
+  if (profileTrigger && profileMenu) {
+    profileTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      profileMenu.classList.toggle("show");
+    });
+
+    document.addEventListener("click", () => {
+      profileMenu.classList.remove("show");
+    });
+  }
 
   // Register Form
   const registerForm = document.getElementById("register-form");
@@ -91,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
           appState.currentUser = new User(username, email, password);
           showNotification(`Welcome, ${username}! Registration successful.`);
           showView("products-view")();
+          updateAuthUI();
           registerForm.reset();
           window.location.href = "index.html#products-view";
         } else {
@@ -129,9 +150,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const result = await response.json();
 
         if (result.status === "success") {
-          appState.currentUser = new User("User", email, ""); // Password omitted for security
-          showNotification(`Welcome! Login successful.`);
+          appState.currentUser = new User(
+            result.username || "User",
+            email,
+            "",
+            result.profile_picture,
+          );
+          showNotification(`Welcome, ${result.username}! Login successful.`);
           showView("products-view")();
+          updateAuthUI();
           loginForm.reset();
           window.location.href = "index.html#products-view";
         } else {
@@ -151,11 +178,69 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const result = await response.json();
       if (result.logged_in) {
-        appState.currentUser = new User(result.username || "User", "", "");
+        appState.currentUser = new User(
+          result.username || "User",
+          "",
+          "",
+          result.profile_picture,
+        );
         console.log("Session active:", result.username);
       }
+      updateAuthUI();
     } catch (error) {
       console.error("Session check failed:", error);
+    }
+  }
+
+  function updateAuthUI() {
+    const loginBtn = document.getElementById("nav-login");
+    const logoutBtn = document.getElementById("nav-logout");
+    const registerNav = document.getElementById("nav-register");
+    const profileNav = document.getElementById("user-profile-nav");
+    const navUsername = document.getElementById("nav-username");
+    const navUserImg = document.getElementById("nav-user-img");
+
+    if (appState.currentUser) {
+      if (loginBtn) loginBtn.style.display = "none";
+      if (registerNav) registerNav.style.display = "none";
+      if (logoutBtn) logoutBtn.style.display = "block";
+      if (profileNav) {
+        profileNav.style.display = "flex";
+        profileNav.style.alignItems = "center";
+        if (navUsername) navUsername.textContent = appState.currentUser.username;
+        if (navUserImg) {
+          if (appState.currentUser.profilePicture) {
+            navUserImg.src = `${API_BASE_URL}/api/auth/${appState.currentUser.profilePicture}`;
+            navUserImg.style.display = "block";
+          } else {
+            navUserImg.style.display = "none";
+          }
+        }
+      }
+    } else {
+      if (loginBtn) loginBtn.style.display = "block";
+      if (registerNav) registerNav.style.display = "block";
+      if (logoutBtn) logoutBtn.style.display = "none";
+      if (profileNav) profileNav.style.display = "none";
+    }
+  }
+
+  async function logout() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/auth/logout.php`, {
+        credentials: "include",
+      });
+      const result = await response.json();
+      if (result.status === "success") {
+        appState.currentUser = null;
+        cart.clear();
+        wishlist.clear();
+        showNotification("Logged out successfully");
+        updateAuthUI();
+        showView("home-view")();
+      }
+    } catch (error) {
+      console.error("Logout failed:", error);
     }
   }
 
