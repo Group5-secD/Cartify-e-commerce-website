@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartify | Admin Dashboard</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/admin.css">
+  
+  <!-- Icons (Phosphor Icons or FontAwesome for modern look) -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+  <!-- App Wrapper -->
+  <div class="admin-wrapper">
+    
+    <!-- Login Overlay -->
+    <div id="login-overlay" class="login-overlay">
+      <div class="login-card" style="padding: 2.5rem; max-width: 450px;">
+        <div class="login-header" style="margin-bottom: 2rem;">
+          <img src="imgs/logo.png" alt="Cartify" style="width: 64px; height: auto; border-radius: 50%; margin-bottom: 1rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 700; color: #111827;">Admin Access</h2>
+          <p style="color: #6b7280; font-size: 0.95rem; margin-top: 0.5rem;">Enter your admin credentials to continue.</p>
+        </div>
+        <form id="admin-login-form">
+          <div class="form-group" style="text-align: left;">
+            <label for="email" style="font-weight: 600; color: #374151;">Email Address</label>
+            <input type="email" id="email" required placeholder="admin@cartify.com" style="padding: 0.75rem 1rem; border-radius: 8px;">
+          </div>
+          <div class="form-group" style="text-align: left; margin-bottom: 1.5rem;">
+            <label for="password" style="font-weight: 600; color: #374151;">Password</label>
+            <input type="password" id="password" required placeholder="••••••••" style="padding: 0.75rem 1rem; border-radius: 8px;">
+          </div>
+          <button type="submit" class="btn-primary" style="background: #111827; border-radius: 8px; padding: 0.8rem; font-weight: 600;">Sign In to Dashboard</button>
+          <div id="login-error" class="error-msg"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Main Dashboard Application (Hidden until logged in) -->
+    <div id="app-container" class="app-container hidden">
+      
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="logo">
+            <img src="imgs/logo.png" alt="Cartify" style="width: 45px; height: auto; border-radius: 50%;">
+          </div>
+          <nav class="nav-links">
+            <a href="#" class="nav-item active" data-view="dashboard" title="Dashboard">
+              <i class="ph ph-squares-four"></i>
+            </a>
+            <a href="#" class="nav-item" data-view="orders" title="Orders">
+              <i class="ph ph-shopping-bag"></i>
+            </a>
+            <a href="#" class="nav-item" data-view="categories" title="Categories">
+              <i class="ph ph-list-dashes"></i>
+            </a>
+            <a href="#" class="nav-item" data-view="users" title="Users">
+              <i class="ph ph-users"></i>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-bottom">
+          <a href="#" class="nav-item" id="logout-btn" title="Logout">
+            <i class="ph ph-sign-out"></i>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <h1 class="brand-title">Cartify <span class="fw-light">Admin</span></h1>
+          </div>
+          <nav class="topbar-nav">
+            <a href="#" class="top-link active" data-view="dashboard">Dashboard</a>
+            <a href="#" class="top-link" data-view="orders">Orders</a>
+            <a href="#" class="top-link" data-view="categories">Categories</a>
+            <a href="#" class="top-link" data-view="users">Users</a>
+          </nav>
+          <div class="topbar-right">
+            <button class="icon-btn"><i class="ph ph-magnifying-glass"></i></button>
+            <div class="notification-dropdown" id="notification-dropdown-container" style="position: relative; display: inline-block;">
+              <button class="icon-btn" onclick="toggleNotifications()" id="nav-notification-btn" style="position: relative;">
+                <i class="ph ph-bell"></i>
+                <span id="notification-badge" class="notif-badge" style="display: none; background: #ef4444; color: white; position: absolute; top: -5px; right: -5px; font-size: 0.6rem; padding: 2px 5px; border-radius: 10px;">0</span>
+              </button>
+              <div id="notification-menu" class="dropdown-menu" style="display: none; position: absolute; right: 0; top: 100%; width: 300px; background: white; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-radius: 8px; z-index: 100; max-height: 400px; overflow-y: auto; border: 1px solid #e5e7eb;">
+                <div class="dropdown-header" style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600;">Notifications</div>
+                <div id="notification-list" style="padding: 0;">
+                  <div style="padding: 1rem; text-align: center; color: #6b7280; font-size: 0.875rem;">No new notifications</div>
+                </div>
+              </div>
+            </div>
+            <div class="user-profile">
+              <img src="https://ui-avatars.com/api/?name=Admin&background=0a8247&color=fff" alt="Admin" class="avatar">
+            </div>
+          </div>
+        </header>
+
+        <!-- Views Container -->
+        <div class="views-wrapper">
+          
+          <!-- View: Dashboard -->
+          <div id="view-dashboard" class="view-section active">
+            <div class="view-header">
+              <h2>Welcome Back, <span id="admin-name">Admin</span></h2>
+              <div class="header-actions">
+                <button class="btn-secondary"><i class="ph ph-calendar"></i> This Month</button>
+              </div>
+            </div>
+            
+            <div class="stats-grid mb-4">
+              <!-- Cards will be populated by JS -->
+            </div>
+
+            <div class="view-header" style="margin-top: 2rem;">
+              <h2>All Products</h2>
+            </div>
+            <div class="card-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Vendor</th>
+                    <th>Stock</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="products-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- View: Orders -->
+          <div id="view-orders" class="view-section hidden">
+            <div class="view-header">
+              <h2>Orders</h2>
+            </div>
+            <div class="card-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- View: Categories -->
+          <div id="view-categories" class="view-section hidden">
+            <div class="view-header">
+              <h2>Categories</h2>
+              <button class="btn-primary" id="btn-add-category">+ Add Category</button>
+            </div>
+            <div id="add-category-form" class="hidden mb-4 p-4 border-rounded bg-light">
+              <div style="display: flex; gap: 1rem; align-items: flex-end;">
+                <div class="form-group" style="margin: 0;">
+                  <label for="new-category-name">Category Name</label>
+                  <input type="text" id="new-category-name" placeholder="E.g. Electronics">
+                </div>
+                <button id="submit-category" class="btn-primary">Save</button>
+                <button id="cancel-category" class="btn-secondary">Cancel</button>
+              </div>
+            </div>
+            <div class="card-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="categories-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- View: Users -->
+          <div id="view-users" class="view-section hidden">
+            <div class="view-header">
+              <h2>Users & Vendors</h2>
+            </div>
+            <div class="card-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="users-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+  <script src="js/notifications.js"></script>
+</body>
+</html>

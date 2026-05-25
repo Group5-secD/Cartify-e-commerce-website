@@ -1,65 +1,154 @@
 /* Header base */
 .header {
-  background-color: var(--bg-glass);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid var(--border);
-  padding: 0.75rem 0;
-  position: sticky;
+  background: transparent;
+  padding: 0.5rem 1.5rem;
+  width: 100%;
+  position: fixed;
   top: 0;
   z-index: 1000;
+  border-bottom: none;
   transition: all 0.3s ease;
 }
 
+[data-theme="dark"] .header {
+  background: transparent;
+  border-bottom: none;
+}
+
+/* Scrolled style with glassmorphism */
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0.4rem 1.5rem;
+}
+
+body.dark-theme .header.scrolled,
+[data-theme="dark"] .header.scrolled {
+  background: rgba(15, 23, 42, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .header-content {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* Logo */
 .logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  color: var(--primary);
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #059669;
+  text-decoration: none;
+  min-width: 150px;
 }
-.logo-image {
-  height: 40px;
-  width: 90px;
+
+.logo-text-admin {
+  font-weight: 400;
+  color: #10b981;
 }
 
 /* Navigation (desktop default) */
 .nav {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  gap: 0.5rem;
+  gap: 0.25rem;
   align-items: center;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 50px;
+  padding: 0.3rem 0.5rem;
 }
+
+[data-theme="dark"] .nav {
+  background: #1e293b;
+  border-color: #334155;
+}
+
 .nav-link {
   background: transparent;
   border: none;
-  color: var(--text-muted);
-  font-size: 0.875rem;
-  font-weight: 600;
+  color: #4b5563;
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: relative;
   cursor: pointer;
-  padding: 0.5rem 0.875rem;
-  border-radius: var(--radius-md);
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-family: inherit;
 }
-.nav-link:hover {
-  color: var(--text-main);
-  background-color: rgba(0, 0, 0, 0.05);
+
+[data-theme="dark"] .nav-link {
+  color: #94a3b8;
 }
+
+.nav-link:hover {
+  color: #111827;
+  background-color: #f3f4f6;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #f8fafc;
+  background-color: #334155;
+}
+
 .nav-link.active {
-  color: var(--primary);
-  background-color: rgba(16, 185, 129, 0.1);
+  color: #111827;
+  background-color: #f1f5f9;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .nav-link.active {
+  color: #f8fafc;
+  background-color: #475569;
+}
+
+/* Icons Section */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.header-icon-btn {
+  background: transparent;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.header-icon-btn:hover {
+  color: #111827;
+}
+
+[data-theme="dark"] .header-icon-btn {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .header-icon-btn:hover {
+  color: #f8fafc;
 }
 
 /* Cart badge */
@@ -68,14 +157,20 @@
   color: white;
   font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.125rem 0.375rem;
+  position: absolute;
+  top: -2px;
+  right: -5px;
   border-radius: var(--radius-full);
   min-width: 1.125rem;
   height: 1.125rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 2px var(--bg-card);
+  box-shadow: 0 0 0 2px #ffffff;
+}
+
+[data-theme="dark"] .cart-badge {
+  box-shadow: 0 0 0 2px #1e293b;
 }
 
 /* Hamburger button */
@@ -86,10 +181,11 @@
   width: 24px;
   height: 18px;
   cursor: pointer;
+  margin-left: 1rem;
 }
 .hamburger span {
   display: block;
-  height: 3px;
+  height: 2px;
   width: 100%;
   background: var(--text-main);
   border-radius: 2px;
@@ -107,6 +203,8 @@
     position: absolute;
     top: 100%;
     right: 0;
+    left: auto;
+    transform: none;
     width: 200px;
     padding: 1rem;
     border-radius: var(--radius-md);
@@ -165,7 +263,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

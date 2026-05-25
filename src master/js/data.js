@@ -13,4 +13,6 @@ const products = [
     new Product(13, 'Bluetooth Speaker', 1059.99, 'Electronics', 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400', 'Portable with powerful bass'),
     new Product(14, 'SLOVIC Dumbbells Set', 3029.99, 'Sports', 'https://i.pinimg.com/736x/61/22/cb/6122cb2e189778ef56f9a77aa6eddbcf.jpg', 'Durable dumbbells set designed for home workouts and strength training.'),
     new Product(15, 'stainless steel silver men rings', 549.99, 'Accessories', 'https://i.pinimg.com/1200x/25/ab/5c/25ab5cfb89dc69f2f8a85c121fc0ba13.jpg', 'Stylish stainless steel ring designed for everyday men’s fashion.'),
+    new Product(16, 'Yeezy Boost 700 Wave Runner', 12500.00, 'Footwear', 'imgs/yeezy_700.jpg', 'Adidas Yeezy Boost 700 Wave Runner sneakers with premium design and comfortable cushioning.'),
+    new Product(17, 'Puma RS-X Blue Grey', 8900.00, 'Footwear', 'imgs/puma_rsx.png', 'Puma RS-X Blue and Grey retro-style runner sneakers featuring comfortable support and style.'),
 ];

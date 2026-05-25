@@ -8,6 +8,41 @@ document.addEventListener("DOMContentLoaded", () => {
   cart.updateCartBadge();
   showView("home-view")();
 
+  // Theme Logic
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  };
+  
+  if (getCookie("theme") === "dark") {
+    document.body.classList.add("dark-theme");
+    if (themeIcon) themeIcon.textContent = "☀️";
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-theme");
+      const isDark = document.body.classList.contains("dark-theme");
+      document.cookie = `theme=${isDark ? "dark" : "light"}; max-age=31536000; path=/`;
+      if (themeIcon) themeIcon.textContent = isDark ? "☀️" : "🌙";
+    });
+  }
+
+  // Sticky Header Scroll Logic
+  const headerEl = document.querySelector(".header");
+  if (headerEl) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) {
+        headerEl.classList.add("scrolled");
+      } else {
+        headerEl.classList.remove("scrolled");
+      }
+    });
+  }
+
   // 2. Attach Global Event Listeners
 
   //search functionality
@@ -18,20 +53,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Category Filtering
-  document.querySelectorAll(".category-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const category = e.target.getAttribute("data-category") || "all";
-      appState.selectedCategory = category;
+  // Category Fetching & Filtering
+  const loadCategories = async () => {
+    try {
+      const res = await fetch("http://localhost:8000/api/categories");
+      const data = await res.json();
+      
+      const filterContainer = document.getElementById("store-category-filters");
+      const vendorSelect = document.getElementById("prod-category");
+      
+      if (data && Array.isArray(data)) {
+        // Add dynamic filters
+        if (filterContainer) {
+          data.forEach(c => {
+            const btn = document.createElement("button");
+            btn.className = "category-btn";
+            btn.setAttribute("data-category", c.categoryname);
+            btn.textContent = c.categoryname;
+            filterContainer.appendChild(btn);
+          });
+        }
+        // Populate vendor select
+        if (vendorSelect) {
+          vendorSelect.innerHTML = data.map(c => `<option value="${c.categoryID}">${c.categoryname}</option>`).join("");
+        }
+      }
+      
+      // Bind event listeners for category filters
+      document.querySelectorAll(".category-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const category = e.target.getAttribute("data-category") || "all";
+          appState.selectedCategory = category;
 
-      document
-        .querySelectorAll(".category-btn")
-        .forEach((b) => b.classList.remove("active"));
-      e.target.classList.add("active");
+          document
+            .querySelectorAll(".category-btn")
+            .forEach((b) => b.classList.remove("active"));
+          e.target.classList.add("active");
 
-      renderProducts(category, searchInput?.value);
-    });
-  });
+          renderProducts(category, document.getElementById("product-search")?.value);
+        });
+      });
+    } catch (err) {
+      console.error("Failed to load categories:", err);
+    }
+  };
+  loadCategories();
 
   // Navigation Mapping
   const navMap = {
@@ -41,6 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "nav-about": "about-view",
     "nav-contact": "contact-view",
     "nav-cart": "cart-view",
+    "nav-vendor-dashboard": "vendor-dashboard-view",
+    "nav-vendor-products": "vendor-products-view",
+    "nav-vendor-orders": "vendor-orders-view",
     "nav-login": "login-view",
     "nav-register": "register-view",
     "nav-logout": null,
@@ -85,9 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const username = document.getElementById("reg-username").value;
       const email = document.getElementById("reg-email").value;
-      const password = document.getElementById("reg-password").value;
 
       const formData = new FormData(registerForm);
+      const submitBtn = registerForm.querySelector('button[type="submit"]');
 
       clearAllErrors(
         "reg-username",
@@ -96,8 +165,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "reg-confirm-password",
       );
 
-      // Sending form data
       try {
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Creating Account...';
+        }
+
         const response = await fetch(
           `${API_BASE_URL}/api/auth/register_api.php`,
           {
@@ -109,21 +182,35 @@ document.addEventListener("DOMContentLoaded", () => {
         const result = await response.json();
 
         if (result.status === "success") {
-          appState.currentUser = new User(username, email, password);
-          showNotification(`Welcome, ${username}! Registration successful.`);
-          showView("products-view")();
-          updateAuthUI();
-          registerForm.reset();
-          window.location.href = "index.html#products-view";
+          showNotification('Success! Account created.', 'success');
+          setTimeout(() => {
+            showView('login-view')();
+            registerForm.reset();
+            const nameDisplay = document.querySelector('.file-name');
+            if (nameDisplay) nameDisplay.textContent = 'No file chosen';
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Create Account';
+            }
+          }, 1500);
         } else {
           if (result.field) {
             showError(result.field, result.message);
           } else {
-            alert(result.message);
+            showNotification(result.message || "Registration failed", "error");
+          }
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Create Account';
           }
         }
       } catch (error) {
-        console.log(error);
+        console.error("Registration error:", error);
+        showNotification("Server connection error", "error");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Create Account';
+        }
       }
     });
   }
@@ -135,6 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const email = document.getElementById("login-email").value;
       const password = document.getElementById("login-password").value;
+      const remember_me = document.getElementById("login-remember") ? document.getElementById("login-remember").checked : false;
 
       clearAllErrors("login-email", "login-password");
 
@@ -144,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const response = await fetch(`${API_BASE_URL}/api/auth/login.php`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify({ email, password, remember_me }),
           credentials: "include",
         });
 
@@ -156,12 +244,21 @@ document.addEventListener("DOMContentLoaded", () => {
             email,
             "",
             result.profile_picture,
+            result.role || "customer",
+            result.business_name || null
           );
+          
+          await cart.syncToBackend();
+          
           showNotification(`Welcome, ${result.username}! Login successful.`);
-          showView("products-view")();
+          if (result.role === 'vendor') {
+            showView("vendor-dashboard-view")();
+          } else {
+            showView("products-view")();
+          }
           updateAuthUI();
           loginForm.reset();
-          window.location.href = "index.html#products-view";
+          window.location.href = result.role === 'vendor' ? "index.html#vendor-dashboard-view" : "index.html#products-view";
         } else {
           showNotification(result.message || "Login failed", "error");
         }
@@ -184,12 +281,18 @@ document.addEventListener("DOMContentLoaded", () => {
           "",
           "",
           result.profile_picture,
+          result.role || "customer",
+          result.business_name || null
         );
         console.log("Session active:", result.username);
+      } else {
+        appState.currentUser = null;
       }
       updateAuthUI();
     } catch (error) {
       console.error("Session check failed:", error);
+      appState.currentUser = null;
+      updateAuthUI();
     }
   }
 
@@ -201,32 +304,89 @@ document.addEventListener("DOMContentLoaded", () => {
     const navUsername = document.getElementById("nav-username");
     const navUserImg = document.getElementById("nav-user-img");
 
+    // Vendor and Customer Navigation Links
+    const wishlistNav = document.getElementById("nav-wishlist");
+    const cartNav = document.getElementById("nav-cart");
+    const cartIcon = document.getElementById("nav-cart-icon");
+    const vendorDashboardNav = document.getElementById("nav-vendor-dashboard");
+    const vendorProductsNav = document.getElementById("nav-vendor-products");
+    const vendorOrdersNav = document.getElementById("nav-vendor-orders");
+    const customerOrdersNav = document.getElementById("nav-customer-orders");
+    const notifContainer = document.getElementById("notification-dropdown-container");
+
     if (appState.currentUser) {
+      if (typeof fetchNotifications === 'function') fetchNotifications();
       if (loginBtn) loginBtn.style.display = "none";
       if (registerNav) registerNav.style.display = "none";
       if (logoutBtn) logoutBtn.style.display = "block";
       if (profileNav) {
         profileNav.style.display = "flex";
         profileNav.style.alignItems = "center";
+        
+        const dropdownUsername = document.getElementById("dropdown-username");
+        const dropdownRole = document.getElementById("dropdown-role");
+        const dropdownUserImg = document.getElementById("dropdown-user-img");
+
         if (navUsername) navUsername.textContent = appState.currentUser.username;
-        if (navUserImg) {
+        if (dropdownUsername) dropdownUsername.textContent = appState.currentUser.username;
+        if (dropdownRole) dropdownRole.textContent = appState.currentUser.role || 'customer';
+
+        if (navUserImg || dropdownUserImg) {
+          let imgSrc;
           if (appState.currentUser.profilePicture) {
-            const fullImgPath = appState.currentUser.profilePicture.startsWith('http') 
+            imgSrc = appState.currentUser.profilePicture.startsWith('http') 
               ? appState.currentUser.profilePicture 
               : `${API_BASE_URL}/api/auth/${appState.currentUser.profilePicture}`;
-            navUserImg.src = fullImgPath;
-            navUserImg.style.display = "block";
           } else {
-            navUserImg.src = `https://ui-avatars.com/api/?name=${appState.currentUser.username}&background=ecfdf5&color=10b981`;
+            imgSrc = `https://ui-avatars.com/api/?name=${appState.currentUser.username}&background=ecfdf5&color=10b981`;
+          }
+          
+          if (navUserImg) {
+            navUserImg.src = imgSrc;
             navUserImg.style.display = "block";
           }
+          if (dropdownUserImg) {
+            dropdownUserImg.src = imgSrc;
+            dropdownUserImg.style.display = "block";
+          }
         }
+      }
+
+      // Toggle role-based links
+      if (appState.currentUser.role === 'vendor') {
+        if (wishlistNav) wishlistNav.style.display = "none";
+        if (cartNav) cartNav.style.display = "none";
+        if (cartIcon) cartIcon.style.display = "none";
+        if (customerOrdersNav) customerOrdersNav.style.display = "none";
+        if (vendorDashboardNav) vendorDashboardNav.style.display = "block";
+        if (vendorProductsNav) vendorProductsNav.style.display = "block";
+        if (vendorOrdersNav) vendorOrdersNav.style.display = "block";
+        if (notifContainer) notifContainer.style.display = "inline-block";
+      } else if (appState.currentUser.role === 'admin') {
+        if (notifContainer) notifContainer.style.display = "inline-block";
+      } else {
+        if (wishlistNav) wishlistNav.style.display = "block";
+        if (cartNav) cartNav.style.display = "block";
+        if (cartIcon) cartIcon.style.display = "block";
+        if (customerOrdersNav) customerOrdersNav.style.display = "block";
+        if (vendorDashboardNav) vendorDashboardNav.style.display = "none";
+        if (vendorProductsNav) vendorProductsNav.style.display = "none";
+        if (vendorOrdersNav) vendorOrdersNav.style.display = "none";
+        if (notifContainer) notifContainer.style.display = "none";
       }
     } else {
       if (loginBtn) loginBtn.style.display = "block";
       if (registerNav) registerNav.style.display = "block";
       if (logoutBtn) logoutBtn.style.display = "none";
       if (profileNav) profileNav.style.display = "none";
+
+      // Default guest links
+      if (wishlistNav) wishlistNav.style.display = "block";
+      if (cartNav) cartNav.style.display = "block";
+      if (cartIcon) cartIcon.style.display = "block";
+      if (vendorDashboardNav) vendorDashboardNav.style.display = "none";
+      if (vendorProductsNav) vendorProductsNav.style.display = "none";
+      if (vendorOrdersNav) vendorOrdersNav.style.display = "none";
     }
   }
 
@@ -252,24 +412,117 @@ document.addEventListener("DOMContentLoaded", () => {
   // Checkout Form
   const checkoutForm = document.getElementById("checkout-form");
   if (checkoutForm) {
-    checkoutForm.addEventListener("submit", (e) => {
+    checkoutForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if (cart.items.length === 0) return alert("Your cart is empty!");
+      if (cart.items.length === 0) return showNotification("Your cart is empty!", "error");
 
-      const formData = {
-        fullName: document.getElementById("checkout-name").value,
-        email: document.getElementById("checkout-email").value,
-        city: document.getElementById("checkout-city").value,
-      };
+      const streetAddress = document.getElementById("checkout-address").value;
+      const city = document.getElementById("checkout-city").value;
+      const zipCode = document.getElementById("checkout-zip").value;
+      const totalAmount = cart.total;
+      const paymentMethodRadio = checkoutForm.querySelector('input[name="payment-method"]:checked');
+      const paymentMethod = paymentMethodRadio ? paymentMethodRadio.value : 'chapa';
+      
+      const btn = checkoutForm.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      
+      if (paymentMethod === 'paypal') {
+        btn.textContent = "Redirecting to PayPal...";
+      } else {
+        btn.textContent = "Redirecting to " + (paymentMethod === 'cbe' ? "CBE" : paymentMethod === 'telebirr' ? "Telebirr" : "Chapa") + "...";
+      }
+      
+      btn.disabled = true;
 
-      const order = new Order(cart.items, formData);
-      appState.orders.push(order);
-      cart.clear();
-      showNotification("Order placed successfully! Order ID: #" + order.id);
-      showView("products-view")();
-      checkoutForm.reset();
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/checkout/init`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ streetAddress, city, zipCode, totalAmount, paymentMethod }),
+          credentials: "include"
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.checkout_url) {
+            window.location.href = data.checkout_url;
+        } else {
+            showNotification(data.error || "Checkout failed", "error");
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
+      } catch (err) {
+          console.error("Checkout error:", err);
+          showNotification("Could not connect to payment gateway", "error");
+          btn.textContent = originalText;
+          btn.disabled = false;
+      }
     });
   }
+
+  // Vendor Add Product Form Submission
+  const addProductForm = document.getElementById("add-product-form");
+  if (addProductForm) {
+    addProductForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById("prod-name").value;
+      const price = parseFloat(document.getElementById("prod-price").value);
+      const category_id = parseInt(document.getElementById("prod-category").value);
+      const description = document.getElementById("prod-desc").value;
+      const image_url = document.getElementById("prod-image").value;
+      const stockQuantity = parseInt(document.getElementById("prod-stock").value) || 0;
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/vendor/products`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, price, category_id, description, image_url, stockQuantity }),
+          credentials: "include"
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+          showNotification("Product published successfully!");
+          toggleAddProductForm();
+          addProductForm.reset();
+          renderVendorProducts();
+        } else {
+          showNotification(result.error || "Could not publish product", "error");
+        }
+      } catch (error) {
+        console.error("Add product error:", error);
+        showNotification("Server connection error", "error");
+      }
+    });
+  }
+
+  // Global delete product function
+  window.deleteVendorProduct = async function(productId) {
+    if (!confirm("Are you sure you want to delete this product?")) return;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/vendor/products/delete`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ product_id: productId }),
+        credentials: "include"
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        showNotification("Product deleted successfully");
+        renderVendorProducts();
+      } else {
+        showNotification(result.error || "Could not delete product", "error");
+      }
+    } catch (error) {
+      console.error("Delete product error:", error);
+      showNotification("Server connection error", "error");
+    }
+  };
 
   console.log("=== CARTIFY 2.0 LOCAL INITIALIZED ===");
 });

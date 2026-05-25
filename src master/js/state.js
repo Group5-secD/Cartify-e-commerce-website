@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://127.0.0.1:8000';
+const API_BASE_URL = `http://${window.location.hostname}:8000`;
 
 const appState = {
     currentUser: null,
@@ -16,8 +16,44 @@ const cart = {
         return this.items.reduce((count, item) => count + item.quantity, 0);
     },
     async add(productId) {
-        const product = products.find(p => p.id === productId);
+        let product = null;
+        if (window.apiProducts) {
+            const p = window.apiProducts.find(item => item.productID == productId);
+            if (p) {
+                product = {
+                    id: p.productID,
+                    name: p.productName,
+                    price: parseFloat(p.price),
+                    category: p.categoryname || p.categoryName,
+                    image: p.image_url || p.imageUrl,
+                    description: p.productDescription,
+                    stockQuantity: p.stockQuantity
+                };
+            }
+        }
+        if (!product && typeof products !== 'undefined') {
+            product = products.find(p => p.id == productId);
+        }
         if (!product) return;
+
+        if (!appState.currentUser) {
+            // Guest mode: save to local cart
+            const existingItem = this.items.find(item => item.id === productId);
+            const newQuantity = existingItem ? existingItem.quantity + 1 : 1;
+            
+            if (product.stockQuantity !== undefined && newQuantity > product.stockQuantity) {
+                if (typeof showNotification === 'function') showNotification('Cannot add more than available stock', 'error');
+                return;
+            }
+
+            if (existingItem) existingItem.quantity = newQuantity;
+            else this.items.push({ ...product, quantity: 1 });
+            
+            this.save();
+            this.updateCartBadge();
+            if (typeof showNotification === 'function') showNotification(product.name + ' added to cart!');
+            return;
+        }
 
         // Sync with backend FIRST to check authorization
         try {
@@ -54,6 +90,53 @@ const cart = {
             showNotification("Could not connect to server", "error");
         }
     },
+    async syncToBackend() {
+        if (!this.items.length) {
+            return this.fetchFromBackend();
+        }
+        try {
+            const payload = this.items.map(i => ({ product_id: i.id, quantity: i.quantity }));
+            const response = await fetch(`${API_BASE_URL}/api/cart/sync.php`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ items: payload }),
+                credentials: "include"
+            });
+            if (response.ok) {
+                const data = await response.json();
+                this.loadFromBackendData(data.cart);
+            }
+        } catch (error) {
+            console.error("Cart sync error:", error);
+        }
+    },
+    async fetchFromBackend() {
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/cart/get.php`, {
+                credentials: "include"
+            });
+            if (response.ok) {
+                const data = await response.json();
+                this.loadFromBackendData(data.cart);
+            }
+        } catch (error) {
+            console.error("Cart fetch error:", error);
+        }
+    },
+    loadFromBackendData(dbCart) {
+        if (!dbCart) return;
+        this.items = dbCart.map(p => ({
+            id: p.productID,
+            name: p.productName,
+            price: parseFloat(p.price),
+            category: p.categoryname,
+            image: p.image_url,
+            quantity: parseInt(p.quantity)
+        }));
+        this.save();
+        this.updateCartBadge();
+        if (typeof renderCart === 'function') renderCart();
+    },
     remove(productId) {
         this.items = this.items.filter(item => item.id !== productId);
         this.save();
@@ -89,11 +172,11 @@ const cart = {
         }
     },
     updateCartBadge() {
-        const badge = document.getElementById('cart-badge');
-        if (badge) {
+        const badges = document.querySelectorAll('.cart-badge');
+        badges.forEach(badge => {
             badge.textContent = this.itemCount;
             badge.style.display = this.itemCount > 0 ? 'flex' : 'none';
-        }
+        });
     }
 };
 
@@ -107,7 +190,23 @@ const wishlist = {
         if (this.has(productId)) {
             this.items = this.items.filter(item => item.id !== productId);
         } else {
-            const product = products.find(p => p.id === productId);
+            let product = null;
+            if (window.apiProducts) {
+                const p = window.apiProducts.find(item => item.productID == productId);
+                if (p) {
+                    product = {
+                        id: p.productID,
+                        name: p.productName,
+                        price: parseFloat(p.price),
+                        category: p.categoryname || p.categoryName,
+                        image: p.image_url || p.imageUrl,
+                        description: p.productDescription
+                    };
+                }
+            }
+            if (!product && typeof products !== 'undefined') {
+                product = products.find(p => p.id == productId);
+            }
             if (product) this.items.push(product);
         }
         this.save();

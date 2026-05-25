@@ -34,3 +34,13 @@
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --glass-blur: blur(12px);
 }
+
+body.dark-theme {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --bg-secondary: #020617;
+    --bg-glass: rgba(30, 41, 59, 0.8);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #334155;
+}

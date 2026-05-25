@@ -1,6 +1,6 @@
 /* NANO THEME STYLES */
 .home-view {
-  background: #f8faf8; /* Light mint/cream background */
+  background: transparent;
   min-height: 100vh;
   font-family: "Inter", sans-serif;
   color: #111827;
@@ -12,6 +12,10 @@
   padding: 0 1.5rem;
 }
 
+.home-view {
+  min-height: 100vh;
+}
+
 /* NANO HERO SECTION */
 .nano-hero {
   padding: 4rem 0;
@@ -21,10 +25,13 @@
   display: flex;
   align-items: center;
   gap: 4rem;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 32px;
   padding: 4rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 .hero-text-side h1 {
@@ -68,7 +75,7 @@
   left: -5%;
   font-size: 8rem;
   font-weight: 900;
-  color: #10b98108; /* Super subtle emerald watermark */
+  color: rgba(16, 185, 129, 0.15); /* Made more visible */
   z-index: 0;
   pointer-events: none;
   letter-spacing: -5px;
@@ -179,11 +186,15 @@
 }
 
 .hero-main-img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 450px;
+  max-width: none;
+  object-fit: contain;
   border-radius: 24px;
+  transform-origin: center right;
+  transition: transform 0.4s ease;
+  mix-blend-mode: multiply;
   box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-  transition: transform 0.5s ease;
 }
 
 .floating-brand-badge {
@@ -205,6 +216,7 @@
 .floating-brand-badge img {
   height: 32px;
   width: auto;
+  mix-blend-mode: multiply;
 }
 
 .floating-brand-badge span {
@@ -221,7 +233,7 @@
 }
 
 .hero-img-wrapper:hover .hero-main-img {
-    transform: scale(1.05);
+    transform: scale(1.22);
 }
 
 /* NANO CATEGORIES */
@@ -366,4 +378,50 @@
 .newsletter-footer {
   font-size: 0.8rem;
   opacity: 0.7;
+}
+
+/* Inline Section Header for Trending */
+.section-header-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+}
+
+.section-header-inline .header-left {
+  text-align: left;
+}
+
+.section-header-inline h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.view-all-btn {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.view-all-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+}
+
+body.dark-theme .view-all-btn {
+  background: var(--bg-card);
 }

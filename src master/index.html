@@ -36,7 +36,7 @@
         <div class="container header-content">
           <!-- Logo -->
           <a href="#" class="logo" onclick="showView('home-view')(); return false;">
-            <img src="imgs/logo.png" alt="Cartify Logo" style="height: 48px; width: auto; object-fit: contain;" />
+            <img src="imgs/logo.png" alt="Cartify Logo" class="logo-animated" style="height: 48px; width: auto; object-fit: contain;" />
           </a>
 
           <!-- Hamburger (mobile only) -->
@@ -48,9 +48,7 @@
 
           <!-- Navigation -->
           <nav class="nav">
-            <button id="nav-home" class="nav-link active">
-              <span>Home</span>
-            </button>
+            
             <button id="nav-products" class="nav-link">
               <span>Shop</span>
             </button>
@@ -69,24 +67,71 @@
                 >0</span
               >
             </button>
+            <button id="nav-vendor-dashboard" class="nav-link" style="display: none;">
+              <span>Dashboard</span>
+            </button>
+            <button id="nav-vendor-products" class="nav-link" style="display: none;">
+              <span>My Products</span>
+            </button>
+            <button id="nav-vendor-orders" class="nav-link" style="display: none;">
+              <span>Vendor Orders</span>
+            </button>
             <button id="nav-login" class="nav-link">
               <span>Login</span>
             </button>
+          </nav>
 
-            <!-- Profile Dropdown (Right Most) -->
+          <!-- Icons Section (Right Most) -->
+          <div class="header-icons">
+            <button class="header-icon-btn" onclick="document.getElementById('product-search')?.focus(); showView('products-view')()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+            <div class="notification-dropdown" id="notification-dropdown-container" style="display: none; position: relative; margin-right: 10px;">
+              <button id="nav-notification-btn" class="header-icon-btn" onclick="toggleNotifications()">
+                <div style="position: relative;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                  <span id="notification-badge" class="notif-badge" style="display: none; background: #ef4444; color: white; position: absolute; top: -5px; right: -5px; font-size: 0.6rem; padding: 2px 5px; border-radius: 10px;">0</span>
+                </div>
+              </button>
+              <div id="notification-menu" class="dropdown-menu" style="display: none; position: absolute; right: 0; top: 100%; width: 300px; background: white; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-radius: 8px; z-index: 100; max-height: 400px; overflow-y: auto; border: 1px solid #e5e7eb;">
+                <div class="dropdown-header" style="padding: 1rem; border-bottom: 1px solid #e5e7eb; font-weight: 600;">Notifications</div>
+                <div id="notification-list" style="padding: 0;">
+                  <div style="padding: 1rem; text-align: center; color: #6b7280; font-size: 0.875rem;">No new notifications</div>
+                </div>
+              </div>
+            </div>
+            <button id="nav-cart-icon" class="header-icon-btn" onclick="showView('cart-view')()">
+              <div style="position: relative;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span id="cart-badge-icon" class="cart-badge" style="display: none">0</span>
+              </div>
+            </button>
+
+            <!-- Profile Dropdown -->
             <div id="user-profile-nav" class="profile-dropdown" style="display: none;">
-              <div class="profile-trigger" id="profile-trigger">
-                <img id="nav-user-img" src="https://ui-avatars.com/api/?name=User&background=ecfdf5&color=10b981" alt="User" class="nav-user-img" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid #ecfdf5;">
-                <span id="nav-username" class="nav-username"></span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <div class="profile-trigger" id="profile-trigger" style="padding: 0; border-radius: 50%;">
+                <img id="nav-user-img" src="https://ui-avatars.com/api/?name=User&background=ecfdf5&color=10b981" alt="User" class="nav-user-img" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: none;">
               </div>
               <div class="dropdown-menu" id="profile-dropdown-menu">
-                <button id="nav-logout" class="dropdown-item">
+                <div class="dropdown-header" style="display: flex; align-items: center; gap: 10px; padding: 1rem; border-bottom: 1px solid var(--border); margin-bottom: 0.5rem;">
+                  <img id="dropdown-user-img" src="" alt="User" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border);">
+                  <div class="dropdown-user-info">
+                    <div id="dropdown-username" style="font-weight: 600; font-size: 0.95rem; color: var(--text-main);"></div>
+                    <div id="dropdown-role" style="font-size: 0.75rem; color: var(--text-muted); text-transform: capitalize;"></div>
+                  </div>
+                </div>
+                <button id="nav-edit-profile" class="dropdown-item" onclick="showView('profile-view')()">
+                  <span>Edit Profile</span>
+                </button>
+                <button id="nav-customer-orders" class="dropdown-item" onclick="showView('customer-orders-view')()">
+                  <span>My Orders</span>
+                </button>
+                <button id="nav-logout" class="dropdown-item" style="color: var(--danger);">
                   <span>Logout</span>
                 </button>
               </div>
             </div>
-          </nav>
+          </div>
         </div>
       </header>
 
@@ -97,9 +142,6 @@
           <section class="nano-hero">
             <div class="nano-hero-content">
               <div class="hero-text-side">
-                <div class="hero-badge-container">
-                    <span class="hero-badge">🚀 New Collection Available</span>
-                </div>
                 <h1>Shop Smarter, <span class="text-green">Live Better</span></h1>
                 <p class="hero-desc">
                   Discover amazing products at unbeatable prices. Your one-stop destination for quality electronics, fashion, and accessories.
@@ -125,7 +167,7 @@
               </div>
               <div class="hero-image-side">
                 <div class="hero-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1400" alt="Hero Image" class="hero-main-img">
+                    <img src="imgs/hero-store.png" alt="Hero Image" class="hero-main-img" style="object-fit: contain;">
                     <!-- Floating Brand Badge -->
                     <div class="floating-brand-badge">
                       <img src="imgs/logo.png" alt="Cartify Icon">
@@ -276,12 +318,8 @@
               <input type="text" id="product-search" class="search-input" placeholder="Search for products..." />
             </div>
           </div>
-          <div class="categories" style="margin-top: 2rem">
+          <div class="categories" id="store-category-filters" style="margin-top: 2rem">
             <button class="category-btn active" data-category="all">All Products</button>
-            <button class="category-btn" data-category="Electronics">Electronics</button>
-            <button class="category-btn" data-category="Accessories">Accessories</button>
-            <button class="category-btn" data-category="Clothing">Clothing</button>
-            <button class="category-btn" data-category="Footwear">Footwear</button>
           </div>
           <div id="products-grid" class="products-grid"></div>
         </div>
@@ -321,6 +359,18 @@
         </div>
       </div>
 
+      <div id="customer-orders-view" class="view" style="display: none">
+        <div class="container">
+          <div class="section-header">
+            <h2>Your Orders</h2>
+            <p class="subtitle">Track and manage your past purchases</p>
+          </div>
+          <div class="orders-list" id="customer-orders-list">
+            <!-- Orders will be rendered here -->
+          </div>
+        </div>
+      </div>
+
       <div id="login-view" class="view" style="display: none">
         <div class="container">
           <div class="form-container">
@@ -333,9 +383,13 @@
                 <label for="login-email">Email Address</label>
                 <input type="email" id="login-email" class="form-input" placeholder="name@example.com" required />
               </div>
-              <div class="form-group" style="margin-bottom: 2rem">
+              <div class="form-group" style="margin-bottom: 1rem">
                 <label for="login-password">Password</label>
                 <input type="password" id="login-password" class="form-input" placeholder="••••••••" required />
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
+                <input type="checkbox" id="login-remember" />
+                <label for="login-remember" style="margin: 0; font-size: 0.875rem; color: var(--text-muted);">Remember Me</label>
               </div>
               <button type="submit" class="btn btn-primary btn-full" style="background: #111827;">Sign In</button>
               <p style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem;">
@@ -371,6 +425,23 @@
                 <input type="password" id="reg-confirm-password" name="confirm-password" class="form-input" placeholder="••••••••" required />
               </div>
               <div class="form-group">
+                <label for="reg-role">Account Type</label>
+                <select id="reg-role" name="role" class="form-input" required>
+                  <option value="customer">Customer</option>
+                  <option value="vendor">Vendor (Seller)</option>
+                </select>
+              </div>
+              <div id="vendor-fields" style="display: none;">
+                <div class="form-group">
+                  <label for="reg-business-name">Business Name</label>
+                  <input type="text" id="reg-business-name" name="business-name" class="form-input" placeholder="My Shop Name" />
+                </div>
+                <div class="form-group">
+                  <label for="reg-business-address">Business Address</label>
+                  <input type="text" id="reg-business-address" name="business-address" class="form-input" placeholder="Shop Address" />
+                </div>
+              </div>
+              <div class="form-group">
                 <label>Profile Picture</label>
                 <div class="file-input-wrapper">
                   <input type="file" id="user-profile" name="profile-image" class="file-input-hidden" />
@@ -399,14 +470,199 @@
             <form id="checkout-form">
               <div class="form-group">
                 <label>Full Name</label>
-                <input type="text" class="form-input" placeholder="John Doe" required />
+                <input type="text" id="checkout-name" class="form-input" placeholder="John Doe" required />
               </div>
               <div class="form-group">
                 <label>Address</label>
-                <textarea class="form-input" placeholder="123 Street..." required></textarea>
+                <textarea id="checkout-address" class="form-input" placeholder="123 Street..." required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary btn-full" style="background: #111827;">Place Order</button>
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" id="checkout-city" class="form-input" placeholder="Addis Ababa" required />
+              </div>
+              <div class="form-group">
+                <label>Zip Code</label>
+                <input type="text" id="checkout-zip" class="form-input" placeholder="1000" required />
+              </div>
+
+              <style>
+                .payment-radio { display: none; }
+                .payment-card {
+                  border: 2px solid var(--border);
+                  border-radius: var(--radius-md);
+                  padding: 1rem;
+                  cursor: pointer;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 0.5rem;
+                  transition: all 0.2s;
+                  height: 100%;
+                }
+                .payment-radio:checked + .payment-card {
+                  border-color: var(--primary);
+                  background-color: rgba(16, 185, 129, 0.05);
+                }
+              </style>
+              <div class="form-group" style="margin-top: 1.5rem;">
+                <label>Payment Method</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
+                  <label>
+                    <input type="radio" name="payment-method" value="chapa" checked class="payment-radio">
+                    <div class="payment-card">
+                      <img src="imgs/image copy.png" alt="Chapa" style="height: 40px; object-fit: contain;">
+                    </div>
+                  </label>
+                  <label>
+                    <input type="radio" name="payment-method" value="telebirr" class="payment-radio">
+                    <div class="payment-card">
+                      <img src="imgs/telebirr.png" alt="Telebirr" style="height: 40px; object-fit: contain;">
+                    </div>
+                  </label>
+                  <label>
+                    <input type="radio" name="payment-method" value="cbe" class="payment-radio">
+                    <div class="payment-card">
+                      <img src="https://www.bing.com/th/id/OIP.lb8KwECkvG0E3ewqWKvFegAAAA?w=193&h=188&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="CBE Birr" style="height: 40px; object-fit: contain;">
+                    </div>
+                  </label>
+                  <label>
+                    <input type="radio" name="payment-method" value="paypal" class="payment-radio">
+                    <div class="payment-card">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="height: 40px; object-fit: contain;">
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full" style="background: #111827; margin-top: 1.5rem;">Proceed to Payment</button>
             </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vendor Dashboard View -->
+      <div id="vendor-dashboard-view" class="view" style="display: none">
+        <div class="container">
+          <div class="section-header" style="margin-top: 2rem">
+            <span class="header-tag">OVERVIEW</span>
+            <h2>Vendor Dashboard</h2>
+            <p id="vendor-welcome-msg" class="subtitle">Welcome to your store overview.</p>
+          </div>
+
+          <!-- Vendor Notifications Alert -->
+          <div id="vendor-low-stock-alert" style="margin-top: 2rem; display: none;"></div>
+          
+          <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+            <div class="category-card" style="cursor: default; height: 180px; background: linear-gradient(135deg, #111827 0%, #1f2937 100%);">
+              <div style="padding: 2rem; color: white;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; opacity: 0.9;">Total Sales</h3>
+                <h2 id="vendor-total-sales" style="font-size: 2.25rem; font-weight: 800; margin: 0;">ETB 0.00</h2>
+              </div>
+            </div>
+            <div class="category-card" style="cursor: default; height: 180px; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+              <div style="padding: 2rem; color: white;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; opacity: 0.9;">My Products</h3>
+                <h2 id="vendor-product-count" style="font-size: 2.25rem; font-weight: 800; margin: 0;">0</h2>
+              </div>
+            </div>
+            <div class="category-card" style="cursor: default; height: 180px; background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+              <div style="padding: 2rem; color: white;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; opacity: 0.9;">My Orders</h3>
+                <h2 id="vendor-order-count" style="font-size: 2.25rem; font-weight: 800; margin: 0;">0</h2>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 3rem;">
+            <h3>Recent Store Activity</h3>
+            <div style="background: white; border-radius: 8px; border: 1px solid #e5e7eb; padding: 1.5rem; margin-top: 1rem;">
+              <p style="color: var(--text-muted); margin: 0;">No recent activity to display.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vendor Products Management View -->
+      <div id="vendor-products-view" class="view" style="display: none">
+        <div class="container">
+          <div class="section-header-inline" style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span class="header-tag">INVENTORY</span>
+              <h2>My Products</h2>
+            </div>
+            <button class="btn btn-green" onclick="toggleAddProductForm()">+ Add Product</button>
+          </div>
+
+          <!-- Add Product Modal Form (Hidden by default) -->
+          <div id="add-product-modal" style="display: none; background: rgba(0,0,0,0.5); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; align-items: center; justify-content: center;">
+            <div class="form-container" style="background: white; padding: 2rem; border-radius: 8px; max-width: 500px; width: 90%; position: relative;">
+              <button onclick="toggleAddProductForm()" style="position: absolute; right: 1rem; top: 1rem; border: none; background: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+              <h3 style="margin-bottom: 1.5rem;">Add New Product</h3>
+              <form id="add-product-form">
+                <div class="form-group">
+                  <label for="prod-name">Product Name</label>
+                  <input type="text" id="prod-name" name="name" class="form-input" placeholder="e.g. Wireless Mouse" required />
+                </div>
+                <div class="form-group">
+                  <label for="prod-price">Price (ETB)</label>
+                  <input type="number" step="0.01" id="prod-price" name="price" class="form-input" placeholder="e.g. 599.99" required />
+                </div>
+                <div class="form-group">
+                  <label for="prod-stock">Stock Quantity</label>
+                  <input type="number" step="1" min="0" id="prod-stock" name="stock" class="form-input" placeholder="e.g. 50" required />
+                </div>
+                <div class="form-group">
+                  <label for="prod-category">Category</label>
+                  <select id="prod-category" name="category_id" class="form-input" required>
+                    <!-- Populated by JS -->
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="prod-desc">Description</label>
+                  <textarea id="prod-desc" name="description" class="form-input" style="min-height: 80px;" placeholder="Describe your product details..." required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="prod-image">Product Image URL</label>
+                  <input type="text" id="prod-image" name="image_url" class="form-input" placeholder="https://images.unsplash.com/..." required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-full" style="background: #111827; margin-top: 1rem;">Publish Product</button>
+              </form>
+            </div>
+          </div>
+
+          <div id="vendor-products-grid" class="products-grid" style="margin-top: 2rem;">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Vendor Orders View -->
+      <div id="vendor-orders-view" class="view" style="display: none">
+        <div class="container">
+          <div class="section-header" style="margin-top: 2rem">
+            <span class="header-tag">SALES</span>
+            <h2>Vendor Orders</h2>
+            <p class="subtitle">View and manage purchases of your products.</p>
+          </div>
+
+          <div style="overflow-x: auto; background: white; border: 1px solid #e5e7eb; border-radius: 8px; margin-top: 2rem;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+              <thead>
+                <tr style="background: #f9fafb; border-bottom: 1px solid #e5e7eb;">
+                  <th style="padding: 1rem;">Order ID</th>
+                  <th style="padding: 1rem;">Customer Name</th>
+                  <th style="padding: 1rem;">Product Details</th>
+                  <th style="padding: 1rem;">Quantity</th>
+                  <th style="padding: 1rem;">Total Earnings</th>
+                  <th style="padding: 1rem;">Shipping Address</th>
+                  <th style="padding: 1rem;">Order Date</th>
+                </tr>
+              </thead>
+              <tbody id="vendor-orders-table-body">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -472,53 +728,40 @@
     <script src="js/state.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/ui.js"></script>
+    <script src="js/notifications.js"></script>
     <script src="js/app.js"></script>
     <script>
-      // Handle Registration via AJAX for "Stunning" feedback
-      document.getElementById('register-form')?.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-        const submitBtn = form.querySelector('button[type="submit"]');
-        
-        try {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Creating Account...';
-          
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: formData
-          });
-          
-          const result = await response.json();
-          
-          if (result.status === 'success') {
-            showNotification('Success! Account created.', 'success');
-            setTimeout(() => {
-              showView('login-view')();
-              form.reset();
-              submitBtn.disabled = false;
-              submitBtn.textContent = 'Create Account';
-            }, 1500);
-          } else {
-            showNotification(result.message || 'Registration failed', 'error');
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Create Account';
-          }
-        } catch (error) {
-          console.error('Registration Error:', error);
-          showNotification('Server connection error', 'error');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Create Account';
-        }
-      });
-
       // Update file name in input
       document.getElementById('user-profile')?.addEventListener('change', function(e) {
         const fileName = e.target.files[0]?.name || 'No file chosen';
         const nameDisplay = document.querySelector('.file-name');
         if (nameDisplay) nameDisplay.textContent = fileName;
       });
+
+      // Role Select Toggle
+      document.getElementById('reg-role')?.addEventListener('change', function(e) {
+        const vendorFields = document.getElementById('vendor-fields');
+        const bizNameInput = document.getElementById('reg-business-name');
+        const bizAddrInput = document.getElementById('reg-business-address');
+        
+        if (e.target.value === 'vendor') {
+          if (vendorFields) vendorFields.style.display = 'block';
+          if (bizNameInput) bizNameInput.required = true;
+          if (bizAddrInput) bizAddrInput.required = true;
+        } else {
+          if (vendorFields) vendorFields.style.display = 'none';
+          if (bizNameInput) bizNameInput.required = false;
+          if (bizAddrInput) bizAddrInput.required = false;
+        }
+      });
+
+      // Toggle Add Product Modal
+      window.toggleAddProductForm = function() {
+        const modal = document.getElementById('add-product-modal');
+        if (modal) {
+          modal.style.display = modal.style.display === 'none' ? 'flex' : 'none';
+        }
+      };
     </script>
   </body>
 </html>
