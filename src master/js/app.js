@@ -8,6 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
   cart.updateCartBadge();
   showView("home-view")();
 
+  // Handle successful checkout redirect
+  if (window.location.search.includes('checkout=success')) {
+    cart.clear();
+    showNotification("Order placed successfully!", "success");
+    // Clean up the URL and show orders
+    window.history.replaceState({}, document.title, window.location.pathname + "#customer-orders-view");
+    showView("customer-orders-view")();
+  }
+
   // Theme Logic
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = document.getElementById("theme-icon");
@@ -444,6 +453,14 @@ document.addEventListener("DOMContentLoaded", () => {
         
         const data = await response.json();
         
+        if (response.status === 401) {
+            showNotification("Please log in to proceed to checkout", "error");
+            showView("login-view")();
+            btn.textContent = originalText;
+            btn.disabled = false;
+            return;
+        }
+
         if (response.ok && data.checkout_url) {
             window.location.href = data.checkout_url;
         } else {

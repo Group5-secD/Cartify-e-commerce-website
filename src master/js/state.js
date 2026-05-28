@@ -55,7 +55,7 @@ const cart = {
             return;
         }
 
-        // Sync with backend FIRST to check authorization
+        // Sync with backend
         try {
             const response = await fetch(`${API_BASE_URL}/api/cart/add.php`, {
                 method: "POST",
@@ -64,15 +64,7 @@ const cart = {
                 credentials: "include"
             });
 
-            if (response.status === 401) {
-                showNotification("Please log in to add items to your cart", "error");
-                showView("login-view")();
-                return;
-            }
-
-            if (!response.ok) throw new Error("Backend sync failed");
-
-            // Only update local state if backend succeeds
+            // Even if 401 (Guest), we still add it locally!
             const existingItem = this.items.find(item => item.id === productId);
             if (existingItem) {
                 existingItem.quantity += 1;
